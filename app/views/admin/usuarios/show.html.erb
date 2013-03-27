@@ -1,0 +1,24 @@
+<h1>Detalhes <%= masc_fem('usuario', 'do', 'da') %> Usuário</h1>
+
+<% if notice %>
+	<div class="alert-message success">
+		<p id="notice"><%= notice %></p>
+	</div>
+<% end %>
+
+<div class="fieldset">
+	<dl>
+		<dt class="label">Nome</dt>
+		<dd>
+			<pre><%= @usuario.nome %></pre>
+		</dd>
+		<dt class="label">Email</dt>
+		<dd>
+			<pre><%= @usuario.email %></pre>
+		</dd>
+		<dt class="label">Grupo</dt>
+		<dd>
+			<pre><%= @usuario.grupo %></pre>
+		</dd>
+	</dl>
+</div>

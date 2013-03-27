@@ -1,0 +1,6 @@
+# encoding: utf-8
+class Mensagem < ActiveRecord::Base
+  attr_accessible :email, :mensagem, :nome, :telefone
+  validates_presence_of :nome, :email, :telefone, :mensagem, :message => "não pode ser vazio"
+  validates_format_of :email, :with => /\A([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})([a-z ])?\z/i, :message => "é inválido"
+end

@@ -1,0 +1,33 @@
+<h1><%= plural_name.titleize %></h1>
+
+<table id="lista" class="table table-bordered table-striped" sort-list="[[0, 1]]">
+<thead>
+	<tr>
+<% for attribute in attributes %>
+		<th><%= attribute.human_name %></th>
+<% end %>
+		<th width="120">Ações</th>
+	</tr>
+</thead>
+<tbody>
+	<%% @<%= plural_name %>.each do |<%= singular_name %>| %>
+	<tr>
+<% for attribute in attributes -%>
+		<td><%%= <%= singular_name %>.<%= attribute.name %> %></td>
+<% end -%>
+		<td><% if controller_class_name.include? '::' %><%- modulo = controller_class_name.split('::')[0].downcase %>
+	      <%%= link_to 'Exibir', [:<%= modulo %>, <%= singular_name %>] %>
+	      <%%= link_to 'Editar', [:edit, :<%= modulo %>, <%= singular_name %>] %>
+	      <%%= link_to 'Excluir', [:<%= modulo %>, <%= singular_name %>], confirm: 'Tem certeza?', method: :delete %><% else %>
+	      <%%= link_to 'Exibir', <%= singular_name %> %>
+	      <%%= link_to 'Editar', edit_<%= singular_name %>_path(<%= singular_name %>) %>
+	      <%%= link_to 'Excluir', <%= singular_name %>, confirm: 'Tem certeza?', method: :delete %><% end %>
+	    </td>
+	</tr>  
+	<%% end %>
+<%% if @<%= plural_name %>.size == 0 %>
+	<tr><td colspan="<%= attributes.size + 1 %>">Nenhum registro encontrado</td></tr>
+<%% end %>
+</tbody>
+</table>
+<center><%%= page_navigation_links @<%= singular_name %> %></center>

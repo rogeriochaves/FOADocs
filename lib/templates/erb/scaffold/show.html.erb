@@ -1,0 +1,18 @@
+<h1>Detalhes <%%= masc_fem('<%= singular_name %>', 'do', 'da') %> <%= singular_name.titleize %></h1>
+
+<%% if notice %>
+	<div class="alert-message success">
+		<p id="notice"><%%= notice %></p>
+	</div>
+<%% end %>
+
+<div class="fieldset">
+	<dl>
+		<% for attribute in attributes %>
+		<dt class="label"><%= attribute.human_name %></dt>
+		<dd>
+			<pre><%%= @<%= singular_name %>.<%= attribute.name %> %></pre>
+		</dd>
+		<% end %>
+	</dl>
+</div>

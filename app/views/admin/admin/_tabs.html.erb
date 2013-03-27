@@ -1,0 +1,62 @@
+<% controller = params[:controller].gsub('admin/', '').gsub('admin_', '').titleize %>
+<% action = {'show' => 'Exibir', 'edit' => 'Editar', 'new' => 'Novo'}[params[:action]] %>
+
+<%
+
+def is_removed(action)
+  controller = params[:controller].gsub('admin/', '').gsub('admin_', '').titleize
+  AppAdmin.remove_tabs[controller] and AppAdmin.remove_tabs[controller].include? action.to_sym
+end
+
+%>
+
+<div class="tabbable">
+<% if params[:controller] != 'busca' %>
+
+  <ul class="nav nav-tabs">
+    <% if !is_removed(:index) %>
+      <li class="<%= 'active' if params[:action] == 'index' %>">
+        <%= link_to "Listar #{controller}", :controller => params[:controller] %>
+      </li>
+    <% end %>
+    <% AppAdmin.extra_tabs[controller].each do |e| %>
+        <% if e[1] != :id %>
+          <li class="<%= 'active' if params[:action] == e[1].to_s %>">
+            <%= link_to e[0], :controller => params[:controller], :action => e[1] %>
+          </li>
+        <% end %>
+    <% end if AppAdmin.extra_tabs[controller] %>
+
+    <% if params[:id] %>
+      <% if !is_removed(:show) %>
+        <li class="<%= 'active' if params[:action] == 'show' %>">
+          <%= link_to 'Exibir', :controller => params[:controller], :action => :show, :id => params[:id] %>
+        </li>
+      <% end %>
+      <% if !is_removed(:edit) %>
+        <li class="<%= 'active' if params[:action] == 'edit' %>">
+          <%= link_to 'Editar', :controller => params[:controller], :action => :edit, :id => params[:id] %>
+        </li>
+      <% end %>
+      <% AppAdmin.extra_tabs[controller].each do |e| %>
+        <% if e[1] == :id %>
+          <li class="<%= 'active' if params[:action] == e[2].to_s %>">
+            <%= link_to e[0], :controller => params[:controller], :action => e[2], :id => params[:id] %>
+          </li>
+        <% end %>
+      <% end if AppAdmin.extra_tabs[controller] %>
+      <% if !is_removed(:destroy) %>
+        <li>
+          <%= link_to 'Excluir', {:controller => params[:controller], :action => :show, :id => params[:id]}, {:confirm => 'Tem certeza?', :method => :delete} %>
+        </li>
+      <% end %>
+    <% end %>
+    <% if !is_removed(:new) %>
+      <li class="<%= 'active' if params[:action] == 'new' %>">
+          <%= link_to "#{masc_fem(controller, 'Novo', 'Nova')} #{controller.singularize}", :controller => params[:controller], :action => :new %>
+      </li>
+    <% end %>
+  </ul>
+
+<% end %>
+</div>

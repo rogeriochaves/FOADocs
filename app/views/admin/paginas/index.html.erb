@@ -1,0 +1,34 @@
+<h1>Paginas</h1>
+
+<table id="lista" class="table table-bordered table-striped" sort-list="[[0, 1]]">
+<thead>
+	<tr>
+
+		<th>Url</th>
+
+		<th>Title</th>
+
+		<th>Description</th>
+
+		<th width="120">Ações</th>
+	</tr>
+</thead>
+<tbody>
+	<% @paginas.each do |pagina| %>
+	<tr>
+		<td><%= pagina.url %></td>
+		<td><%= pagina.title %></td>
+		<td><%= pagina.description %></td>
+		<td>
+	      <%= link_to 'Exibir', [:admin, pagina] %>
+	      <%= link_to 'Editar', [:edit, :admin, pagina] %>
+	      <%= link_to 'Excluir', [:admin, pagina], confirm: 'Tem certeza?', method: :delete %>
+	    </td>
+	</tr>  
+	<% end %>
+<% if @paginas.size == 0 %>
+	<tr><td colspan="4">Nenhum registro encontrado</td></tr>
+<% end %>
+</tbody>
+</table>
+<center><%= page_navigation_links @pagina %></center>

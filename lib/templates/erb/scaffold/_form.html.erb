@@ -1,0 +1,15 @@
+<%- if controller_class_name.include? '::'; ff = "[:#{controller_class_name.split('::')[0].downcase}, @#{singular_name}]"; else; ff = "@#{singular_name}"; end %><%%= form_for(<%= ff %>, validate: true) do |f| %>
+
+   <%%= error_messages_for @<%= singular_name %> %>
+
+  <% for attribute in attributes %>
+  <div class="field">
+    <%%= f.label :<%= attribute.name %> %><br />
+    <%%= f.<%= attribute.field_type %> :<%= attribute.name %> %>
+  </div>
+  <% end %>
+  <div class="form-actions">
+    <%%= f.submit class: 'btn btn-success', value: 'Salvar' %>
+  </div>
+  
+<%% end %>

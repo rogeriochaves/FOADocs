@@ -1,0 +1,32 @@
+<%= form_for([:admin, @usuario], validate: true, html: {multipart: true, class: 'form-horizontal'}) do |f| %>
+  <%= error_messages_for @usuario %>
+
+  <div class="field">
+    <%= f.label :nome %><br />
+    <%= f.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password, 'Nova senha' %><br />
+    <%= f.text_field :password %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation, 'Confirme a Senha' %> <br />
+    <%= f.text_field :password_confirmation %>
+  </div>
+
+  <div class="field">
+    <%= f.label :grupo %><br />
+    <%= f.select :grupo, [["Administrador", "admin"],["Usuário Comum", "usuario"]] %>
+  </div>
+  
+  <div class="form-actions">
+    <%= f.submit :class => 'btn btn-success', :value => 'Salvar' %>
+  </div>
+<% end %>

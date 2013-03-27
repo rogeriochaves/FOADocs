@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title ? title : "AppName" %></title>
+  <!--[if IE]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <meta charset="utf-8" />
+  <meta http-equiv="content-language" content="pt-BR">
+  <meta name="description" content="<%= description %>" />
+  <meta name="author" content="www.reactweb.com.br">
+  <%= metatags %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= yield %>
+
+<%= javascript_include_tag "application" %>
+<% if current_usuario and current_usuario.admin? %>
+	<script type="text/javascript">
+	    var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+	</script>
+	<%= javascript_include_tag "editaveis" %>
+<% end %>
+</body>
+</html>
