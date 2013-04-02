@@ -10,17 +10,19 @@ class ActionView::Helpers::FormBuilder
     end
 
     tamanho = ''
-    if object.send(method).respond_to?('styles')
-      max_num = 0
-      object.send(method).send('styles').each do |key, style|
-        size = style.geometry.sub(/[\^#>]/, '')
-        area = size.split('x')[0].to_i * size.split('x')[1].to_i
-        if area > max_num
-          max_num = area
-          tamanho = " (#{size.html_safe})"
+    begin
+      if object.send(method).respond_to?('styles')
+        max_num = 0
+        object.send(method).send('styles').each do |key, style|
+          size = style.geometry.sub(/[\^#>]/, '')
+          area = size.split('x')[0].to_i * size.split('x')[1].to_i
+          if area > max_num
+            max_num = area
+            tamanho = " (#{size.html_safe})"
+          end
         end
       end
-    end
+    rescue; end
     #required_mark = ''
     #required_mark = ' *'.html_safe if object.class.validators_on(method).map(&:class).include? ActiveModel::Validations::PresenceValidator
 

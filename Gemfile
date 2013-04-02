@@ -41,7 +41,7 @@ end
 
 gem 'dalli'
 group :production do
-	gem 'unicorn'
+	#gem 'unicorn'
 	gem 'mysql2'
 	#gem 'pg', '0.13.2'
 	gem 'execjs'

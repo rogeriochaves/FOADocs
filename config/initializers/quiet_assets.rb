@@ -1,5 +1,9 @@
 if Rails.env.development?
-  Rails.application.assets.logger = Logger.new('/dev/null')
+  begin
+    Rails.application.assets.logger = Logger.new('/dev/null')
+  rescue
+    Rails.application.assets.logger = Logger.new('nada.txt')
+  end
   Rails::Rack::Logger.class_eval do
     def call_with_quiet_assets(env)
       previous_level = Rails.logger.level
