@@ -1,3 +1,3 @@
 zeus: zeus start
-web: sleep 1 && zeus s
+web: bundle exec unicorn -p $PORT -c ./config/unicorn.rb
 guard: guard start

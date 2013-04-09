@@ -15,6 +15,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'yui-compressor'
   gem 'turbo-sprockets-rails3'
+  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 end
 
 group :development do
@@ -50,6 +51,8 @@ end
 
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'select2-rails'
 
 # swiss-knive
 gem 'capistrano', :github => 'capistrano/capistrano'
@@ -61,6 +64,7 @@ gem 'brazilian-rails'
 gem 'paperclip'
 gem 'acts_as_list'
 gem 'ckeditor', :git => 'git://github.com/rogeriochaves/ckeditor'
+gem 'simple_form'
 gem 'nested_form', :git => 'git://github.com/ryanb/nested_form'
 gem 'client_side_validations'
 gem 'exception_notification', :git => "git://github.com/rails/exception_notification.git", :require => 'exception_notifier'

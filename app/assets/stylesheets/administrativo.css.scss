@@ -1,12 +1,14 @@
 /*
- *= require ./bootstrap/bootstrap.min
- *= require ./bootstrap/bootstrap-responsive.min
- *= require ./bootstrap/bootstrap-missing-features
+ *= require bootstrap_and_overrides
  *= require jquery.ui.all
  *= require_self
 */
 
-.field{line-height:15px}
+body{margin: 0 auto; padding-bottom:40px}
+.form-inputs{padding:40px 0 20px 0}
+textarea{height:100px}
+
+/*.field{line-height:15px}
 h1{margin-bottom:15px;}
 label{margin:14px 10px 0 0}
 input[type="checkbox"]{margin:8px 0 0 0}
@@ -33,4 +35,4 @@ ul.chzn-choices{border: 1px solid #CCC!important; border-radius:3px; transition:
 .filtro td{padding:10px; vertical-align: middle;}
 .box-title{position:absolute; margin:-8px 0 0 10px}
 
-.notificacoes{display: inline-block; text-align: center; padding-top: 1px; width:22px; height:21px; background: #ad0100; color: #FFF; border-radius:50px}
+.notificacoes{display: inline-block; text-align: center; padding-top: 1px; width:22px; height:21px; background: #ad0100; color: #FFF; border-radius:50px}*/

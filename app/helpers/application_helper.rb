@@ -57,7 +57,7 @@ module ApplicationHelper
 		conteudo = capture(&block)
 		chave = Digest::MD5.hexdigest(nome ? nome : conteudo)
 		if e = Editavel.where(:chave => chave).first
-			conteudo = e.texto
+			conteudo = e.texto if !e.texto.empty?
 		else
 			Editavel.create(:chave => chave, :texto => conteudo)
 		end

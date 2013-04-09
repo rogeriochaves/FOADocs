@@ -5,7 +5,7 @@ class ContatoMailer < ActionMailer::Base
   def enviar_contato(mensagem)
     @mensagem = mensagem
     mail(
-      to: (Rails.env == "production" ? "#{AppAdmin.app_name} <contato@#{AppAdmin.domain}>" : "<vinicius@reactweb.com.br>"),
+      to: (Rails.env == "production" ? "#{AppAdmin.app_name} <contato@#{AppAdmin.domain}>" : "<rogerio@reactweb.com.br>"),
       subject: "Mensagem de Contato do #{AppAdmin.app_name}",
       reply_to: @mensagem.email
     ) do |format|

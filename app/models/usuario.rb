@@ -8,7 +8,7 @@ class Usuario < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :nome, :email, :password, :password_confirmation, :remember_me, :grupo
-  validates_presence_of :nome, :email, :message => "não pode ser vazio"
+  validates_presence_of :nome, :grupo, :email, :message => "não pode ser vazio"
   validates_format_of :email, :with => /\A([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})([a-z ])?\z/i, :message => "é inválido"
   validates_confirmation_of :password, :message => 'confirmação incorreta'
   

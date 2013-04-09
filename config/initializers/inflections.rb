@@ -48,7 +48,7 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.singular(/^(g|)ases$/i,  '\1ás')
 
 #    #irregulares
-    irregulares = {'país' => 'paises', 'proibiu' => 'proibiram', 'newsletter' => 'newsletters', 'banner' => 'banners', 'post' => 'posts'}
+    irregulares = {'país' => 'paises', 'proibiu' => 'proibiram', 'newsletter' => 'newsletters', 'banner' => 'banneres', 'post' => 'posts'}
 #
 #
     irregulares.each do |key, value|

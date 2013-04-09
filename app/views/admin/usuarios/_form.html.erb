@@ -1,32 +1,19 @@
-<%= form_for([:admin, @usuario], validate: true, html: {multipart: true, class: 'form-horizontal'}) do |f| %>
+<%= simple_form_for([:admin, @usuario], validate: true, html: {class: 'form-horizontal'}) do |f| %>
   <%= error_messages_for @usuario %>
 
-  <div class="field">
-    <%= f.label :nome %><br />
-    <%= f.text_field :nome %>
-  </div>
+  <div class="form-inputs">
+    <%= f.input :nome %>
+    
+    <%= f.input :email %>
+    
+    <%= f.input :password, label: 'Senha' %>
+    
+    <%= f.input :password, label: 'Confirme a Senha' %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password, 'Nova senha' %><br />
-    <%= f.text_field :password %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation, 'Confirme a Senha' %> <br />
-    <%= f.text_field :password_confirmation %>
-  </div>
-
-  <div class="field">
-    <%= f.label :grupo %><br />
-    <%= f.select :grupo, [["Administrador", "admin"],["Usuário Comum", "usuario"]] %>
+    <%= f.input :grupo, collection: [["Administrador", "admin"],["Usuário Comum", "usuario"]] %>
   </div>
   
   <div class="form-actions">
-    <%= f.submit :class => 'btn btn-success', :value => 'Salvar' %>
+    <%= f.button :submit, class: 'btn-success' %>
   </div>
 <% end %>
