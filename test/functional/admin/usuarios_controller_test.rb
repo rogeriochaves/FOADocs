@@ -1,7 +1,7 @@
 # encoding: utf-8
 require 'test_helper'
 
-class UsuariosControllerTest < ActionController::TestCase
+class Admin::UsuariosControllerTest < ActionController::TestCase
   setup do
     login_as(:admin)
     @usuario_new = {:nome => 'José', :email => 'jose@dasilva2.com', :password => '123mudar', :password_confirmation => '123mudar', :grupo => :usuario}
@@ -24,7 +24,7 @@ class UsuariosControllerTest < ActionController::TestCase
       post :create, :usuario => @usuario_new
     end
 
-    assert_redirected_to usuario_path(assigns(:usuario))
+    assert_redirected_to admin_usuario_path(assigns(:usuario))
   end
 
   test "should show usuario" do
@@ -39,7 +39,7 @@ class UsuariosControllerTest < ActionController::TestCase
 
   test "should update usuario" do
     put :update, :id => @usuario.to_param, :usuario => unprotected_attributes(@usuario)
-    assert_redirected_to usuario_path(assigns(:usuario))
+    assert_redirected_to admin_usuario_path(assigns(:usuario))
   end
 
   test "should not update password" do
@@ -50,7 +50,7 @@ class UsuariosControllerTest < ActionController::TestCase
     atributes.delete(:encrypted_password)
     put :update, :id => @usuario.to_param, :usuario => atributes
     assert_equal pass, assigns(:usuario).encrypted_password
-    assert_redirected_to usuario_path(assigns(:usuario))
+    assert_redirected_to admin_usuario_path(assigns(:usuario))
   end
 
   test "should destroy usuario" do
@@ -58,6 +58,6 @@ class UsuariosControllerTest < ActionController::TestCase
       delete :destroy, :id => @usuario.to_param
     end
 
-    assert_redirected_to usuarios_path
+    assert_redirected_to admin_usuarios_path
   end
 end

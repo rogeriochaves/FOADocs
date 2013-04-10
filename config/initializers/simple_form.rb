@@ -140,3 +140,12 @@ SimpleForm.setup do |config|
   # Cache SimpleForm inputs discovery
   # config.cache_discovery = !Rails.env.development?
 end
+
+class DateTimeInput < SimpleForm::Inputs::DateTimeInput
+  def input
+    value = object.send(attribute_name) if object.respond_to? attribute_name
+    input_html_options[:value] ||= I18n.localize(value) if value.present?
+    input_html_classes << "has_date"
+    @builder.text_field(attribute_name,input_html_options)
+  end
+end

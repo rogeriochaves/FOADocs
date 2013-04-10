@@ -1,13 +1,21 @@
 GIT
   remote: git://github.com/capistrano/capistrano.git
-  revision: b1e2c2387c3c6bc0162909f4df34680f79875c17
+  revision: aba76cf2b5c5377705cbd0f993d3368df48d209d
   specs:
-    capistrano (2.14.1)
+    capistrano (2.14.2)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+
+GIT
+  remote: git://github.com/dockyard/client_side_validations-simple_form.git
+  revision: 7364ed2fe0a620f58753d0c0953f2b0e15bedcaa
+  specs:
+    client_side_validations-simple_form (2.0.0)
+      client_side_validations (~> 3.2.0)
+      simple_form (~> 2.0.3)
 
 GIT
   remote: git://github.com/rails/exception_notification.git
@@ -16,26 +24,17 @@ GIT
     exception_notification (1.0.0)
 
 GIT
-  remote: git://github.com/rogeriochaves/ckeditor
-  revision: bac31b523668f260ac4137ca6b547efc7ff8df71
+  remote: git://github.com/rogeriochaves/ckeditor.git
+  revision: 5a8ee495abe90ea2bc3260196c31f13ba8c8fb3b
   specs:
     ckeditor (3.7.0.rc3)
       mime-types (~> 1.19)
-      orm_adapter (~> 0.1)
 
 GIT
-  remote: git://github.com/rogeriochaves/paperclip-aws.git
-  revision: ad70b500070b8132d815fca06eb35ec4155c4149
+  remote: git://github.com/ryanb/nested_form.git
+  revision: a25eebe8205e4e63899873b716535def6c1f5a9d
   specs:
-    paperclip-aws (1.6.5)
-      aws-sdk (>= 1.2.0)
-      paperclip (>= 2.4.0)
-
-GIT
-  remote: git://github.com/ryanb/nested_form
-  revision: b790a362b1b79f5b171c994a5db0c7c0d5b54e69
-  specs:
-    nested_form (0.3.1)
+    nested_form (0.3.2)
 
 GIT
   remote: git://github.com/seyhunak/twitter-bootstrap-rails.git
@@ -80,14 +79,7 @@ GEM
     activesupport (3.2.11)
       i18n (~> 0.6)
       multi_json (~> 1.0)
-    acts_as_list (0.1.8)
-    addressable (2.3.2)
     arel (3.0.2)
-    aws-sdk (1.7.1)
-      httparty (~> 0.7)
-      json (~> 1.4)
-      nokogiri (>= 1.4.4)
-      uuidtools (~> 2.1)
     bcrypt-ruby (3.0.1)
     brI18n (3.3.0)
       actionpack (>= 3.0.0)
@@ -120,10 +112,13 @@ GEM
     brstring (3.3.0)
       activesupport (>= 3.0.0)
     builder (3.0.4)
-    cancan (1.6.8)
-    chunky_png (1.2.6)
-    client_side_validations (3.2.1)
-    cocaine (0.4.2)
+    cancan (1.6.9)
+    chunky_png (1.2.8)
+    client_side_validations (3.2.5)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.1)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.0.9)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
@@ -131,7 +126,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.4.0)
+    coffee-script-source (1.6.2)
     commonjs (0.2.6)
     compass (0.12.2)
       chunky_png (~> 1.2)
@@ -139,92 +134,77 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
-    dalli (2.5.0)
-    devise (2.1.2)
+    dalli (2.6.2)
+    devise (2.2.3)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (~> 3.1)
       warden (~> 1.2.1)
-    diff-lcs (1.1.3)
-    em-websocket (0.4.0)
+    diff-lcs (1.2.2)
+    em-websocket (0.5.0)
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0.5.3)
     erubis (2.7.0)
-    eventmachine (1.0.1)
-    excon (0.16.10)
+    eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    fssm (0.2.9)
-    guard (1.6.2)
+    formatador (0.2.4)
+    fssm (0.2.10)
+    guard (1.7.0)
+      formatador (>= 0.2.4)
       listen (>= 0.6.0)
       lumberjack (>= 1.0.2)
       pry (>= 0.9.10)
-      terminal-table (>= 1.4.3)
       thor (>= 0.14.6)
     guard-livereload (1.1.3)
       em-websocket (>= 0.2.0)
       guard (>= 1.5.0)
       multi_json (~> 1.0)
-    heroku (2.33.1)
-      heroku-api (~> 0.3.6)
-      launchy (>= 0.3.2)
-      netrc (~> 0.7.7)
-      rest-client (~> 1.6.1)
-      rubyzip
-    heroku-api (0.3.6)
-      excon (~> 0.16.7)
-    highline (1.6.15)
-    hike (1.2.1)
+    highline (1.6.16)
+    hike (1.2.2)
     http_parser.rb (0.5.3)
-    httparty (0.9.0)
-      multi_json (~> 1.0)
-      multi_xml
     i18n (0.6.4)
     journey (1.0.4)
-    jquery-rails (2.1.3)
-      railties (>= 3.1.0, < 5.0)
-      thor (~> 0.14)
-    jquery-turbolinks (0.2.1)
-      rails (>= 3.1.0)
-    jquery-ui-rails (2.0.2)
+    jquery-rails (2.2.1)
+      railties (>= 3.0, < 5.0)
+      thor (>= 0.14, < 2.0)
+    jquery-turbolinks (1.0.0)
+      railties (>= 3.1.0)
+      turbolinks
+    jquery-ui-rails (4.0.2)
       jquery-rails
       railties (>= 3.1.0)
     json (1.7.7)
-    launchy (2.1.2)
-      addressable (~> 2.3)
     less (2.3.1)
       commonjs (~> 0.2.6)
     less-rails (2.3.2)
       actionpack (>= 3.1)
       less (~> 2.3.1)
-    libv8 (3.3.10.4)
+    libv8 (3.11.8.17)
     listen (0.7.3)
-    lumberjack (1.0.2)
+    lumberjack (1.0.3)
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     method_source (0.8.1)
-    mime-types (1.21)
-    multi_json (1.6.1)
-    multi_xml (0.5.1)
+    mime-types (1.22)
+    multi_json (1.7.2)
     mysql2 (0.3.11)
-    net-scp (1.0.4)
-      net-ssh (>= 1.99.1)
-    net-sftp (2.0.5)
-      net-ssh (>= 2.0.9)
-    net-ssh (2.6.3)
-    net-ssh-gateway (1.1.0)
-      net-ssh (>= 1.99.1)
-    netrc (0.7.7)
-    nokogiri (1.5.5)
+    net-scp (1.1.0)
+      net-ssh (>= 2.6.5)
+    net-sftp (2.1.1)
+      net-ssh (>= 2.6.5)
+    net-ssh (2.6.6)
+    net-ssh-gateway (1.2.0)
+      net-ssh (>= 2.6.5)
     open4 (1.3.0)
     orm_adapter (0.4.0)
-    paperclip (3.3.1)
+    paperclip (3.4.1)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
-      cocaine (~> 0.4.0)
+      cocaine (~> 0.5.0)
       mime-types
     polyglot (0.3.3)
     pry (0.9.12)
@@ -234,7 +214,7 @@ GEM
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
-    rack-livereload (0.3.11)
+    rack-livereload (0.3.13)
       rack
     rack-ssl (1.3.3)
       rack
@@ -258,60 +238,57 @@ GEM
       rake (>= 0.8.7)
       rdoc (~> 3.4)
       thor (>= 0.14.6, < 2.0)
-    rake (10.0.3)
+    rake (10.0.4)
     rb-fsevent (0.9.3)
     rdoc (3.12.2)
       json (~> 1.4)
-    rest-client (1.6.7)
-      mime-types (>= 1.16)
-    rspec (2.10.0)
-      rspec-core (~> 2.10.0)
-      rspec-expectations (~> 2.10.0)
-      rspec-mocks (~> 2.10.0)
-    rspec-core (2.10.1)
-    rspec-expectations (2.10.0)
-      diff-lcs (~> 1.1.3)
-    rspec-mocks (2.10.1)
-    rubyzip (0.9.9)
-    sass (3.2.3)
-    sass-rails (3.2.5)
+    ref (1.0.4)
+    rspec (2.13.0)
+      rspec-core (~> 2.13.0)
+      rspec-expectations (~> 2.13.0)
+      rspec-mocks (~> 2.13.0)
+    rspec-core (2.13.1)
+    rspec-expectations (2.13.0)
+      diff-lcs (>= 1.1.3, < 2.0)
+    rspec-mocks (2.13.1)
+    sass (3.2.7)
+    sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
     select2-rails (3.3.1)
       sass-rails (>= 3.2)
       thor (~> 0.14)
-    simple_form (2.1.0)
+    simple_form (2.0.3)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
-    slop (3.4.3)
+    slop (3.4.4)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.6)
-    terminal-table (1.4.5)
-    therubyracer (0.10.1)
-      libv8 (~> 3.3.10)
-    thor (0.17.0)
-    tilt (1.3.4)
+    sqlite3 (1.3.7)
+    therubyracer (0.11.4)
+      libv8 (~> 3.11.8.12)
+      ref
+    thor (0.18.1)
+    tilt (1.3.7)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    turbo-sprockets-rails3 (0.3.2)
+    turbo-sprockets-rails3 (0.3.6)
       railties (> 3.2.8, < 4.0.0)
       sprockets (>= 2.0.0)
-    turbolinks (0.6.1)
+    turbolinks (1.1.1)
       coffee-rails
-    tzinfo (0.3.36)
-    uglifier (1.3.0)
+    tzinfo (0.3.37)
+    uglifier (2.0.1)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    uuidtools (2.1.3)
     warden (1.2.1)
       rack (>= 1.0)
-    will_paginate (3.0.3)
+    will_paginate (3.0.4)
     yui-compressor (0.9.6)
       POpen4 (>= 0.1.4)
 
@@ -319,13 +296,12 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  acts_as_list
-  aws-sdk
   brazilian-rails
   cancan
   capistrano!
   ckeditor!
   client_side_validations
+  client_side_validations-simple_form!
   compass-rails
   dalli
   devise
@@ -333,7 +309,6 @@ DEPENDENCIES
   execjs
   guard
   guard-livereload
-  heroku
   jquery-rails
   jquery-turbolinks
   jquery-ui-rails
@@ -342,7 +317,6 @@ DEPENDENCIES
   mysql2
   nested_form!
   paperclip
-  paperclip-aws!
   rack-livereload
   rails (= 3.2.11)
   rails-dev-tweaks
@@ -350,7 +324,7 @@ DEPENDENCIES
   rspec
   sass-rails (~> 3.2.5)
   select2-rails
-  simple_form
+  simple_form (= 2.0.3)
   sqlite3
   therubyracer
   turbo-sprockets-rails3

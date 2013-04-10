@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130104065322) do
+ActiveRecord::Schema.define(:version => 20121226172931) do
 
   create_table "editaveis", :force => true do |t|
     t.string   "chave"
@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(:version => 20130104065322) do
     t.string   "grupo",                  :default => "usuario"
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
-    t.integer  "position",               :default => 999
   end
 
   add_index "usuarios", ["email"], :name => "index_usuarios_on_email", :unique => true

@@ -12,12 +12,17 @@ class ActiveSupport::TestCase
   def login_as(user)
 	   sign_in(usuarios(user))
   end
+  
   def unprotected_attributes(obj)
     attributes = {}
     obj._accessible_attributes[:default].each do |attribute|
       attributes[attribute] = obj.send(attribute) unless attribute.blank?
     end
     attributes
+  end
+
+  def sample_file(filename = "rails.png")
+    File.new(Rails.root + "test/fixtures/#{filename}")
   end
   
 end

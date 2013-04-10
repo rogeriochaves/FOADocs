@@ -20,9 +20,11 @@ jQuery(function($){
   $.datepicker.setDefaults($.datepicker.regional['pt-BR']);
 });
 
-$(document).ready(function() {
-  $.datepicker.setDefaults({changeYear: true, changeMonth: true, minDate:new Date(1930, 1 - 1, 1)});
-  setInterval(function(){
-    $('.has_date').datepicker($.datepicker.regional['pt-BR']);
-  }, 100);
-});
+$.datepicker.setDefaults({changeYear: true, changeMonth: true, minDate:new Date(1930, 1 - 1, 1)});
+var afterLoad = function(){
+  jQuery.datepicker.dpDiv.appendTo( jQuery('body') );
+  $('.has_date').datepicker("destroy").datepicker($.datepicker.regional['pt-BR']);
+}
+
+$(document).ready(afterLoad);
+document.addEventListener("page:load", afterLoad);

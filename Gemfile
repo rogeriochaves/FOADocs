@@ -2,9 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.11'
 
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
 gem 'json', '1.7.7'
 
 # Gems used only for assets and not required
@@ -42,49 +39,39 @@ end
 
 gem 'dalli'
 group :production do
+	# heroku
 	#gem 'unicorn'
-	gem 'mysql2'
 	#gem 'pg', '0.13.2'
+	gem 'mysql2'
 	gem 'execjs'
 	gem 'therubyracer'
 end
 
+# client-side
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', :github => 'seyhunak/twitter-bootstrap-rails'
+
+# formulários
+gem 'simple_form', '2.0.3'
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form', :github => 'dockyard/client_side_validations-simple_form'
+gem 'nested_form', :github => 'ryanb/nested_form'
 gem 'select2-rails'
+gem 'ckeditor', :github => 'rogeriochaves/ckeditor'
+gem 'paperclip'
 
 # swiss-knive
 gem 'capistrano', :github => 'capistrano/capistrano'
-gem 'heroku'
 gem 'devise'
 gem 'cancan'
 gem 'will_paginate'
 gem 'brazilian-rails'
-gem 'paperclip'
-gem 'acts_as_list'
-gem 'ckeditor', :git => 'git://github.com/rogeriochaves/ckeditor'
-gem 'simple_form'
-gem 'nested_form', :git => 'git://github.com/ryanb/nested_form'
-gem 'client_side_validations'
-gem 'exception_notification', :git => "git://github.com/rails/exception_notification.git", :require => 'exception_notifier'
+gem 'exception_notification', :github => "rails/exception_notification", :require => 'exception_notifier'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
 
-gem 'aws-sdk'
-gem 'paperclip-aws', :git => 'git://github.com/rogeriochaves/paperclip-aws.git'
-
-# To use ActiveModel has_secure_password
-# gem 'bcrypt-ruby', '~> 3.0.0'
-
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Deploy with Capistrano
-# gem 'capistrano'
-
-# To use debugger
-# gem 'ruby-debug'
+# heroku
+#gem 'aws-sdk'
+#gem 'heroku'
+#gem 'paperclip-aws', :github => 'rogeriochaves/paperclip-aws'

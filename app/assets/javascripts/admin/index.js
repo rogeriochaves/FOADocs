@@ -1,3 +1,5 @@
+//= require admin/dispatcher
+
 if(typeof App.all == 'undefined') App.all = {};
 
 App.all.index = function() {

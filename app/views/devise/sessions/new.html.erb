@@ -5,22 +5,15 @@
 
 <div style="margin-left:-100px">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:style => "width:360px; margin:0 auto", :class => 'form-horizontal'}) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:style => "width:360px; margin:0 auto", :class => 'form-horizontal'}) do |f| %>
 
-    <div><%= f.label :email %><br />
-    <%= f.email_field :email %></div>
+	<div class="form-inputs" style="margin-left:-40px">
+		<%= f.input :email %>
+		<%= f.input :password, label: 'Senha' %>
+	</div>
 
-    <div><%= f.label :password, 'Senha' %><br />
-    <%= f.password_field :password %></div>
-
-    <% if devise_mapping.rememberable? %>
-      <div><%= f.label :remember_me, 'Lembrar-me' %><br />
-      <%= f.check_box :remember_me %></div>
-    <% end %>
     <%= f.submit "Entrar", :class => "btn btn-success pull-right btn-large" %>
 
 <% end %>
 
 </div>
-
-<%= render :partial => "devise/shared/links" %>

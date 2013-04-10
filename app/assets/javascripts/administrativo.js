@@ -7,12 +7,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery.ui.all
-//= require dispatcher
 //= require_tree ./admin
 //= require twitter/bootstrap
 //= require jquery_nested_form
-//= require rails.validations
 //= require turbolinks
 //= require jquery.turbolinks
 //= require select2
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_self

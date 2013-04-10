@@ -13,7 +13,7 @@
 	<%% @<%= plural_name %>.each do |<%= singular_name %>| %>
 	<tr>
 <% for attribute in attributes -%>
-		<td><%%= <%= singular_name %>.<%= attribute.name %> %></td>
+		<td><% if attribute.type.to_s == "datetime" %><%%=l <%= singular_name %>.<%= attribute.name %> if <%= singular_name %>.<%= attribute.name %> %><% elsif attribute.type.to_s == "attachment" %><%%= image_tag <%= singular_name %>.<%= attribute.name %>(:small) if <%= singular_name %>.<%= attribute.name %>? %><% else %><%%= <%= singular_name %>.<%= attribute.name %> %><% end %></td>
 <% end -%>
 		<td><% if controller_class_name.include? '::' %><%- modulo = controller_class_name.split('::')[0].downcase %>
 	      <%%= link_to 'Exibir', [:<%= modulo %>, <%= singular_name %>] %>
