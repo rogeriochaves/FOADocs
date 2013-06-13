@@ -1,6 +1,5 @@
 # heroku
 
-=begin
 if Rails.env == 'production'
 
 	s3_config = YAML.load(ERB.new(File.read("#{Rails.root}/config/s3.yml")).result)[Rails.env] 
@@ -21,8 +20,7 @@ if Rails.env == 'production'
 	      :content_disposition => 'attachment'
 	    },
 	    :s3_headers => { 'Cache-Control' => 'max-age=315576000', 'Expires' => 10.years.from_now.httpdate },
-	    :path => s3_config['bucket'] + "/:id/:style/:basename.:extension"
+	    :path => "#{AppAdmin.app_name}/:class/:id/:style/:basename.:extension"
 	)
 
 end
-=end

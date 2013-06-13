@@ -12,7 +12,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'yui-compressor'
   gem 'turbo-sprockets-rails3'
-  gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+  #gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
 end
 
 group :development do
@@ -45,15 +45,17 @@ group :production do
 	gem 'mysql2'
 	gem 'execjs'
 	gem 'therubyracer'
+	gem 'aws-sdk'
+	gem 'paperclip-aws', :github => 'rogeriochaves/paperclip-aws'
 end
 
 # client-side
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'twitter-bootstrap-rails', :github => 'seyhunak/twitter-bootstrap-rails'
+gem 'bootstrap-sass'
 
 # formulários
-gem 'simple_form', '2.0.3'
+gem 'simple_form'
 gem 'client_side_validations'
 gem 'client_side_validations-simple_form', :github => 'dockyard/client_side_validations-simple_form'
 gem 'nested_form', :github => 'ryanb/nested_form'
@@ -72,6 +74,4 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 # heroku
-#gem 'aws-sdk'
 #gem 'heroku'
-#gem 'paperclip-aws', :github => 'rogeriochaves/paperclip-aws'

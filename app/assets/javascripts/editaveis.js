@@ -23,7 +23,7 @@ function simpleUnformat(str) {
 }
 
 $(document).ready(function(){
-	$('[data-editavel]').live('click', function(){
+	$('body').delegate('[data-editavel]', 'click', function(){
 		var $this = $(this)
           , val = $this.html()
           , chave = $this.data('editavel');
@@ -33,23 +33,19 @@ $(document).ready(function(){
         $this.html(elem);
         CKEDITOR.replace(chave, { "language": 'pt-BR',"toolbar": 'Basic',"width": $this.width(), "height": $this.height() + 30 });
         CKEDITOR.instances[chave].on('blur', function(e){
-                var val = CKEDITOR.instances[chave].getData();
-                CKEDITOR.instances[chave].destroy();
-                $this.html(val);
-                $.ajax({
-					type: "PUT",
-					url: '/admin/editaveis/'+chave+'.json',
-					data: JSON.stringify({_method:'PUT', texto: val}),
-					contentType: 'application/json', // format of request payload
-					dataType: 'json', // format of the response
-					success: function() {
-						// okay
-					}
-				});
+            var val = CKEDITOR.instances[chave].getData();
+            CKEDITOR.instances[chave].destroy();
+            $this.html(val);
+            $.ajax({
+				type: "PUT",
+				url: '/admin/editaveis/'+chave+'.json',
+				data: JSON.stringify({_method:'PUT', texto: val}),
+				contentType: 'application/json', // format of request payload
+				dataType: 'json', // format of the response
+				success: function() {
+					// okay
+				}
+			});
         });
 	});
-
-    $('[data-img-editavel]').live('click', function(){
-        
-    });
 });

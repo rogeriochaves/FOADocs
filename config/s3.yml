@@ -3,5 +3,5 @@ test:
 production:
     access_key_id: AKIAJFKNHHZLC2B5FERQ
     secret_access_key: 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
-    bucket: nightvr
+    bucket: react-assets
     endpoint: s3-sa-east-1.amazonaws.com
