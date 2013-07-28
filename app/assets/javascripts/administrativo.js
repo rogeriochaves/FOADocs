@@ -8,7 +8,7 @@
 //= require jquery_ujs
 //= require jquery.ui.all
 //= require_tree ./admin
-//= require twitter/bootstrap
+//= require bootstrap
 //= require jquery_nested_form
 //= require turbolinks
 //= require jquery.turbolinks

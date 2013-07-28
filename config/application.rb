@@ -36,7 +36,7 @@ module AppName
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
-    config.assets.precompile = ['*']
+    config.assets.precompile += %w( application.css administrativo.css application.js administrativo.js admin/index.js editaveis.js ckeditor/* )
     config.filter_parameters += [:password]
 
     config.autoload_paths += %W(#{config.root}/lib)

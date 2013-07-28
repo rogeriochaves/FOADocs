@@ -52,7 +52,7 @@ end
 # client-side
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', :github => 'intridea/bootstrap-sass', :branch => '3.0.0-wip'
 
 # formulários
 gem 'simple_form'

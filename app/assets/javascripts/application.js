@@ -15,8 +15,8 @@
 //= require google_analytics
 //= require turbolinks
 //= require jquery.turbolinks
-//= require slides
 //= require_tree ./fancybox
+//= require bootstrap
 //= require_self
 
 /*
@@ -26,14 +26,5 @@ $("[rel=fancybox]").fancybox({
 	closeEffect: 'elastic',
 	helpers: {title: {type: 'outside'}}
 });
-
-$('#slides').slides({
-		generatePagination: false,
-		effect: 'fade',
-		crossfade: true,
-		play: 10000,
-		generateNextPrev: true
-});
-$('.next, .prev').html('');
 
 */

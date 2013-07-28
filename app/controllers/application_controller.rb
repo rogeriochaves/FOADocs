@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
   rescue_from CanCan::AccessDenied do |exception|
   	flash[:notice] = "Acesso negado"
   	if current_usuario
-  		redirect_to :controller => :admin
+  		redirect_to :controller => '/admin/admin'
   	else
     	redirect_to new_usuario_session_path
     end

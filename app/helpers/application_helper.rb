@@ -41,8 +41,14 @@ module ApplicationHelper
 	    @pagina ||= Pagina.find_by_url(request.fullpath)
 	end
 
-	def title
-		pagina ? pagina.title : nil
+	def title(p = false)
+		if !p
+			pagina ? pagina.title : nil
+		elsif p = Pagina.where(:url => p).first
+			p.title
+		else
+			return false
+		end
 	end
 
 	def description

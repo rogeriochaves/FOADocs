@@ -1,0 +1,20 @@
+[data-editavel]{border: 1px dashed #CCC}
+@function prct($pixels) {
+  @return ($pixels / 1170px) * 100%;
+}
+
+@mixin prefixed($name, $argument) {
+  -webkit-#{$name}: $argument;
+  -ms-#{$name}: $argument;
+  -moz-#{$name}: $argument;
+  -o-#{$name}: $argument;
+  #{$name}: $argument;
+}
+
+body{font-size: 62.5%; margin: 0; padding:0}
+p{font-size: 1.4em}
+
+.grid{
+    margin: 0; padding: 0; list-style-type: none;
+    li{display: inline-block; *display: inline; *zoom: 1; margin-right: -0.31em; *letter-spacing: normal; word-spacing: -0.43em; vertical-align: top;}
+}
