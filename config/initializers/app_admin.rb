@@ -14,11 +14,11 @@ AppAdmin.configure do |config|
 	config.app_name = 'AppName'
 	config.domain = 'AppName.com.br'.downcase
 
-	config.menu_controllers = [['admin/usuarios', 'Usuários'], ['admin/paginas', 'SEO'], 'admin/mensagens']
+	config.menu_controllers = [['admin/usuarios', 'Usuários'], ['admin/paginas', 'SEO'], 'admin/mensagens', ['banneres', 'Banners']]
 	config.extra_tabs = {
-	  #'Banners' => [
-	  #  ['Ordenar', :ordenar]
-	  #],
+	  'Banneres' => [
+	    ['Ordenar', :ordenar]
+	  ],
 	  #'Anuncios' => [
 	  #  ['Descontos', :id, :descontos]
 	  #]

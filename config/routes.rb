@@ -1,5 +1,11 @@
 AppName::Application.routes.draw do
 
+	match 'banneres/ordenar' => 'banneres#ordenar'
+
+
+  resources :banneres, :path => "admin/banneres"
+
+
 	# The priority is based upon order of creation:
     # first created -> highest priority.
 

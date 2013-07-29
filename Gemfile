@@ -16,10 +16,10 @@ group :assets do
 end
 
 group :development do
-	#gem 'eventmachine', '1.0.0.rc.4'
-	#gem 'thin'
 	gem 'sqlite3'
 	gem 'rails-dev-tweaks'
+	gem 'faker'
+	gem 'brfaker'
 
 	# live reload
 	gem 'guard'

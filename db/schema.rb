@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121226172931) do
+ActiveRecord::Schema.define(:version => 20130728231157) do
+
+  create_table "banneres", :force => true do |t|
+    t.string   "nome"
+    t.string   "link"
+    t.string   "foto_file_name"
+    t.string   "foto_content_type"
+    t.integer  "foto_file_size"
+    t.datetime "foto_updated_at"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.integer  "position",          :default => 999
+  end
 
   create_table "editaveis", :force => true do |t|
     t.string   "chave"

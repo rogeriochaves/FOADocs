@@ -1,0 +1,13 @@
+<%= simple_form_for(@banner, validate: true, html: {class: 'form-horizontal'}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :nome %>
+    <%= f.input :link %>
+    <%= f.input :foto %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn-success' %>
+  </div>
+<% end %>
