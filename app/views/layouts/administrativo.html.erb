@@ -15,63 +15,63 @@
 <body>
 <div style="min-height:70px">
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="navbar-inner">
-            <div class="container">
-                <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <%= link_to AppAdmin.app_name, {controller: '/admin/admin', action: :index}, {class: 'brand', style: 'color:#FFF'} %>
-                <div class="nav-collapse collapse">
-                    <% if current_usuario %>
-                        <ul class="nav">
-                            <% AppAdmin.menu_controllers.each do |c| %>
-                                <% if c.is_a?(Hash) %>
-                                    <% c.each do |key, value| %>
-                                        <%-
+        <div class="container">
+            <%= link_to AppAdmin.app_name, {controller: '/admin/admin', action: :index}, {class: 'navbar-brand', style: 'color:#FFF'} %>
+            <button class="navbar-toggle" type="button" data-toggle="visible-phone" data-target=".navbar-menu">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="visible-desktop navbar-menu">
+                <% if current_usuario %>
+                	<% if params[:action] != 'change_password' %>
+	                    <ul class="nav navbar-nav">
+	                        <% AppAdmin.menu_controllers.each do |c| %>
+	                            <% if c.is_a?(Hash) %>
+	                                <% c.each do |key, value| %>
+	                                    <%-
 
-                                            controllers = []
-                                            value.each do |con|
-                                                controllers << con.is_a?(Array) ? con[0] : con
-                                            end
+	                                        controllers = []
+	                                        value.each do |con|
+	                                            controllers << con.is_a?(Array) ? con[0] : con
+	                                        end
 
-                                        %>
-                                        <li class="dropdown <%= 'active' if controllers.include?(params[:controller]) %>">
-                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= key %> <b class="caret"></b></a>
-                                          <ul class="dropdown-menu">
-                                            <% value.each do |con| %>
-                                                <% if con.is_a?(Array); con2 = con[1]; con = con[0]; else; con2 = con.to_s.sub('admin', '').gsub('/', '').titleize; end %>
-                                                <% if can? :index, con %>
-                                                    <li class="<%= 'active' if params[:controller].gsub('admin/','') == con.to_s %>">
-                                                        <%= link_to con2, :controller => '/' + con %>
-                                                    </li>
-                                                <% end %>
-                                            <% end %>
-                                          </ul>
-                                        </li>
-                                    <% end %>
-                                
-                                <% else %>
-                                    <% if c.is_a?(Array); c2 = c[1]; c = c[0]; else; c2 = c.to_s.gsub('/', '').gsub('admin', '').to_s.titleize; end %>
-                                    <% if can? :index, c %>
+	                                    %>
+	                                    <li class="dropdown <%= 'active' if controllers.include?(params[:controller]) %>">
+	                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= key %> <b class="caret"></b></a>
+	                                      <ul class="dropdown-menu">
+	                                        <% value.each do |con| %>
+	                                            <% if con.is_a?(Array); con2 = con[1]; con = con[0]; else; con2 = con.to_s.sub('admin', '').gsub('/', '').titleize; end %>
+	                                            <% if can? :index, con %>
+	                                                <li class="<%= 'active' if params[:controller].gsub('admin/','') == con.to_s %>">
+	                                                    <%= link_to con2, :controller => '/' + con %>
+	                                                </li>
+	                                            <% end %>
+	                                        <% end %>
+	                                      </ul>
+	                                    </li>
+	                                <% end %>
+	                            
+	                            <% else %>
+	                                <% if c.is_a?(Array); c2 = c[1]; c = c[0]; else; c2 = c.to_s.gsub('/', '').gsub('admin', '').to_s.titleize; end %>
+	                                <% if can? :index, c %>
 
-                                        <li class="<%= 'active' if params[:controller].gsub('admin/','') == c.to_s %>">
-                                            <%= link_to c2, :controller => '/' + c.to_s %>
-                                        </li>
-                                    <% end %>
-                                <% end %>
-                            <% end %>
-                        </ul>
-                        <ul class="nav secondary-nav" style="margin-left: 0">
-                            <li>
-                              <%= link_to(destroy_usuario_session_path, {:method => :delete}) do %>
-                                <span class="label label-important pull-right">Sair</span>
-                              <% end %>
-                            </li>
-                        </ul>
-                    <% end %>
-                </div>
+	                                    <li class="<%= 'active' if params[:controller].gsub('admin/','') == c.to_s %>">
+	                                        <%= link_to c2, :controller => '/' + c.to_s %>
+	                                    </li>
+	                                <% end %>
+	                            <% end %>
+	                        <% end %>
+	                    </ul>
+	                <% end %>
+                    <ul class="nav navbar-nav pull-right" style="margin-left: 0">
+                        <li>
+                          <%= link_to(destroy_usuario_session_path, {:method => :delete}) do %>
+                            <span class="btn btn-danger pull-right" style="margin-top:-5px; padding:5px 8px">Sair</span>
+                          <% end %>
+                        </li>
+                    </ul>
+                <% end %>
             </div>
         </div>
     </div>
@@ -80,13 +80,18 @@
 <div class="container">
   <%= render :partial => 'admin/admin/tabs' if current_usuario and params[:controller] != 'admin/admin' %>
   <div class="conteudo">
-      <% if flash[:notice] %>
-          <div class="alert">
-            <button class="close" data-dismiss="alert">×</button>
-            <%= flash[:notice] %>
-          </div>
-      <% end %>
-      <%= yield %>
+      <div class="row">
+      		<div class="col-lg-12">
+      			<% if flash[:notice] %>
+      				<br>
+			        <div class="alert">
+			            <button class="close" data-dismiss="alert">×</button>
+			            <%= flash[:notice] %>
+			        </div>
+			    <% end %>
+	      		<%= yield %>
+	      	</div>
+      </div>
   </div>
   <%= render :partial => 'admin/admin/breadcrumbs' if current_usuario and params[:controller] != 'admin/admin' %>
 </div>

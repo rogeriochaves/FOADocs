@@ -54,7 +54,12 @@ AppName::Application.routes.draw do
     #   end
 
     namespace :admin do
-        resources :usuarios
+        resources :usuarios do
+        	collection do
+        		get :change_password
+        		put :change_password
+        	end
+        end
         resources :mensagens
         resources :paginas
         resources :editaveis
@@ -62,7 +67,7 @@ AppName::Application.routes.draw do
 
     match 'admin' => 'admin/admin#index'
 
-    devise_for :usuarios, :path_names => { :sign_in => 'login', :sign_out => 'logout' }
+    devise_for :usuarios, :path_names => { :sign_in => 'login', :sign_out => 'logout' }, controllers: { sessions: 'sessions' }
 
     match ':action' => 'page'
 

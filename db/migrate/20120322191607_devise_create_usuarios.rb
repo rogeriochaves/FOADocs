@@ -27,16 +27,14 @@ class DeviseCreateUsuarios < ActiveRecord::Migration
       # t.token_authenticatable
       t.string   :nome
       t.string   :grupo, :default => 'usuario'
+      t.boolean  :change_password
 
       t.timestamps
     end
 
     add_index :usuarios, :email,                :unique => true
-    #add_index :usuarios, :reset_password_token, :unique => true
-    # add_index :usuarios, :confirmation_token,   :unique => true
-    # add_index :usuarios, :unlock_token,         :unique => true
-    # add_index :usuarios, :authentication_token, :unique => true
-    Usuario.create(:nome => 'Administrador Geral', :email => "admin@#{AppAdmin.domain}", :grupo => :admin, :password => '123mudar', :password_confirmation => '123mudar')
+
+    Usuario.create(:nome => 'Administrador Geral', :email => "admin@#{AppAdmin.domain}", :grupo => :admin, :password => '123mudar', :password_confirmation => '123mudar', :change_password => true)
   end
 
   def down

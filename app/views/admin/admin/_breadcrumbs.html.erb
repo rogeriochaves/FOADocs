@@ -2,16 +2,16 @@
 <% action = {'show' => 'Exibir', 'edit' => 'Editar', 'new' => 'Novo'}[params[:action]] || params[:action].titleize %>
 <div class="container" style="bottom:0; position: fixed;">
   <ul class="breadcrumb" style="width:auto;">
-    <li><%= link_to "Admin", :controller => '/admin/admin', :action => :index %> <span class="divider">/</span></li>
+    <li><%= link_to "Admin", :controller => '/admin/admin', :action => :index %></li>
     <% if params[:action] == 'index' %>
       <li class="active"><%= controller %></li>
     <% else %>
-      <li><%= link_to controller, :controller => params[:controller] %> <span class="divider">/</span></li>
+      <li><%= link_to controller, :controller => params[:controller] %></li>
       <% if action == 'Exibir' %>
         <li><%= link_to "#{controller.singularize} ##{params[:id]}", :controller => params[:controller], :action => :show, :id => params[:id] %></li>
       <% else %>
         <% if params[:id] %>
-          <li><%= link_to "#{controller.singularize} ##{params[:id]}", :controller => params[:controller], :action => :show, :id => params[:id] %> <span class="divider">/</span></li>
+          <li><%= link_to "#{controller.singularize} ##{params[:id]}", :controller => params[:controller], :action => :show, :id => params[:id] %></li>
         <% end %>
         <li class="active"><%= action %></li>
       <% end %>

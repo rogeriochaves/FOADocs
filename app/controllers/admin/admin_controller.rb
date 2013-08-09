@@ -5,6 +5,7 @@ class Admin::AdminController < ApplicationController
   layout 'administrativo'
 
   def index
+  	session[:attempts] = 0
   	if !can? :index, :admin
       flash[:alert] = "Permissão Negada"
       sign_out(:usuario)

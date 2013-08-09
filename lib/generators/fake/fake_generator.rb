@@ -1,6 +1,6 @@
 # encoding: utf-8
 # ========
-# Exemplo de Uso
+# Exemplos de Uso
 # => rails g fake usuario
 # => rails g fake usuarios -n 5
 # ========

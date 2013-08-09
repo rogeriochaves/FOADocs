@@ -95,7 +95,7 @@ SimpleForm.setup do |config|
   # config.label_text = lambda { |label, required| "#{required} #{label}" }
 
   # You can define the class to use on all labels. Default is nil.
-  config.label_class = 'control-label'
+  config.label_class = 'col-lg-2 control-label'
 
   # You can define the class to use on all forms. Default is simple_form.
   # config.form_class = :simple_form
@@ -149,3 +149,58 @@ class DateTimeInput < SimpleForm::Inputs::DateTimeInput
     @builder.text_field(attribute_name,input_html_options)
   end
 end
+
+class BlockInput < SimpleForm::Inputs::BlockInput
+  def input_html_classes
+    super.push('form-control')
+  end
+end
+
+class DateTimeInput < SimpleForm::Inputs::DateTimeInput
+  def input_html_classes
+    super.push('form-control')
+  end
+end
+
+class NumericInput < SimpleForm::Inputs::NumericInput
+  def input_html_classes
+    super.push('form-control')
+  end
+end
+
+class PasswordInput < SimpleForm::Inputs::PasswordInput
+  def input_html_classes
+    super.push('form-control')
+  end
+end
+
+class StringInput < SimpleForm::Inputs::StringInput
+  def input_html_classes
+    super.push('form-control')
+  end
+end
+
+class Base < SimpleForm::Inputs::Base
+  def input_html_classes
+    super.push('form-control')
+  end
+end
+
+class CollectionInput < SimpleForm::Inputs::CollectionInput
+  def input_html_classes
+    super.push('form-control')
+  end
+end
+
+class CollectionSelectInput < SimpleForm::Inputs::CollectionSelectInput
+  def input_html_classes
+    super.push('form-control')
+  end
+end
+
+class GroupedCollectionSelectInput < SimpleForm::Inputs::GroupedCollectionSelectInput
+  def input_html_classes
+    super.push('form-control')
+  end
+end
+

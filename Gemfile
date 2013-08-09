@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 gem 'rails', '3.2.11'
 
@@ -16,6 +16,7 @@ group :assets do
 end
 
 group :development do
+	gem 'capistrano', :github => 'capistrano/capistrano'
 	gem 'sqlite3'
 	gem 'rails-dev-tweaks'
 	gem 'faker'
@@ -52,7 +53,8 @@ end
 # client-side
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-gem 'bootstrap-sass', :github => 'intridea/bootstrap-sass', :branch => '3.0.0-wip'
+gem 'bootstrap-sass', :github => 'thomas-mcdonald/bootstrap-sass', :branch => '3'
+#gem 'bootstrap-sass', :github => 'intridea/bootstrap-sass', :branch => '3'
 
 # formulários
 gem 'simple_form'
@@ -62,9 +64,8 @@ gem 'nested_form', :github => 'ryanb/nested_form'
 gem 'select2-rails'
 gem 'ckeditor', :github => 'rogeriochaves/ckeditor'
 gem 'paperclip'
+gem 'recaptcha', :require => 'recaptcha/rails'
 
-# swiss-knive
-gem 'capistrano', :github => 'capistrano/capistrano'
 gem 'devise'
 gem 'cancan'
 gem 'will_paginate'

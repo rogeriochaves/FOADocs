@@ -8,9 +8,11 @@
     
     <%= f.input :password, label: 'Senha' %>
     
-    <%= f.input :password, label: 'Confirme a Senha' %>
+    <%= f.input :password_confirmation, label: 'Confirme a Senha' %>
 
-    <%= f.input :grupo, collection: [["Administrador", "admin"],["Usuário Comum", "usuario"]] %>
+    <%= f.input :change_password, label: 'Pedir para alterar senha no próximo login' %>
+
+    <%= f.input :grupo, collection: [["Administrador", "admin"],["Usuário Comum", "usuario"]], include_blank: false %>
   </div>
   
   <div class="form-actions">

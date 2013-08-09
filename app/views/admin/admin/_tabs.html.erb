@@ -11,7 +11,7 @@ end
 %>
 
 <div class="tabbable">
-<% if params[:controller] != 'busca' %>
+<% if params[:controller] != 'busca' and params[:action] != 'change_password' %>
 
   <ul class="nav nav-tabs">
     <% if !is_removed(:index) %>

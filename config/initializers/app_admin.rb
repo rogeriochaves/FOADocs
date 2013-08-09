@@ -1,7 +1,7 @@
 # encoding: utf-8
 module AppAdmin
 	class << self
-	    attr_accessor :app_name, :menu_controllers, :extra_tabs, :domain, :remove_tabs
+	    attr_accessor :app_name, :menu_controllers, :extra_tabs, :domain, :remove_tabs, :react_login
 	end
 
 	def self.configure
@@ -13,6 +13,7 @@ AppAdmin.configure do |config|
 
 	config.app_name = 'AppName'
 	config.domain = 'AppName.com.br'.downcase
+	config.react_login = true
 
 	config.menu_controllers = [['admin/usuarios', 'Usuários'], ['admin/paginas', 'SEO'], 'admin/mensagens', ['banneres', 'Banners']]
 	config.extra_tabs = {

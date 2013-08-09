@@ -1,7 +1,16 @@
 class ApplicationController < ActionController::Base
   helper_method :masc_fem
-  before_filter :beta_authentication, :tabs_configure
-  protect_from_forgery
+  before_filter :beta_authentication, :tabs_configure, :change_password_redirect
+  #protect_from_forgery
+
+  def change_password_redirect
+  	if !session[:react_login] and current_usuario and current_usuario.change_password and
+  	   !(params[:controller] == 'admin/usuarios' and params[:action] == 'change_password') and
+  	   !(params[:controller] == 'sessions' and params[:action] == 'destroy')
+
+  		redirect_to :controller => '/admin/usuarios', :action => 'change_password'
+  	end
+  end
 
   def beta_authentication
     if request.host.include? "herokuapp" or request.host.include? "reactweb"

@@ -4,6 +4,7 @@
  *= require_self
 */
 
-body{margin: 0 auto; padding-bottom:40px}
+body{margin: 0 auto; padding-bottom:80px}
 .form-inputs{padding:40px 0 20px 0}
 textarea{height:100px}
+#recaptcha_widget_div input{height: 30px; line-height:30px;}

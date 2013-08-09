@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20130728231157) do
     t.string   "last_sign_in_ip"
     t.string   "nome"
     t.string   "grupo",                  :default => "usuario"
+    t.boolean  "change_password"
     t.datetime "created_at",                                    :null => false
     t.datetime "updated_at",                                    :null => false
   end

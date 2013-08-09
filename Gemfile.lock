@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/capistrano/capistrano.git
-  revision: 9682d11cf591e82ea43648deb7171c2dc02f943e
+  revision: 20d092ee1ef190ad419785e811a6a3bfc1b930f3
   specs:
     capistrano (2.15.4)
       highline
@@ -16,14 +16,6 @@ GIT
     client_side_validations-simple_form (2.1.0)
       client_side_validations (~> 3.2.5)
       simple_form (~> 2.1.0)
-
-GIT
-  remote: git://github.com/intridea/bootstrap-sass.git
-  revision: 368bd4bccf49efa5caac493cd16e29bedbbf545a
-  branch: 3.0.0-wip
-  specs:
-    bootstrap-sass (2.3.1.0)
-      sass (~> 3.2)
 
 GIT
   remote: git://github.com/rails/exception_notification.git
@@ -52,8 +44,16 @@ GIT
   specs:
     nested_form (0.3.2)
 
+GIT
+  remote: git://github.com/thomas-mcdonald/bootstrap-sass.git
+  revision: 5c9f5607359d91cb18fe02ad9d3a5acb2e85a418
+  branch: 3
+  specs:
+    bootstrap-sass (3.0.0.0)
+      sass (~> 3.2)
+
 GEM
-  remote: https://rubygems.org/
+  remote: http://rubygems.org/
   specs:
     actionmailer (3.2.11)
       actionpack (= 3.2.11)
@@ -83,7 +83,7 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
-    aws-sdk (1.12.0)
+    aws-sdk (1.14.1)
       json (~> 1.4)
       nokogiri (< 1.6.0)
       uuidtools (~> 2.1)
@@ -142,7 +142,7 @@ GEM
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
     dalli (2.6.4)
-    devise (3.0.0)
+    devise (3.0.1)
       bcrypt-ruby (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 3.2.6, < 5)
@@ -155,12 +155,12 @@ GEM
     eventmachine (1.0.3)
     execjs (1.4.0)
       multi_json (~> 1.0)
-    faker (1.0.1)
-      i18n (~> 0.4)
+    faker (1.2.0)
+      i18n (~> 0.5)
     ffi (1.9.0)
     formatador (0.2.4)
     fssm (0.2.10)
-    guard (1.8.1)
+    guard (1.8.2)
       formatador (>= 0.2.4)
       listen (>= 1.0.0)
       lumberjack (>= 1.0.2)
@@ -181,7 +181,7 @@ GEM
     jquery-turbolinks (1.0.0)
       railties (>= 3.1.0)
       turbolinks
-    jquery-ui-rails (4.0.3)
+    jquery-ui-rails (4.0.4)
       jquery-rails
       railties (>= 3.1.0)
     json (1.7.7)
@@ -195,10 +195,10 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    method_source (0.8.1)
+    method_source (0.8.2)
     mime-types (1.23)
-    multi_json (1.7.7)
-    mysql2 (0.3.11)
+    multi_json (1.7.8)
+    mysql2 (0.3.13)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -208,9 +208,8 @@ GEM
       net-ssh (>= 2.6.5)
     nokogiri (1.5.10)
     orm_adapter (0.4.0)
-    paperclip (3.4.2)
+    paperclip (3.5.1)
       activemodel (>= 3.0.0)
-      activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
@@ -254,27 +253,28 @@ GEM
       ffi (>= 0.5.0)
     rdoc (3.12.2)
       json (~> 1.4)
+    recaptcha (0.3.5)
     ref (1.0.5)
     rspec (2.14.1)
       rspec-core (~> 2.14.0)
       rspec-expectations (~> 2.14.0)
       rspec-mocks (~> 2.14.0)
-    rspec-core (2.14.3)
+    rspec-core (2.14.4)
     rspec-expectations (2.14.0)
       diff-lcs (>= 1.1.3, < 2.0)
-    rspec-mocks (2.14.1)
-    sass (3.2.9)
+    rspec-mocks (2.14.2)
+    sass (3.2.10)
     sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
-    select2-rails (3.4.3)
+    select2-rails (3.4.7)
       sass-rails
       thor (~> 0.14)
     simple_form (2.1.0)
       actionpack (~> 3.0)
       activemodel (~> 3.0)
-    slop (3.4.5)
+    slop (3.4.6)
     sprockets (2.2.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -337,6 +337,7 @@ DEPENDENCIES
   rails (= 3.2.11)
   rails-dev-tweaks
   rb-fsevent
+  recaptcha
   rspec
   sass-rails (~> 3.2.5)
   select2-rails
