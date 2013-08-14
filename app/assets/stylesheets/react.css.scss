@@ -11,6 +11,15 @@
   #{$name}: $argument;
 }
 
+@mixin animated($t: 0.3s, $type: ease){
+	-webkit-transition: all $t $type;                  
+    -moz-transition: all $t $type;                 
+    -o-transition: all $t $type;   
+    -ms-transition: all $t $type;          
+    transition: all $t $type;
+}
+
+html{font-size: 100%;}
 body{font-size: 62.5%; margin: 0; padding:0}
 p{font-size: 1.4em}
 
