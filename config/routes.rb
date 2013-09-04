@@ -1,9 +1,10 @@
 AppName::Application.routes.draw do
 
-	match 'banneres/ordenar' => 'banneres#ordenar'
+	get 'banneres/ordenar' => 'banneres#ordenar'
+	post 'banneres/ordenar' => 'banneres#ordenar'
 
 
-  resources :banneres, :path => "admin/banneres"
+  	resources :banneres, :path => "admin/banneres"
 
 
 	# The priority is based upon order of creation:
@@ -65,11 +66,11 @@ AppName::Application.routes.draw do
         resources :editaveis
     end
 
-    match 'admin' => 'admin/admin#index'
+    get 'admin' => 'admin/admin#index'
 
     devise_for :usuarios, :path_names => { :sign_in => 'login', :sign_out => 'logout' }, controllers: { sessions: 'sessions' }
 
-    match ':action' => 'page'
+    get ':action' => 'page'
 
     # You can have the root of your site routed with "root"
     # just remember to delete public/index.html.

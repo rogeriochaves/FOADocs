@@ -20,7 +20,8 @@ if Rails.env == 'production'
 	      :content_disposition => 'attachment'
 	    },
 	    :s3_headers => { 'Cache-Control' => 'max-age=315576000', 'Expires' => 10.years.from_now.httpdate },
-	    :path => "#{AppAdmin.app_name}/:class/:id/:style/:basename.:extension"
+	    :path => "#{AppAdmin.app_name}/:class/:id/:style/:basename.:extension",
+	    :processors => [:thumbnail, :compression]
 	)
 
 end

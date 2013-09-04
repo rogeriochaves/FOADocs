@@ -6,13 +6,27 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery.ui.all
+//= require jquery-ui
 //= require_tree ./admin
 //= require bootstrap
 //= require jquery_nested_form
 //= require turbolinks
 //= require jquery.turbolinks
 //= require select2
-//= require rails.validations
-//= require rails.validations.simple_form
+//= require nprogress
+//= not_require rails.validations
+//= not_require rails.validations.simple_form
 //= require_self
+
+var afterLoad = function(){
+  $('select.select2').select2();
+  $('input[type=submit]').click(function(){
+  	NProgress.start();
+  });
+}
+
+$(document).ready(afterLoad);
+document.addEventListener('page:load', afterLoad);
+document.addEventListener('page:fetch',   function() { NProgress.start(); });
+document.addEventListener('page:change',  function() { NProgress.done(); });
+document.addEventListener('page:restore', function() { NProgress.remove(); });

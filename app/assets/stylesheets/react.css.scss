@@ -1,6 +1,6 @@
 [data-editavel]{border: 1px dashed #CCC}
-@function prct($pixels) {
-  @return ($pixels / 1170px) * 100%;
+@function prct($pixels, $base: 1170px) {
+  @return ($pixels / $base) * 100%;
 }
 
 @mixin prefixed($name, $argument) {
@@ -25,5 +25,10 @@ p{font-size: 1.4em}
 
 .grid{
     margin: 0; padding: 0; list-style-type: none;
-    li{display: inline-block; *display: inline; *zoom: 1; margin-right: -0.31em; *letter-spacing: normal; word-spacing: -0.43em; vertical-align: top;}
+    li{display: inline-block; *display: inline; *zoom: 1; margin-right: -0.31em; *letter-spacing: normal; vertical-align: top;}
+}
+
+.vertical-align{
+	width:100%; height:100%; display:table;
+	.middle{vertical-align:middle; display:table-cell}
 }

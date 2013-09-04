@@ -11,12 +11,12 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require rails.validations
+//= require bootstrap
+//= not_require rails.validations
 //= require google_analytics
 //= require turbolinks
 //= require jquery.turbolinks
 //= require_tree ./fancybox
-//= require bootstrap
 //= require_self
 
 /*

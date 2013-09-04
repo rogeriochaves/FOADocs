@@ -1,30 +1,24 @@
 <h1>Detalhes <%= masc_fem('pagina', 'do', 'da') %> Pagina</h1>
 
-<% if notice %>
-	<div class="alert-message success">
-		<p id="notice"><%= notice %></p>
-	</div>
-<% end %>
-
 <div class="fieldset">
 	<dl>
 		
-		<dt class="label">Url</dt>
+		<dt class="label label-default">Url</dt>
 		<dd>
 			<pre><%= @pagina.url %></pre>
 		</dd>
 		
-		<dt class="label">Title</dt>
+		<dt class="label label-default">Title</dt>
 		<dd>
 			<pre><%= @pagina.title %></pre>
 		</dd>
 		
-		<dt class="label">Description</dt>
+		<dt class="label label-default">Description</dt>
 		<dd>
 			<pre><%= @pagina.description %></pre>
 		</dd>
 
-		<dt class="label">Outras Metatags</dt>
+		<dt class="label label-default">Outras Metatags</dt>
 		<dd>
 			<pre><%= @pagina.metatags %></pre>
 		</dd>

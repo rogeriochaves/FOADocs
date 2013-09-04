@@ -1,24 +1,25 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.2.11'
+gem 'rails', '4.0.0'
 
 gem 'json', '1.7.7'
+gem 'rack-cache'
 
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 3.2.5'
-  gem 'compass-rails'
-  gem 'uglifier', '>= 1.0.3'
-  gem 'yui-compressor'
-  gem 'turbo-sprockets-rails3'
-  #gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
-end
+# preprocessors
+gem 'sass', '~> 3.2.5'
+gem 'sass-rails'
+gem 'rails-sass-images'
+# compressors
+gem 'uglifier', '>= 1.0.3'
+gem 'yui-compressor'
+gem 'sprockets-image_compressor'
+# package management para html/css/js
+gem 'bower-rails', :github => '42dev/bower-rails'
 
 group :development do
 	gem 'capistrano', :github => 'capistrano/capistrano'
 	gem 'sqlite3'
-	gem 'rails-dev-tweaks'
+	# fake generator
 	gem 'faker'
 	gem 'brfaker'
 
@@ -48,21 +49,18 @@ group :production do
 	gem 'therubyracer'
 	gem 'aws-sdk'
 	gem 'paperclip-aws', :github => 'rogeriochaves/paperclip-aws'
+	gem 'paperclip-compression'
 end
 
-# client-side
 gem 'jquery-rails'
-gem 'jquery-ui-rails'
-gem 'bootstrap-sass', :github => 'thomas-mcdonald/bootstrap-sass', :branch => '3'
-#gem 'bootstrap-sass', :github => 'intridea/bootstrap-sass', :branch => '3'
 
 # formulários
+gem 'protected_attributes', :github => 'rails/protected_attributes'
 gem 'simple_form'
-gem 'client_side_validations'
-gem 'client_side_validations-simple_form', :github => 'dockyard/client_side_validations-simple_form'
+#gem 'client_side_validations', :github => 'bcardarella/client_side_validations', :branch => 'rails-4.0-quick-fixes'
+#gem 'client_side_validations-simple_form', :github => 'iffyuva/client_side_validations-simple_form'
+gem 'ckeditor_rails', :github => 'tsechingho/ckeditor-rails'
 gem 'nested_form', :github => 'ryanb/nested_form'
-gem 'select2-rails'
-gem 'ckeditor', :github => 'rogeriochaves/ckeditor'
 gem 'paperclip'
 gem 'recaptcha', :require => 'recaptcha/rails'
 

@@ -1,4 +1,4 @@
-//= require ckeditor/ckeditor
+//= require ckeditor-jquery
 
 var simpleFormatRE1 = /\r\n?/g;
 var simpleFormatRE2 = /\n\n+/g;

@@ -12,7 +12,7 @@
 
     <%= f.input :change_password, label: 'Pedir para alterar senha no próximo login' %>
 
-    <%= f.input :grupo, collection: [["Administrador", "admin"],["Usuário Comum", "usuario"]], include_blank: false %>
+    <%= f.input :grupo, collection: [["Administrador", "admin"],["Usuário Comum", "usuario"]], include_blank: false, input_html: { class: "select2" } %>
   </div>
   
   <div class="form-actions">

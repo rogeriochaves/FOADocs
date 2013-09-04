@@ -51,7 +51,7 @@ class OrdenacaoGenerator < Rails::Generators::Base
 		#===== Add route =====#
 
 		routes = "config/routes.rb"
-		add = "match '#{modelo}/ordenar' => '#{modelo}#ordenar'"
+		add = "get '#{modelo}/ordenar' => '#{modelo}#ordenar'\n	post '#{modelo}/ordenar' => '#{modelo}#ordenar'"
 		if !in_file(routes, add)
 			gsub_file routes, /(#{Regexp.escape("Application.routes.draw do")})/i do |match|
 
@@ -85,8 +85,8 @@ class OrdenacaoGenerator < Rails::Generators::Base
 			say_status "já existe", "Migração já existe", :blue
 		end
 
-		#=== Add to attr_accessible ===#
-
+		#=== Add to attr_accessible ===# Desnecessário no Rails 4
+=begin
 		model_file = "app/models/#{@camel.underscore.singularize}.rb"
 		if !in_file(model_file, /attr_accessible(.*):position$/)
 			gsub_file model_file, /attr_accessible(.*)$/i do |match|
@@ -98,6 +98,7 @@ class OrdenacaoGenerator < Rails::Generators::Base
 		else
 			say_status "já adicionado", "Atributo já adicionado ao attr_accessible", :blue
 		end
+=end
 
 	end
 

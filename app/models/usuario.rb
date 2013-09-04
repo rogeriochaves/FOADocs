@@ -6,8 +6,6 @@ class Usuario < ActiveRecord::Base
   devise :database_authenticatable, :recoverable,#, :registerable,
          :rememberable, :trackable#, :validatable
 
-  # Setup accessible (or protected) attributes for your model
-  attr_accessible :nome, :email, :password, :password_confirmation, :remember_me, :grupo, :change_password
   validates_presence_of :nome, :grupo, :email, :message => "não pode ser vazio"
   validates_format_of :email, :with => /\A([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})([a-z ])?\z/i, :message => "é inválido"
   validates_confirmation_of :password, :message => 'confirmação incorreta'
