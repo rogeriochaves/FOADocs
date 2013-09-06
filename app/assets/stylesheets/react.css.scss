@@ -1,0 +1,34 @@
+[data-editavel]{border: 1px dashed #CCC}
+@function prct($pixels, $base: 1170px) {
+  @return ($pixels / $base) * 100%;
+}
+
+@mixin prefixed($name, $argument) {
+  -webkit-#{$name}: $argument;
+  -ms-#{$name}: $argument;
+  -moz-#{$name}: $argument;
+  -o-#{$name}: $argument;
+  #{$name}: $argument;
+}
+
+@mixin animated($t: 0.3s, $type: ease){
+	-webkit-transition: all $t $type;                  
+    -moz-transition: all $t $type;                 
+    -o-transition: all $t $type;   
+    -ms-transition: all $t $type;          
+    transition: all $t $type;
+}
+
+html{font-size: 100%;}
+body{font-size: 62.5%; margin: 0; padding:0}
+p{font-size: 1.4em}
+
+.grid{
+    margin: 0; padding: 0; list-style-type: none;
+    li{display: inline-block; *display: inline; *zoom: 1; margin-right: -0.31em; *letter-spacing: normal; vertical-align: top;}
+}
+
+.vertical-align{
+	width:100%; height:100%; display:table;
+	.middle{vertical-align:middle; display:table-cell}
+}

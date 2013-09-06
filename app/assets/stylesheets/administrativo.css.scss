@@ -1,0 +1,15 @@
+/*
+ *= require bootstrap_and_overrides
+ *= require jquery-ui/themes/base/jquery-ui
+ *= require select2
+ *= require nprogress/nprogress
+ *= require_self
+*/
+
+body{margin: 0 auto; padding-bottom:80px}
+.form-inputs{padding:40px 0 20px 0}
+textarea{height:100px}
+#recaptcha_widget_div input{height: 30px; line-height:30px;}
+
+.form-control.select2{height: auto; padding: 0; background:none; border:0; border-radius:0; box-shadow:none;}
+#nprogress{position: fixed; z-index:2000; top:0}

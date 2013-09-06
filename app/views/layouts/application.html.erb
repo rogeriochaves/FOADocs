@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title ? title : "FOADocs" %></title>
+  <!--[if IE]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <!-- Responsivo -->
+  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+  <%#= stylesheet_link_tag    "mobile"     , :media => "screen and (max-width:767px)" %>
+  
+  <meta charset="utf-8" />
+  <meta http-equiv="content-language" content="pt-BR">
+  <meta name="description" content="<%= description %>" />
+  <meta name="author" content="www.reactweb.com.br">
+  <%= metatags %>
+  <%= csrf_meta_tags %>
+</head>
+<body id="<%= "#{params[:controller]}-#{params[:action]}" %>">
+
+	<div class="container">
+		<div class="row">
+			<%= yield %>
+		</div>
+	</div>
+
+	<footer>
+		<ul id="nuvens-rodape" class="unselectable" data-friction-x="0.1" data-friction-y="0.4" data-scalar-x="25" data-scalar-y="5">
+			<li class="layer" data-depth="0.3">
+				<div class="nuvem nuvem-3"></div>
+			</li>
+			<li class="layer" data-depth="0.6">
+				<div class="nuvem nuvem-2"></div>
+			</li>
+			<li class="layer" data-depth="1">
+				<div class="nuvem nuvem-1"></div>
+				<div class="branco"></div>
+			</li>
+		</ul>
+	</footer>
+
+<%= javascript_include_tag "application" %>
+<!-- Animações mais rápidas -->
+<!--script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/TweenLite.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/jquery.gsap.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/plugins/CSSPlugin.min.js"></script-->
+<% if current_usuario and current_usuario.admin? %>
+	<script type="text/javascript">
+	    var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+	</script>
+	<%= javascript_include_tag "editaveis" %>
+<% end %>
+</body>
+</html>

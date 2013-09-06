@@ -1,0 +1,32 @@
+<h1>Detalhes <%= masc_fem('mensagem', 'do', 'da') %> Mensagem</h1>
+
+<div class="fieldset">
+	<dl>
+
+		<dt class="label label-default">Enviado em</dt>
+		<dd>
+			<pre><%= @mensagem.created_at.strftime('%d/%m/%y %H:%M') %></pre>
+		</dd>
+		
+		<dt class="label label-default">Nome</dt>
+		<dd>
+			<pre><%= @mensagem.nome %></pre>
+		</dd>
+		
+		<dt class="label label-default">Email</dt>
+		<dd>
+			<pre><%= @mensagem.email %></pre>
+		</dd>
+		
+		<dt class="label label-default">Telefone</dt>
+		<dd>
+			<pre><%= @mensagem.telefone %></pre>
+		</dd>
+		
+		<dt class="label label-default">Mensagem</dt>
+		<dd>
+			<%=simple_format @mensagem.mensagem %>
+		</dd>
+		
+	</dl>
+</div>

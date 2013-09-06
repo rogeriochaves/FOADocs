@@ -1,0 +1,35 @@
+<h1>Mensagens</h1>
+
+<table id="lista" class="table table-bordered table-striped">
+<thead>
+	<tr>
+
+		<th>Enviado em</th>
+
+		<th>Nome</th>
+
+		<th>Email</th>
+
+		<th>Telefone</th>
+
+		<th width="120">Ações</th>
+	</tr>
+</thead>
+<tbody>
+	<% @mensagens.each do |mensagem| %>
+	<tr>
+		<td><%= mensagem.created_at.strftime('%d/%m/%y %H:%M') %></td>
+		<td><%= mensagem.nome %></td>
+		<td><%= mensagem.email %></td>
+		<td><%= mensagem.telefone %></td>
+		<td>
+	      <%= link_to 'Exibir', [:admin, mensagem] %>
+	    </td>
+	</tr>  
+	<% end %>
+<% if @mensagens.size == 0 %>
+	<tr><td colspan="5">Nenhum registro encontrado</td></tr>
+<% end %>
+</tbody>
+</table>
+<center><%= page_navigation_links @mensagem %></center>

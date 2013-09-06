@@ -1,0 +1,11 @@
+<% if modelo.errors.any? %>
+    <div id="error_explanation" class="alert-message block-message error">
+      <h4><%= pluralize(modelo.errors.count, "erro impediu", "erros impediram") %> que fosse salvo:</h4>
+
+      <ul>
+      <% modelo.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+<% end %>

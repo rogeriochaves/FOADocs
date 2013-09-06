@@ -1,0 +1,46 @@
+<br>
+<h2><center>Faça login para acessar</center></h2>
+<br>
+
+<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form-horizontal'}) do |f| %>
+	
+	<% if params[:usuario] and params[:usuario].size > 0 %>
+		<%- session[:attempts] = session[:attempts] ? session[:attempts] + 1 : 1 %>
+		<div class="col-lg-8 col-lg-offset-4">
+			<div class="row">
+				<div class="alert alert-danger col-lg-6">
+					<% if @captcha_invalido %>
+						Captcha inválido, por favor, tente novamente
+					<% else %>
+		            	Usuário ou senha inválidos
+		            <% end %>
+		        </div>
+			</div>
+		</div>
+	<% end %>
+
+	<div class="form-group email required usuario_email">
+		<%= f.label :email, "Email", :class => "email required col-lg-2 col-lg-offset-3 control-label" %>
+		<div class="col-lg-3">
+			<%= f.text_field :email, :class => "string email required form-control", :type => "email" %>
+		</div>
+	</div>
+	<div class="form-group password optional usuario_password">
+		<%= f.label :password, "Senha", :class => "password required col-lg-2 col-lg-offset-3 control-label" %>
+		<div class="col-lg-3">
+			<%= f.password_field :password, :class => "password required form-control" %>
+		</div>
+	</div>
+	<% if session[:attempts] and session[:attempts] >= 3 %>
+		<div class="col-lg-4 col-lg-offset-4" style="padding-left:65px; padding-bottom: 20px;">
+			<%=raw recaptcha_tags %>
+		</div>
+	<% end %>
+
+	<div class="col-lg-offset-4 col-lg-4">
+		<%= f.submit "Entrar", :class => "btn btn-success btn-large pull-right" %>
+	</div>
+
+    
+
+<% end %>

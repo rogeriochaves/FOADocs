@@ -1,0 +1,18 @@
+<h1>Detalhes <%= masc_fem('usuario', 'do', 'da') %> Usuário</h1>
+
+<div class="fieldset">
+	<dl>
+		<dt class="label label-default">Nome</dt>
+		<dd>
+			<pre><%= @usuario.nome %></pre>
+		</dd>
+		<dt class="label label-default">Email</dt>
+		<dd>
+			<pre><%= @usuario.email %></pre>
+		</dd>
+		<dt class="label label-default">Grupo</dt>
+		<dd>
+			<pre><%= @usuario.grupo %></pre>
+		</dd>
+	</dl>
+</div>

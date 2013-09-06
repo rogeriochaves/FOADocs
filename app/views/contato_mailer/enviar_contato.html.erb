@@ -1,0 +1,11 @@
+<html>
+<body>
+	Contato do site <%= AppAdmin.app_name %> <br />
+	<hr />
+	Nome: <%= @mensagem.nome %><br />
+	E-mail: <%= @mensagem.email %><br />
+	Telefone: <%= @mensagem.telefone %><br />
+	Mensagem:<br />
+	<%= simple_format @mensagem.mensagem %>
+</body>
+</html>

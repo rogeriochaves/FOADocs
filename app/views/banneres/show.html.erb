@@ -1,0 +1,22 @@
+<h1>Detalhes <%= masc_fem('banner', 'do', 'da') %> Banner</h1>
+
+<div class="fieldset">
+	<dl>
+		
+		<dt class="label label-default">Nome</dt>
+		<dd>
+			<pre><%= @banner.nome %></pre>
+		</dd>
+		
+		<dt class="label label-default">Link</dt>
+		<dd>
+			<pre><%= @banner.link %></pre>
+		</dd>
+		
+		<dt class="label label-default">Foto</dt>
+		<dd>
+			<pre><%= image_tag @banner.foto(:small) if @banner.foto? %></pre>
+		</dd>
+		
+	</dl>
+</div>

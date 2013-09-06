@@ -1,0 +1,12 @@
+<h1>Detalhes <%%= masc_fem('<%= singular_name %>', 'do', 'da') %> <%= singular_name.titleize %></h1>
+
+<div class="fieldset">
+	<dl>
+		<% for attribute in attributes %>
+		<dt class="label label-default"><%= attribute.human_name %></dt>
+		<dd>
+			<% if attribute.type.to_s == "datetime" %><pre><%%=l @<%= singular_name %>.<%= attribute.name %> if @<%= singular_name %>.<%= attribute.name %> %></pre><% elsif attribute.type.to_s == "attachment" %><pre><%%= image_tag @<%= singular_name %>.<%= attribute.name %>(:small) if @<%= singular_name %>.<%= attribute.name %>? %></pre><% else %><pre><%%= @<%= singular_name %>.<%= attribute.name %> %></pre><% end %>
+		</dd>
+		<% end %>
+	</dl>
+</div>

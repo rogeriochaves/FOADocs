@@ -1,0 +1,31 @@
+<h1>Usuários</h1>
+
+<table id="lista" class="table table-bordered table-striped" sort-list="[[0, 1]]">
+<thead>
+  <tr>
+    <th>Nome</th>
+    <th>Email</th>
+    <th>Grupo</th>
+    <th width="140">Ações</th>
+  </tr>
+</thead>
+<tbody>
+<% @usuarios.each do |usuario| %>
+  <tr>
+    <td><%= usuario.nome %></td>
+    <td><%= usuario.email %></td>
+    <td><%= usuario.grupo %></td>
+    <td>
+      <%= link_to 'Exibir', [:admin, usuario] %>
+      <%= link_to 'Editar', [:edit, :admin, usuario] %>
+      <%= link_to 'Excluir', [:admin, usuario], :confirm => 'Tem certeza?', :method => :delete %>
+    </td>
+  </tr>
+<% end %>
+<% if @usuarios.size == 0 %>
+  <tr><td colspan="3">Nenhum registro encontrado</td></tr>
+<% end %>
+</tbody>
+</table>
+<center><%= page_navigation_links @usuarios %></center>
+

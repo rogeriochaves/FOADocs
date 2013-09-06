@@ -1,0 +1,7 @@
+development:
+test:
+production:
+    access_key_id: 
+    secret_access_key: 
+    bucket: 
+    endpoint: s3-sa-east-1.amazonaws.com

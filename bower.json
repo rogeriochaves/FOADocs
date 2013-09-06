@@ -1,0 +1,12 @@
+{
+  "vendor": {
+    "name": "bower-rails generated vendor assets",
+    "dependencies": {
+    	"jquery"	: "latest",
+    	"bootstrap" : "3.0.0",
+    	"jquery-ui" : "latest",
+    	"select2"   : "latest",
+    	"nprogress" : "latest"
+    }
+  }
+}

@@ -1,0 +1,34 @@
+<h1>Banneres</h1>
+
+<table id="lista" class="table table-bordered table-striped" sort-list="[[0, 1]]">
+<thead>
+	<tr>
+
+		<th>Nome</th>
+
+		<th>Link</th>
+
+		<th>Foto</th>
+
+		<th width="140">Ações</th>
+	</tr>
+</thead>
+<tbody>
+	<% @banneres.each do |banner| %>
+	<tr>
+		<td><%= banner.nome %></td>
+		<td><%= banner.link %></td>
+		<td><%= image_tag banner.foto(:small) if banner.foto? %></td>
+		<td>
+	      <%= link_to 'Exibir', banner %>
+	      <%= link_to 'Editar', edit_banner_path(banner) %>
+	      <%= link_to 'Excluir', banner, confirm: 'Tem certeza?', method: :delete %>
+	    </td>
+	</tr>  
+	<% end %>
+<% if @banneres.size == 0 %>
+	<tr><td colspan="4">Nenhum registro encontrado</td></tr>
+<% end %>
+</tbody>
+</table>
+<center><%= page_navigation_links @banner %></center>

@@ -1,0 +1,10 @@
+<h1>Page#contato</h1>
+<p>Find me in app/views/page/contato.html.erb</p>
+
+<%= form_for @mensagem, :validate => true, :url => {:action => :contato} do |f| %>
+	<%= f.text_field :nome, :placeholder => 'Nome' %> <br>
+	<%= f.text_field :email, :placeholder => 'Email' %> <br> 
+	<%= f.text_field :telefone, :placeholder => 'Telefone' %> <br>
+	<%= f.text_area :mensagem, :placeholder => 'Mensagem', :style => "height:50px" %> <br>
+	<%= f.submit "Ok" %>
+<% end %>
