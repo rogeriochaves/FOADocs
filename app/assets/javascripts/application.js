@@ -34,7 +34,7 @@ $('#nuvens-rodape').show();
 var scene = document.getElementById('nuvens-rodape');
 var parallax = new Parallax(scene);
 
-$(window).ready(function(){
+$(document).ready(function(){
 	$('.box-login').delay(500).animate({bottom: "50%"}, 2000, function(){
 		$('.logo').fadeIn();
 	});
@@ -42,4 +42,20 @@ $(window).ready(function(){
 		$('.nuvem-girar').addClass('girar');
 		$(this).fadeOut();
 	});
+
+	$('#usuario_password').keyup(function(){
+		if ($(this).val().length > 0) {
+			$('.nuvem-login input[type=submit]').fadeIn();
+		}
+	});
+
+	$('.frm-login').submit(function(){
+		$('.box-login').animate({bottom: "120%"}, 1000);
+		$('#nuvens-rodape').animate({top: "100%"}, 1000);
+		$('body').delay(500).fadeOut(1000);
+
+		return false;
+	});
+
+	$("h1").lettering();
 });

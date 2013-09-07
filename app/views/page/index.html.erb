@@ -16,7 +16,7 @@
 					<div class="circulo circulo-1"></div>
 					<div class="circulo circulo-2"></div>
 					<div class="circulo circulo-3"></div>
-					<%= simple_form_for(Usuario.new, :as => :usuario, :url => session_path(:usuario), :html => {:class => 'form-horizontal'}) do |f| %>
+					<%= simple_form_for(Usuario.new, :as => :usuario, :url => session_path(:usuario), :html => {:class => 'form-horizontal frm-login'}) do |f| %>
 						<div class="field">
 							<%= f.label :email, "Email" %>
 							<%= f.text_field :email %>
@@ -25,6 +25,7 @@
 							<%= f.label :password, "Senha" %>
 							<%= f.password_field :password %>
 						</div>
+						<%= f.submit "aperte enter" %>
 					<% end %>
 				</div>
 				<div class="front">
@@ -35,7 +36,7 @@
 			</div>
 			
 			
-			<div class="logo">FOA DOCS</div>
+			<h1 class="logo">FOA DOCS</h1>
 		</div>
 	</div>
 </div>
