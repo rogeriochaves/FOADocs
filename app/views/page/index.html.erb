@@ -19,7 +19,7 @@
 					<%= simple_form_for(Usuario.new, :as => :usuario, :url => session_path(:usuario), :html => {:class => 'form-horizontal frm-login'}) do |f| %>
 						<div class="field">
 							<%= f.label :email, "Email" %>
-							<%= f.text_field :email %>
+							<%= f.email_field :email %>
 						</div>
 						<div class="field">
 							<%= f.label :password, "Senha" %>

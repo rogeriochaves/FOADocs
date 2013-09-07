@@ -9,6 +9,7 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require bootstrap_and_overrides
+ *= require nprogress/nprogress
  *= require_self
 */
 
@@ -16,6 +17,12 @@
 @import "react.css.scss";
 
 h1{color:#FFF}
+#nprogress{
+	position: fixed; z-index:2000; top:0;
+	.bar{background: #FFF}
+	.peg{box-shadow:0 0 10px #fff, 0 0 5px #fff}
+	.spinner-icon{border-top-color: #FFF; border-left-color: #FFF}
+}
 
 @-webkit-keyframes wave {
   0% {

@@ -11,11 +11,13 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery-ui
 //= require bootstrap
 //= not_require rails.validations
 //= require google_analytics
 //= require turbolinks
 //= require jquery.turbolinks
+//= require nprogress
 //= require_tree ./fancybox
 //= require_tree ./parallax
 //= require_self
@@ -49,13 +51,24 @@ $(document).ready(function(){
 		}
 	});
 
+	var tentativas = 0;
 	$('.frm-login').submit(function(){
-		$('.box-login').animate({bottom: "120%"}, 1000);
-		$('#nuvens-rodape').animate({top: "100%"}, 1000);
-		$('body').delay(500).fadeOut(1000);
+		tentativas += 1;
+		NProgress.start();
+		setTimeout(function(){
+			if(tentativas > 1){
+				NProgress.done();
+				$('.box-login').animate({bottom: "120%"}, 1000);
+				$('#nuvens-rodape').animate({top: "100%"}, 1000);
+				$('body').delay(500).fadeOut(1000);
+			}else{
+				NProgress.done();
+				$('.nuvem-girar').effect('shake');
+				$('.frm-login input[type=submit]').val("Login ou Senha inválidos");
+			}
+		}, 3000);
+		
 
 		return false;
 	});
-
-	$("h1").lettering();
 });
