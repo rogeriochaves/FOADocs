@@ -33,3 +33,13 @@ $("[rel=fancybox]").fancybox({
 $('#nuvens-rodape').show();
 var scene = document.getElementById('nuvens-rodape');
 var parallax = new Parallax(scene);
+
+$(window).ready(function(){
+	$('.box-login').delay(500).animate({bottom: "50%"}, 2000, function(){
+		$('.logo').fadeIn();
+	});
+	$('.btn-login').click(function(){
+		$('.nuvem-girar').addClass('girar');
+		$(this).fadeOut();
+	});
+});
