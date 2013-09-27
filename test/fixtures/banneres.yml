@@ -2,10 +2,12 @@
 
 one:
   nome: MyString
-  link: MyString
-  foto: 
-
+  link: www.google.com
+  
 two:
   nome: MyString
-  link: MyString
-  foto: 
+  link: http://www.google.com
+
+three:
+  nome: MyString
+  link:

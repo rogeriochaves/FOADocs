@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require bootstrap
-//= not_require rails.validations
+//= require rails.validations
 //= require google_analytics
 //= require turbolinks
 //= require jquery.turbolinks

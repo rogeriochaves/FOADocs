@@ -20,6 +20,10 @@ if Rails.env == "production"
 elsif Rails.env == "test"
 	ActionMailer::Base.delivery_method = :test
 else
+	ActionMailer::Base.delivery_method = :letter_opener
+
+# Testar com email de verdade
+=begin
 	ActionMailer::Base.delivery_method = :smtp
 	ActionMailer::Base.perform_deliveries = true
 	ActionMailer::Base.raise_delivery_errors = true
@@ -34,6 +38,7 @@ else
 	  :authentication       => "plain",
 	  :enable_starttls_auto => true
 	}
+=end
 end
 
 ActionMailer::Base.default :from => "Contato do Site <webmaster@#{AppAdmin.domain}>"

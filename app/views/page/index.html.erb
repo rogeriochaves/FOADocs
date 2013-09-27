@@ -2,15 +2,15 @@
 	<div class="teste">
 		<h1>Page#index</h1>
 	</div>
-	<% conteudo_editavel 'nome-1' do %>
+	<%= editable_content 'nome-1' do %>
 	  <p>Exemplo de conteúdo editável blabalba l</p>
 	<% end %>
 
-	<% conteudo_editavel 'nome-2' do %>
+	<%= editable_content 'nome-2' do %>
 	  <p>Exemplo de conteúdo editável blabalba l</p>
 	<% end %>
 
-	<%= image_tag_editavel 'rails.png', :size => "50x64", :class => "pudim" %>
+	<%= editable_image_tag 'rails.png', :size => "50x64", :class => "pudim" %>
 
 	<div id="slides">
 		<div class="slides_container">

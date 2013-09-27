@@ -32,7 +32,7 @@ class DeviseCreateUsuarios < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :usuarios, :email,                :unique => true
+    add_index :usuarios, :email, :unique => true
 
     Usuario.create(:nome => 'Administrador Geral', :email => "admin@#{AppAdmin.domain}", :grupo => :admin, :password => '123mudar', :password_confirmation => '123mudar', :change_password => true)
   end

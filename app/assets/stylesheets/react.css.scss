@@ -1,4 +1,4 @@
-[data-editavel]{border: 1px dashed #CCC}
+[data-editable]{border: 1px dashed #CCC}
 @function prct($pixels, $base: 1170px) {
   @return ($pixels / $base) * 100%;
 }

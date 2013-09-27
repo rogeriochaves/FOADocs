@@ -43,22 +43,22 @@ class Admin::UsuariosController < ApplicationController
   		flash[:notice] = "O sistema deve possuir pelo menos um administrador"
   		render :action => "edit"
   	else
-	    if @usuario.update_attributes(params[:usuario])
+	    if @usuario.update(params[:usuario])
 	      redirect_to [:admin, @usuario], :notice => 'Usuario atualizado com sucesso.'
 	    else
 	      render :action => "edit"
 	    end
-	end
+	  end
   end
 
   # DELETE /usuarios/1
   def destroy
-  	if Usuario.where(:grupo => 'admin').count == 1
+    @usuario = Usuario.find(params[:id])
+  	if Usuario.where(:grupo => 'admin').count == 1 and @usuario.admin?
   		flash[:notice] = "Você não pode deletar o único administrador do sistema"
   	else
-	    @usuario = Usuario.find(params[:id])
 	    @usuario.destroy
-	end
+	  end
 
     redirect_to admin_usuarios_url
   end
@@ -66,14 +66,14 @@ class Admin::UsuariosController < ApplicationController
   def change_password
   	if params[:usuario]
   		u = current_usuario
-  		if params[:usuario][:password].size <= 3
-  			@erro = "A senha deve possuir mais de 3 caracteres"
-  		elsif u.valid_password? params[:usuario][:password]
-  			@erro = "A senha deve ser diferente da sua senha atual"
-  		elsif u.update_attributes(params[:usuario])
+
+      @erro = "A senha deve ser diferente da sua senha atual" if u.valid_password? params[:usuario][:password]
+  		@erro = "A senha deve possuir mais de 3 caracteres" if params[:usuario][:password].size <= 3
+
+  		if !@erro and u.update_attributes(params[:usuario])
   			u.update_attribute(:change_password, false)
   			sign_in u
-	      	redirect_to :controller => '/admin/admin', :action => :index, :notice => 'Usuario atualizado com sucesso.'
+	      redirect_to :controller => '/admin/admin', :action => :index, :notice => 'Usuario atualizado com sucesso.'
   		end
   	end
   end

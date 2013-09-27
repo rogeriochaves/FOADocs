@@ -95,7 +95,8 @@ Devise.setup do |config|
 
   # If true, uses the password salt as remember token. This should be turned
   # to false if you are not using database authenticatable.
-  config.use_salt_as_remember_token = true
+  #config.use_salt_as_remember_token = true
+  config.secret_key = '3b8e82a895f953afd2cc5b1c089a3e0daccc75a9a8238891d5867598c3f9fc65fe427c7d087ffa8b7a6e8a92681f05c06a26dfc5c01329d78cf1249e8c67f9f6'
 
   # Options to be passed to the created cookie. For instance, you can set
   # :secure => true in order to force SSL only cookies.

@@ -38,6 +38,14 @@ namespace :passenger do
   end
 end
 
+namespace :tests do
+  desc "Run all the tests"  
+  task :run do  
+    run "ruby -I test #{current_path}/test/**/*_test.rb"  
+  end
+end
+
 #after "deploy:update", "deploy:cleanup"
 after :deploy, "deploy:migrate"
+after :deploy, "tests:run"
 after :deploy, "passenger:restart"

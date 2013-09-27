@@ -22,7 +22,7 @@
 		<td>
 	      <%= link_to 'Exibir', banner %>
 	      <%= link_to 'Editar', edit_banner_path(banner) %>
-	      <%= link_to 'Excluir', banner, confirm: 'Tem certeza?', method: :delete %>
+	      <%= link_to 'Excluir', banner, data: {confirm: 'Tem certeza?'}, method: :delete %>
 	    </td>
 	</tr>  
 	<% end %>

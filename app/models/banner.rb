@@ -7,9 +7,4 @@ class Banner < ActiveRecord::Base
 		end
 		return nil
 	end
-
-  	private
-    def banner_params
-      params.require(:banner).permit(:nome, :link, :foto)
-    end
 end
