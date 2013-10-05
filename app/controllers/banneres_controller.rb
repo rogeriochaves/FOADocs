@@ -59,6 +59,7 @@ class BanneresController < ApplicationController
 		@list = controller_name.classify.constantize.order(:position)
 		if request.post?
 			@list.each do |m|
+				next if !params[controller_name.singularize].index(m.id.to_s)
 				m.position = params[controller_name.singularize].index(m.id.to_s) + 1
 				m.save
 			end

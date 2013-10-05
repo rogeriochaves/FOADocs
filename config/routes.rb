@@ -3,7 +3,6 @@ AppName::Application.routes.draw do
 	get 'banneres/ordenar' => 'banneres#ordenar'
 	post 'banneres/ordenar' => 'banneres#ordenar'
 
-
   	resources :banneres, :path => "admin/banneres"
 
 

@@ -1,6 +1,4 @@
 class BootstrapLinkRenderer < ::WillPaginate::ActionView::LinkRenderer
-	protected
-
 	def html_container(html)
 	  #tag :div, tag(:ul, html), container_attributes
 	  tag(:ul, html, container_attributes)
@@ -11,6 +9,7 @@ class BootstrapLinkRenderer < ::WillPaginate::ActionView::LinkRenderer
 	end
 
 	def gap
+		super
 	  tag :li, link(super, '#'), :class => 'disabled'
 	end
 

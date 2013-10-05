@@ -1,5 +1,3 @@
-# heroku
-
 if Rails.env == 'production'
 
 	s3_config = YAML.load(ERB.new(File.read("#{Rails.root}/config/s3.yml")).result)[Rails.env] 

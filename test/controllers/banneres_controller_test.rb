@@ -61,4 +61,14 @@ class BanneresControllerTest < ActionController::TestCase
 
     assert_redirected_to banneres_path
   end
+
+  test "should list banners to order" do
+    get :ordenar
+    assert_response :success
+  end
+
+  test "should save updated order" do
+    post :ordenar, banner: [banneres(:two).id, banneres(:one).id]
+    assert_equal 2, banneres(:one).reload.position
+  end
 end
