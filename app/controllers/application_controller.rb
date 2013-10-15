@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   		redirect_to :controller => '/admin/usuarios', :action => 'change_password'
   	end
   end
-
+  
   def beta_authentication
     if request.host.include? "herokuapp" or request.host.include? "reactweb"
       authenticate_or_request_with_http_basic do |username, password|
