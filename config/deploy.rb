@@ -9,6 +9,7 @@ set :domain, "142.4.214.14"
 set :deploy_to, "/home/#{pasta}/#{application}" 
 set :copy_exclude, %w(.git/* .svn/* log/* tmp/* .gitignore *.DS_Store public/system/* public/system vendor/bundle)
 set :keep_releases, 5
+set :test_log, "log/test.log"
 
 # GIT
 set :scm, :git
@@ -38,14 +39,20 @@ namespace :passenger do
   end
 end
 
-namespace :tests do
-  desc "Run all the tests"  
-  task :run do  
-    run "ruby -I test #{current_path}/test/**/*_test.rb"  
+# Run tests
+namespace :deploy do
+  before 'deploy:update_code' do
+    puts "--> Running tests, please wait ..."
+    unless system "bundle exec rake test:all > #{test_log} 2>&1" #' > /dev/null'
+      puts "--> Tests failed. Run `cat #{test_log}` to see what went wrong."
+      exit
+    else      
+      puts "--> Tests passed"
+      system "rm #{test_log}"
+    end
   end
 end
 
 #after "deploy:update", "deploy:cleanup"
 after :deploy, "deploy:migrate"
-after :deploy, "tests:run"
 after :deploy, "passenger:restart"

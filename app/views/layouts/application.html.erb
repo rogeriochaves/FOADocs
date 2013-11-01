@@ -2,8 +2,9 @@
 <html>
 <head>
   <title><%= title ? title : "AppName" %></title>
-  <!--[if IE]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <!--[if lt IE 10]>
+  	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <%= javascript_include_tag 'ie' %>
   <![endif]-->
 
   <%= stylesheet_link_tag    "application", :media => "all" %>

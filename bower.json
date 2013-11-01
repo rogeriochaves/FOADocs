@@ -6,7 +6,9 @@
     	"bootstrap" : "3.0.0",
     	"jquery-ui" : "latest",
     	"select2"   : "latest",
-    	"nprogress" : "latest"
+    	"nprogress" : "latest",
+        "respond"   : "latest",
+        "placeholder": "latest"
     }
   }
 }

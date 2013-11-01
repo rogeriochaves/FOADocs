@@ -17,7 +17,7 @@ gem 'sprockets-image_compressor'
 gem 'bower-rails', :github => '42dev/bower-rails'
 
 group :development do
-    gem 'capistrano', :github => 'capistrano/capistrano'
+    gem 'capistrano', '2.11.2'
     gem 'sqlite3'
     # fake generator
     gem 'faker'
@@ -59,7 +59,7 @@ end
 gem 'jquery-rails'
 
 # formulários
-gem 'protected_attributes', :github => 'rails/protected_attributes'
+gem 'protected_attributes', :github => 'rails/protected_attributes', :ref => '11747686c9a'
 gem 'simple_form', '>= 3.0.0.rc'
 gem 'client_side_validations', :github => 'bcardarella/client_side_validations', :branch => '4-0-beta'
 gem 'client_side_validations-simple_form', :github => 'rogeriochaves/client_side_validations-simple_form'
