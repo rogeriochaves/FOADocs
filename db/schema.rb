@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20130728231157) do
     t.string   "nome"
     t.string   "email"
     t.string   "telefone"
-    t.string   "mensagem"
+    t.text     "mensagem"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

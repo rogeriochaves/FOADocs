@@ -4,7 +4,7 @@ class CreateMensagens < ActiveRecord::Migration
       t.string :nome
       t.string :email
       t.string :telefone
-      t.string :mensagem
+      t.text :mensagem
 
       t.timestamps
     end

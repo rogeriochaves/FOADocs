@@ -11,6 +11,21 @@
   #{$name}: $argument;
 }
 
+@mixin prefixed-keyframes($name){
+  @-webkit-keyframes $name {
+    @content;
+  }
+  @-moz-keyframes $name {
+    @content;
+  }
+  @-o-keyframes $name {
+    @content;
+  }
+  @keyframes $name {
+    @content;
+  }
+}
+
 @mixin animated($t: 0.3s, $type: ease){
 	-webkit-transition: all $t $type;                  
     -moz-transition: all $t $type;                 
