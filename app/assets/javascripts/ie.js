@@ -1,4 +1,4 @@
-//= require respond/respond.min
+//= require respond
 //= require placeholder
 
 (function(){

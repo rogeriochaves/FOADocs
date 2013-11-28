@@ -1,6 +1,14 @@
 # encoding: UTF-8
 module ApplicationHelper
 
+	def btt_remove
+		'<span class="btn btn-danger pull-right">x</span>'.html_safe
+	end
+
+	def btt_add(item)
+		"<span class=\"btn btn-default\" style=\"margin-left:130px\">Adicionar #{item}</span>".html_safe
+	end
+
 	def dispatcher_tag
 	  controller_name = controller.class.name.underscore
 	  controller_name.gsub!(/\//, "_")

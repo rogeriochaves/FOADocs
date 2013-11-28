@@ -3,7 +3,7 @@ class Banner < ActiveRecord::Base
 
 	def http_link
 		if self.link and !self.link.empty?
-			return 'http://' + self.link.sub('http://', '')
+			return (self.link.include?("https") ? 'https://' : "http://") + self.link.sub('http://', '').sub('https://', '')
 		end
 		return nil
 	end
