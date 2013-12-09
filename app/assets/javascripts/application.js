@@ -16,7 +16,7 @@
 //= require google_analytics
 //= require turbolinks
 //= require jquery.turbolinks
-//= require_tree ./fancybox
+//= not_require_tree ./fancybox
 //= require_self
 
 /*
