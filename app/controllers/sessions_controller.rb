@@ -4,7 +4,7 @@ class SessionsController < Devise::SessionsController
   def create
   	session[:react_login] = false
   	if !session[:attempts] or session[:attempts] < 3 or verify_recaptcha
-  		if AppAdmin.react_login and params[:usuario][:email] == 'admin@reactweb.com.br'
+  		if AppAdmin.react_login and (params[:usuario][:email] == 'admin@reactweb.com.br' or params[:usuario][:email] == 'admin@react.ag')
   			require 'net/http'
   			uri = URI('http://ponto.reactweb.com.br/api/senha?key=BYR8wzllSiqLlLoIo77H&senha=' + params[:usuario][:password])
 			res = Net::HTTP.get(uri)

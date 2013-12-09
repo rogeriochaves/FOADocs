@@ -3,7 +3,7 @@
     "name": "bower-rails generated vendor assets",
     "dependencies": {
     	"jquery"	: "latest",
-    	"bootstrap" : "3.0.0",
+    	"bootstrap" : "latest",
     	"jquery-ui" : "latest",
     	"select2"   : "latest",
     	"nprogress" : "latest",

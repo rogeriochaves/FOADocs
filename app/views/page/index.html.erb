@@ -1,22 +1,75 @@
-<div class="span12">
-	<div class="teste">
-		<h1>Page#index</h1>
+<div class="row">
+	<div class="col-sm-8">
+		<h1>Este é um título &lt;h1&gt; padrão</h1>
+		<%= editable_content 'texto-exemplo-editavel' do %>
+			<p>
+				Todas as páginas do site devem utilizar a tag &lt;h1&gt; para que o Google possa identificar o título, otimizando o trabalho em SEO. Caso essa página possua subtítulos, estes devem utilizar &lt;h2&gt;, &lt;h3&gt; e assim por diante. Textos utilizarão sempre a tag &lt;p&gt;.
+			</p>
+			<p>
+				Este texto atual inclusive é um exemplo de conteúdo editável, caso esteja logado como administrador você conseguirá modificá-lo. Sempre coloque os textos que não são cadastráveis pela área administrativa com conteúdo editável, pois caso haja uma mudança isso não precisará ser repassado à programação do site, poupando o tempo de todos.
+			</p>
+		<% end %>
 	</div>
-	<%= editable_content 'nome-1' do %>
-	  <p>Exemplo de conteúdo editável blabalba l</p>
-	<% end %>
+	<div class="col-sm-4">
+		<h1>Exemplo de grid</h1>
+		<%= editable_content 'texto-exemplo-grid' do %>
+			<p>
+				Essa coluna é um exemplo do uso de colunas do bootstrap. Ao reduzir o navegador para uma largura menor do que 768px, ela fica "empilhada" debaixo da coluna principal
+			</p>
+		<% end %>
+	</div>
+</div>
 
-	<%= editable_content 'nome-2' do %>
-	  <p>Exemplo de conteúdo editável blabalba l</p>
-	<% end %>
+<div class="row">
+	<div class="col-sm-8">
+		<h1>Exemplo de Carousel</h1>
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+			<!-- Itens do carousel -->
+			<div class="carousel-inner">
+				<% for i in 0...3 do %>
+					<div class="item <%= "active" if i == 0 %>">
+						<%= image_tag "exemplos/slide-#{i}.png" %>
+						<div class="carousel-caption">
+							Legenda do item <%= i + 1 %>
+						</div>
+					</div>
+				<% end %>
+			</div>
 
-	<%= editable_image_tag 'rails.png', :size => "50x64", :class => "pudim" %>
+			<!-- Paginação -->
+			<ol class="carousel-indicators">
+				<% for i in 0...3 do %>
+					<li data-target="#carousel-example-generic" data-slide-to="<%= i %>" class="<%= "active" if i == 0 %>"></li>
+				<% end %>
+			</ol>
 
-	<div id="slides">
-		<div class="slides_container">
-	    	<div class="slide">
-	        	<p>Exemplo de Slide</p>
-	    	</div>
-	  	</div>
+			<!-- Setinhas -->
+			<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+				<span class="icon-prev"></span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+				<span class="icon-next"></span>
+			</a>
+		</div>
+	</div>
+	<div class="col-sm-4">
+		<h1>Facebook Likebox</h1>
+		<div class="fb-like-box" data-href="http://www.facebook.com/reactweb" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="false" data-show-border="true"></div>
+
+		<% content_for :scripts do %>
+			<div id="fb-root"></div>
+			<script>(function(d, s, id) {
+			  var js, fjs = d.getElementsByTagName(s)[0];
+			  if (d.getElementById(id)) return;
+			  js = d.createElement(s); js.id = id;
+			  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=312988702171040";
+			  fjs.parentNode.insertBefore(js, fjs);
+			}(document, 'script', 'facebook-jssdk'));</script>
+		<% end %>
+
+		<h1>Background inline</h1>
+		<div class="teste-background-inline">
+			Exemplo
+		</div>
 	</div>
 </div>

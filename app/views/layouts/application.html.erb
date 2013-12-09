@@ -24,23 +24,77 @@
   <%= csrf_meta_tags %>
 </head>
 <body id="<%= "#{params[:controller]}-#{params[:action]}" %>">
+    
+    <nav>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-2">
+                    <%= link_to image_tag("logo.png"), {controller: 'page', action: 'index'}, {class: 'nav-logo'} %>
+                </div>
+                <div class="col-xs-10">
+                    <ul class="list-inline menu pull-right">
+                        <li>
+                            <%= link_to "Inicial", {controller: 'page', action: 'index'}, {class: 'menu-link'} %>
+                        </li>
+                        <li>
+                            <%= link_to "Exemplo 1", {controller: 'page', action: 'index'}, {class: 'menu-link'} %>
+                        </li>
+                        <li>
+                            <%= link_to "Exemplo 2", {controller: 'page', action: 'index'}, {class: 'menu-link'} %>
+                        </li>
+                        <li>
+                            <%= link_to "Contato", {controller: 'page', action: 'index'}, {class: 'menu-link'} %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <header>
+        <div class="container">
+            <h1 class="header-h1">
+                Projeto padrão da React
+            </h1>
+            <h2 class="header-h2">
+                Altere o conteúdo desta página
+            </h2>
+        </div>
+    </header>
 
-	<div class="container">
-		<div class="row">
-			<%= yield %>
-		</div>
-	</div>
+    <div class="container">
+        <%= yield %>
+    </div>
 
-<%= javascript_include_tag "application" %>
-<!-- Animações mais rápidas -->
-<!--script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/TweenLite.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/jquery.gsap.min.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/plugins/CSSPlugin.min.js"></script-->
-<% if can_change_editable_content? %>
-	<script type="text/javascript">
-	    var CKEDITOR_BASEPATH = '/assets/ckeditor/';
-	</script>
-	<%= javascript_include_tag "editables" %>
-<% end %>
+    <footer>
+        <div class="container footer-container">
+            <div class="col-sm-8">
+                <p>
+                    O site deve sempre possuir no rodapé o logo da react com um link pro portfólio utilizando target="_blank" na tag
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <a href="http://react.ag" target="_blank" class="footer-logo-react">
+                    <div class="vertical-align">
+                        <div class="middle">
+                            <%= image_tag "logo-react.png" %>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <%= javascript_include_tag "application" %>
+    <%= yield :scripts %>
+    <!-- Animações mais rápidas -->
+    <!--script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/TweenLite.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/jquery.gsap.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/plugins/CSSPlugin.min.js"></script-->
+    <% if can_change_editable_content? %>
+    	<script type="text/javascript">
+    	    var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+    	</script>
+    	<%= javascript_include_tag "editables" %>
+    <% end %>
 </body>
 </html>
