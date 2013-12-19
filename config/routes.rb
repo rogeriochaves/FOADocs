@@ -3,7 +3,6 @@ FOADocs::Application.routes.draw do
 	get 'banneres/ordenar' => 'banneres#ordenar'
 	post 'banneres/ordenar' => 'banneres#ordenar'
 
-
   	resources :banneres, :path => "admin/banneres"
 
 
@@ -54,6 +53,7 @@ FOADocs::Application.routes.draw do
     #     resources :products
     #   end
 
+    resources :editables
     namespace :admin do
         resources :usuarios do
         	collection do
@@ -63,13 +63,13 @@ FOADocs::Application.routes.draw do
         end
         resources :mensagens
         resources :paginas
-        resources :editaveis
     end
 
     get 'admin' => 'admin/admin#index'
 
     devise_for :usuarios, :path_names => { :sign_in => 'login', :sign_out => 'logout' }, controllers: { sessions: 'sessions' }
 
+    post ':action' => 'page'
     get ':action' => 'page'
 
     # You can have the root of your site routed with "root"

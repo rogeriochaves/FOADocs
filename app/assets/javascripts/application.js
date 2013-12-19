@@ -13,24 +13,14 @@
 //= require jquery
 //= require jquery-ui
 //= require bootstrap
-//= not_require rails.validations
+//= require rails.validations
 //= require google_analytics
 //= require turbolinks
 //= require jquery.turbolinks
 //= require nprogress
-//= require_tree ./fancybox
+//= not_require_tree ./fancybox
 //= require_tree ./parallax
 //= require_self
-
-/*
-
-$("[rel=fancybox]").fancybox({
-	openEffect: 'elastic',
-	closeEffect: 'elastic',
-	helpers: {title: {type: 'outside'}}
-});
-
-*/
 
 $('#nuvens-rodape').show();
 var scene = document.getElementById('nuvens-rodape');

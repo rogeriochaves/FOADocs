@@ -47,7 +47,7 @@ end
       <% end if AppAdmin.extra_tabs[controller] %>
       <% if !is_removed(:destroy) %>
         <li>
-          <%= link_to 'Excluir', {:controller => params[:controller], :action => :show, :id => params[:id]}, {:confirm => 'Tem certeza?', :method => :delete} %>
+          <%= link_to 'Excluir', {:controller => params[:controller], :action => :show, :id => params[:id]}, {:data => {:confirm => 'Tem certeza?'}, :method => :delete} %>
         </li>
       <% end %>
     <% end %>

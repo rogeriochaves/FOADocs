@@ -18,7 +18,7 @@
     <td>
       <%= link_to 'Exibir', [:admin, usuario] %>
       <%= link_to 'Editar', [:edit, :admin, usuario] %>
-      <%= link_to 'Excluir', [:admin, usuario], :confirm => 'Tem certeza?', :method => :delete %>
+      <%= link_to 'Excluir', [:admin, usuario], data: {:confirm => 'Tem certeza?'}, :method => :delete %>
     </td>
   </tr>
 <% end %>

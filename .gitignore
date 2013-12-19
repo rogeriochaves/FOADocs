@@ -20,3 +20,5 @@ public/system
 public/system/*
 
 nada.txt
+coverage
+coverage/*

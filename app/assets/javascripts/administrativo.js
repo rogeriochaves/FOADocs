@@ -14,8 +14,8 @@
 //= require jquery.turbolinks
 //= require select2
 //= require nprogress
-//= not_require rails.validations
-//= not_require rails.validations.simple_form
+//= require rails.validations
+//= require rails.validations.simple_form
 //= require_self
 
 var afterLoad = function(){

@@ -2,8 +2,10 @@
 <html>
 <head>
   <title><%= title ? title : "FOADocs" %></title>
-  <!--[if IE]>
-	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+  <!--[if lt IE 10]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <%= javascript_include_tag 'ie' %>
   <![endif]-->
 
   <%= stylesheet_link_tag    "application", :media => "all" %>
@@ -16,10 +18,13 @@
   <meta http-equiv="content-language" content="pt-BR">
   <meta name="description" content="<%= description %>" />
   <meta name="author" content="www.reactweb.com.br">
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"  />
+
   <%= metatags %>
   <%= csrf_meta_tags %>
 </head>
 <body id="<%= "#{params[:controller]}-#{params[:action]}" %>">
+
 
 	<div class="container">
 		<div class="row">
@@ -47,11 +52,11 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/TweenLite.min.js" async></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/jquery.gsap.min.js" async></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/plugins/CSSPlugin.min.js" async></script>
-<% if current_usuario and current_usuario.admin? %>
-	<script type="text/javascript">
-	    var CKEDITOR_BASEPATH = '/assets/ckeditor/';
-	</script>
-	<%= javascript_include_tag "editaveis" %>
-<% end %>
+<% if can_change_editable_content? %>
+    <script type="text/javascript">
+        var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+    </script>
+    <%= javascript_include_tag "editables" %>
+  <% end %>
 </body>
 </html>

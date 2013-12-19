@@ -37,7 +37,7 @@ module FOADocs
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 
-    config.assets.precompile += %w( application.css administrativo.css application.js administrativo.js admin/index.js editaveis.js ckeditor/* )
+    config.assets.precompile += %w( application.css administrativo.css application.js administrativo.js admin/index.js editables.js ie.js ckeditor/* )
     config.filter_parameters += [:password]
     config.active_record.whitelist_attributes = false
 

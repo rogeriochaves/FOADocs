@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  url: MyString
-  title: MyString
-  description: MyString
-  metatags: MyString
+index:
+  url: /
+  title: Home do site
+  description: Você está na página inicial
+  metatags: 
 
-two:
-  url: MyString
-  title: MyString
-  description: MyString
-  metatags: MyString
+contato:
+  url: /contato
+  title: Entre em contato conosco
+  description: Preencha o formulário e responderemos em sua caixa de entrada de email
+  metatags: 

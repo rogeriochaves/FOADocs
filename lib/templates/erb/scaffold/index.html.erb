@@ -21,7 +21,7 @@
 	      <%%= link_to 'Excluir', [:<%= modulo %>, <%= singular_name %>], confirm: 'Tem certeza?', method: :delete %><% else %>
 	      <%%= link_to 'Exibir', <%= singular_name %> %>
 	      <%%= link_to 'Editar', edit_<%= singular_name %>_path(<%= singular_name %>) %>
-	      <%%= link_to 'Excluir', <%= singular_name %>, confirm: 'Tem certeza?', method: :delete %><% end %>
+	      <%%= link_to 'Excluir', <%= singular_name %>, data: {confirm: 'Tem certeza?'}, method: :delete %><% end %>
 	    </td>
 	</tr>  
 	<%% end %>

@@ -11,6 +11,21 @@
   #{$name}: $argument;
 }
 
+@mixin prefixed-keyframes($name){
+  @-webkit-keyframes $name {
+    @content;
+  }
+  @-moz-keyframes $name {
+    @content;
+  }
+  @-o-keyframes $name {
+    @content;
+  }
+  @keyframes $name {
+    @content;
+  }
+}
+
 @mixin animated($t: 0.3s, $type: ease){
 	-webkit-transition: all $t $type;                  
     -moz-transition: all $t $type;                 
@@ -22,11 +37,6 @@
 html{font-size: 100%;}
 body{font-size: 62.5%; margin: 0; padding:0}
 p{font-size: 1.4em}
-
-.grid{
-    margin: 0; padding: 0; list-style-type: none;
-    li{display: inline-block; *display: inline; *zoom: 1; margin-right: -0.31em; *letter-spacing: normal; vertical-align: top;}
-}
 
 .vertical-align{
 	width:100%; height:100%; display:table;

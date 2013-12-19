@@ -6,7 +6,7 @@ class PageController < ApplicationController
     @mensagem = Mensagem.new
     if request.post?
       @mensagem = Mensagem.new(params[:mensagem])
-      if @mensagem.save!
+      if @mensagem.save
         ContatoMailer.enviar_contato(@mensagem).deliver
         @titulo = 'Sua mensagem foi enviada com sucesso'
         @subtitulo = 'Aguarde por uma resposta em sua caixa de entrada de email'

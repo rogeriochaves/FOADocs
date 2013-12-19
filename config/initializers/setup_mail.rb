@@ -1,6 +1,5 @@
 if Rails.env == "production"
-
-# heroku
+	# heroku
 	ActionMailer::Base.smtp_settings = {
 	  :address        => 'smtp.sendgrid.net',
 	  :port           => '587',
@@ -10,24 +9,10 @@ if Rails.env == "production"
 	  :domain         => 'heroku.com'
 	}
 	ActionMailer::Base.delivery_method = :smtp
-
 elsif Rails.env == "test"
 	ActionMailer::Base.delivery_method = :test
 else
-	ActionMailer::Base.delivery_method = :smtp
-	ActionMailer::Base.perform_deliveries = true
-	ActionMailer::Base.raise_delivery_errors = true
-
-
-	ActionMailer::Base.smtp_settings = {
-	  :address              => "smtp.gmail.com",
-	  :port                 => 587,
-	  :domain               => "gmail.com",
-	  :user_name            => "email4sendgrid@gmail.com",
-	  :password             => "1234mudar",
-	  :authentication       => "plain",
-	  :enable_starttls_auto => true
-	}
+	ActionMailer::Base.delivery_method = :letter_opener
 end
 
 ActionMailer::Base.default :from => "Contato do Site <webmaster@#{AppAdmin.domain}>"

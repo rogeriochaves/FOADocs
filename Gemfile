@@ -18,26 +18,30 @@ gem 'sprockets-image_compressor'
 gem 'bower-rails', :github => '42dev/bower-rails'
 
 group :development do
-	gem 'capistrano', :github => 'capistrano/capistrano'
-	gem 'sqlite3'
-	# fake generator
-	gem 'faker'
-	gem 'brfaker'
+    gem 'capistrano', '2.11.2'
+    gem 'sqlite3'
+    # fake generator
+    gem 'faker'
+    gem 'brfaker'
 
-	# live reload
-	gem 'guard'
-	gem 'guard-livereload'
-	gem 'rack-livereload'
-	gem 'rb-fsevent'
+    # live reload
+    gem 'guard'
+    gem 'guard-livereload'
+    gem 'rack-livereload'
+    gem 'rb-fsevent'
+
+    gem 'letter_opener'
+    gem 'better_errors'
 end
 
 group :test do
-	gem 'sqlite3'
-	gem 'rspec'
-	#gem 'ruby-prof'
-	#gem 'factory_girl_rails'
-	#gem 'faker'
-	#gem 'timecop'
+    gem 'sqlite3'
+    gem 'mocha', :require => false
+    gem 'simplecov'
+    #gem 'ruby-prof'
+    #gem 'factory_girl_rails'
+    #gem 'faker'
+    #gem 'timecop'
 end
 
 gem 'dalli'
@@ -45,7 +49,6 @@ group :production do
 	# heroku
 	gem 'unicorn'
 	gem 'pg', '0.13.2'
-	gem 'mysql2'
 	gem 'execjs'
 	gem 'therubyracer'
 	gem 'aws-sdk'
@@ -56,10 +59,10 @@ end
 gem 'jquery-rails'
 
 # formulários
-gem 'protected_attributes', :github => 'rails/protected_attributes'
+gem 'protected_attributes', :github => 'rails/protected_attributes', :ref => '11747686c9a'
 gem 'simple_form', '>= 3.0.0.rc'
-#gem 'client_side_validations', :github => 'bcardarella/client_side_validations', :branch => 'rails-4.0-quick-fixes'
-#gem 'client_side_validations-simple_form', :github => 'iffyuva/client_side_validations-simple_form'
+gem 'client_side_validations', :github => 'bcardarella/client_side_validations', :branch => '4-0-beta'
+gem 'client_side_validations-simple_form', :github => 'rogeriochaves/client_side_validations-simple_form'
 gem 'ckeditor_rails', :github => 'tsechingho/ckeditor-rails'
 gem 'nested_form', :github => 'ryanb/nested_form'
 gem 'paperclip'
@@ -73,6 +76,3 @@ gem 'brazilian-rails'
 gem 'exception_notification', :github => "rails/exception_notification", :require => 'exception_notifier'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
-
-# heroku
-#gem 'heroku'

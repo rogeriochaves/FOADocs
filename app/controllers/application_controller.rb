@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :masc_fem
-  before_filter :beta_authentication, :tabs_configure, :change_password_redirect
+  before_filter :tabs_configure, :change_password_redirect
   #protect_from_forgery
 
   def change_password_redirect
@@ -12,15 +12,12 @@ class ApplicationController < ActionController::Base
   	end
   end
 
-  def beta_authentication
-  end
-
   def tabs_configure
     load Rails.root + 'config/initializers/app_admin.rb' if Rails.env == "development"
   end
 
   def not_found
-    render :file => "public/404.html", :status => 404, :layout => false
+    return render :file => "public/404.html", :status => 404, :layout => false
   end
 
   def current_ability
@@ -40,10 +37,6 @@ class ApplicationController < ActionController::Base
 
   rescue_from CanCan::AccessDenied do |exception|
   	flash[:notice] = "Acesso negado"
-  	if current_usuario
-  		redirect_to :controller => '/admin/admin'
-  	else
-    	redirect_to new_usuario_session_path
-    end
+    redirect_to(current_usuario ? {:controller => '/admin/admin'} : new_usuario_session_path)
   end
 end

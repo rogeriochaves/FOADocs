@@ -20,7 +20,7 @@ class OrdenacaoGenerator < Rails::Generators::Base
 			end
 		end
 
-		modelo = para.underscore
+		modelo = para.pluralize.underscore
 
 		#===== Copy the View =====#
 		copy_file "ordenar.html.erb", "app/views/#{modelo}/ordenar.html.erb"
@@ -35,6 +35,7 @@ class OrdenacaoGenerator < Rails::Generators::Base
 		@list = controller_name.classify.constantize.order(:position)
 		if request.post?
 			@list.each do |m|
+				next if !params[controller_name.singularize].index(m.id.to_s)
 				m.position = params[controller_name.singularize].index(m.id.to_s) + 1
 				m.save
 			end
@@ -46,6 +47,29 @@ class OrdenacaoGenerator < Rails::Generators::Base
 			say_status "added", "Método adicionado ao Controller", :green
 		else
 			say_status "já adicionado", "Método ordenar já existe no controller", :blue
+		end
+
+		#===== Add test to controller_test ====#
+
+		test_controller = "test/controllers/#{modelo}_controller_test.rb"
+		
+		if !in_file(test_controller, "test \"should list #{modelo} to order\" do")
+			gsub_file test_controller, /(end[ \t\n]*\Z)/i do |match|
+
+"	test \"should list #{modelo} to order\" do
+		get :ordenar
+		assert_response :success
+	end
+
+	test \"should save updated order\" do
+		post :ordenar, #{modelo.singularize}: [#{modelo}(:two).id, #{modelo}(:one).id]
+		assert_equal 2, #{modelo}(:one).reload.position
+	end\n\n#{match}"
+
+			end
+			say_status "added", "Teste adicionado ao ControllerTest", :green
+		else
+			say_status "já adicionado", "Método ordenar já existe no teste do controller", :blue
 		end
 
 		#===== Add route =====#
