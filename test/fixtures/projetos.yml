@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nome: MyString
+  tipo: MyString
+  data_inicio: 2014-02-05 20:09:05
+  fechado: false
+
+two:
+  nome: MyString
+  tipo: MyString
+  data_inicio: 2014-02-05 20:09:05
+  fechado: false

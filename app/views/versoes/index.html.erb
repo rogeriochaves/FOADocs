@@ -1,0 +1,49 @@
+<h1>Versoes</h1>
+
+<table id="lista" class="table table-bordered table-striped" sort-list="[[0, 1]]">
+<thead>
+	<tr>
+
+		<th>Arquivo</th>
+
+		<th>Revision</th>
+
+		<th>Download url</th>
+
+		<th>Conteudo</th>
+
+		<th>Alteracao</th>
+
+		<th>Modified date</th>
+
+		<th>Last modifying user name</th>
+
+		<th>Tamanho</th>
+
+		<th width="140">Ações</th>
+	</tr>
+</thead>
+<tbody>
+	<% @versoes.each do |versao| %>
+	<tr>
+		<td><%= versao.arquivo %></td>
+		<td><%= versao.revision_id %></td>
+		<td><%= versao.download_url %></td>
+		<td><%= versao.conteudo %></td>
+		<td><%= versao.alteracao %></td>
+		<td><%=l versao.modified_date if versao.modified_date %></td>
+		<td><%= versao.last_modifying_user_name %></td>
+		<td><%= versao.tamanho %></td>
+		<td>
+	      <%= link_to 'Exibir', versao %>
+	      <%= link_to 'Editar', edit_versao_path(versao) %>
+	      <%= link_to 'Excluir', versao, data: {confirm: 'Tem certeza?'}, method: :delete %>
+	    </td>
+	</tr>  
+	<% end %>
+<% if @versoes.size == 0 %>
+	<tr><td colspan="9">Nenhum registro encontrado</td></tr>
+<% end %>
+</tbody>
+</table>
+<center><%= page_navigation_links @versao %></center>

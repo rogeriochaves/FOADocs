@@ -1,0 +1,43 @@
+<h1>Notificacoes</h1>
+
+<table id="lista" class="table table-bordered table-striped" sort-list="[[0, 1]]">
+<thead>
+	<tr>
+
+		<th>Arquivo</th>
+
+		<th>Versao</th>
+
+		<th>Comentario</th>
+
+		<th>Usuario</th>
+
+		<th>Texto</th>
+
+		<th>Lido</th>
+
+		<th width="140">Ações</th>
+	</tr>
+</thead>
+<tbody>
+	<% @notificacoes.each do |notificacao| %>
+	<tr>
+		<td><%= notificacao.arquivo %></td>
+		<td><%= notificacao.versao %></td>
+		<td><%= notificacao.comentario %></td>
+		<td><%= notificacao.usuario %></td>
+		<td><%= notificacao.texto %></td>
+		<td><%= notificacao.lido %></td>
+		<td>
+	      <%= link_to 'Exibir', notificacao %>
+	      <%= link_to 'Editar', edit_notificacao_path(notificacao) %>
+	      <%= link_to 'Excluir', notificacao, data: {confirm: 'Tem certeza?'}, method: :delete %>
+	    </td>
+	</tr>  
+	<% end %>
+<% if @notificacoes.size == 0 %>
+	<tr><td colspan="7">Nenhum registro encontrado</td></tr>
+<% end %>
+</tbody>
+</table>
+<center><%= page_navigation_links @notificacao %></center>

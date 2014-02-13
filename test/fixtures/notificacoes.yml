@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  arquivo_id: 
+  versao_id: 
+  comentario_id: 
+  usuario_id: 
+  texto: MyString
+  lido: false
+
+two:
+  arquivo_id: 
+  versao_id: 
+  comentario_id: 
+  usuario_id: 
+  texto: MyString
+  lido: false

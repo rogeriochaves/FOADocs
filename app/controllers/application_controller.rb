@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   helper_method :masc_fem
-  before_filter :tabs_configure, :change_password_redirect
+  before_filter :tabs_configure#, :change_password_redirect
   #protect_from_forgery
 
   def change_password_redirect

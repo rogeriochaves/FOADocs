@@ -41,24 +41,24 @@ $(document).ready(function(){
 		}
 	});
 
-	var tentativas = 0;
-	$('.frm-login').submit(function(){
-		tentativas += 1;
+	$('.frm-login').submit(function(e){
+		e.preventDefault();
+
 		NProgress.start();
-		setTimeout(function(){
-			if(tentativas > 1){
+		$.post('/_login', $('.frm-login').serialize(), function(data){
+			if(data == "ok"){
 				NProgress.done();
 				$('.box-login').animate({bottom: "120%"}, 1000);
 				$('#nuvens-rodape').animate({top: "100%"}, 1000);
 				$('body').delay(500).fadeOut(1000);
+				setTimeout(function(){
+					window.location = '/';
+				}, 1200);
 			}else{
 				NProgress.done();
 				$('.nuvem-girar').effect('shake');
 				$('.frm-login input[type=submit]').val("Login ou Senha inválidos");
 			}
-		}, 3000);
-		
-
-		return false;
+		});
 	});
 });

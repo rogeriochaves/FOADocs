@@ -1,17 +1,15 @@
 class PageController < ApplicationController
+  before_filter :authenticate_usuario!, :only => :index
+
   def index
   end
 
-  def contato
-    @mensagem = Mensagem.new
-    if request.post?
-      @mensagem = Mensagem.new(params[:mensagem])
-      if @mensagem.save
-        ContatoMailer.enviar_contato(@mensagem).deliver
-        @titulo = 'Sua mensagem foi enviada com sucesso'
-        @subtitulo = 'Aguarde por uma resposta em sua caixa de entrada de email'
-        render action: :ok
-      end
+  def _login
+    if u = Usuario.find_by_email(params[:usuario][:email]) and u.valid_password? params[:usuario][:password]
+      sign_in u
+      render :text => "ok"
+    else
+      render :text => "error"
     end
   end
   

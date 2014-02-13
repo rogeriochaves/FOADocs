@@ -1,5 +1,18 @@
 FOADocs::Application.routes.draw do
 
+    get 'google_drive/:action' => 'google_drive'
+    get 'google_drive' => 'google_drive#index'
+
+  resources :notificacoes
+
+  resources :comentarios
+
+  resources :versoes
+
+  resources :arquivos
+
+  resources :projetos
+
 	get 'banneres/ordenar' => 'banneres#ordenar'
 	post 'banneres/ordenar' => 'banneres#ordenar'
 

@@ -1,0 +1,57 @@
+<h1>Detalhes <%= masc_fem('arquivo', 'do', 'da') %> Arquivo</h1>
+
+<div class="fieldset">
+	<dl>
+		
+		<dt class="label label-default">Projeto</dt>
+		<dd>
+			<pre><%= @arquivo.projeto %></pre>
+		</dd>
+		
+		<dt class="label label-default">Arquivo</dt>
+		<dd>
+			<pre><%= @arquivo.arquivo %></pre>
+		</dd>
+		
+		<dt class="label label-default">File</dt>
+		<dd>
+			<pre><%= @arquivo.file_id %></pre>
+		</dd>
+		
+		<dt class="label label-default">Nome</dt>
+		<dd>
+			<pre><%= @arquivo.nome %></pre>
+		</dd>
+		
+		<dt class="label label-default">Diretorio</dt>
+		<dd>
+			<pre><%= @arquivo.diretorio %></pre>
+		</dd>
+		
+		<dt class="label label-default">Mime type</dt>
+		<dd>
+			<pre><%= @arquivo.mime_type %></pre>
+		</dd>
+		
+		<dt class="label label-default">Etag</dt>
+		<dd>
+			<pre><%= @arquivo.etag %></pre>
+		</dd>
+		
+		<dt class="label label-default">Tamanho</dt>
+		<dd>
+			<pre><%= @arquivo.tamanho %></pre>
+		</dd>
+		
+		<dt class="label label-default">Download url</dt>
+		<dd>
+			<pre><%= @arquivo.download_url %></pre>
+		</dd>
+		
+		<dt class="label label-default">Icon link</dt>
+		<dd>
+			<pre><%= @arquivo.icon_link %></pre>
+		</dd>
+		
+	</dl>
+</div>

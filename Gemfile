@@ -19,7 +19,7 @@ gem 'bower-rails', :github => '42dev/bower-rails'
 
 group :development do
     gem 'capistrano', '2.11.2'
-    gem 'sqlite3'
+    gem 'mysql2'
     # fake generator
     gem 'faker'
     gem 'brfaker'
@@ -76,3 +76,6 @@ gem 'brazilian-rails'
 gem 'exception_notification', :github => "rails/exception_notification", :require => 'exception_notifier'
 gem 'turbolinks'
 gem 'jquery-turbolinks'
+
+#gem 'signet', github: 'krautcomputing/signet'#, branch: 'token_credential_uri_as_hash'
+gem 'google-api-client', github: 'google/google-api-ruby-client'#'0.7.0.rc2'

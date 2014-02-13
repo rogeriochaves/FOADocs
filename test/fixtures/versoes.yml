@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  arquivo_id: 
+  revision_id: MyString
+  download_url: MyString
+  conteudo: MyText
+  alteracao: MyText
+  modified_date: 2014-02-05 20:40:31
+  last_modifying_user_name: MyString
+  tamanho: 1
+
+two:
+  arquivo_id: 
+  revision_id: MyString
+  download_url: MyString
+  conteudo: MyText
+  alteracao: MyText
+  modified_date: 2014-02-05 20:40:31
+  last_modifying_user_name: MyString
+  tamanho: 1

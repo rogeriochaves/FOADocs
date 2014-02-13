@@ -1,0 +1,34 @@
+<h1>Comentarios</h1>
+
+<table id="lista" class="table table-bordered table-striped" sort-list="[[0, 1]]">
+<thead>
+	<tr>
+
+		<th>Usuario</th>
+
+		<th>Versao</th>
+
+		<th>Comentario</th>
+
+		<th width="140">Ações</th>
+	</tr>
+</thead>
+<tbody>
+	<% @comentarios.each do |comentario| %>
+	<tr>
+		<td><%= comentario.usuario %></td>
+		<td><%= comentario.versao %></td>
+		<td><%= comentario.comentario %></td>
+		<td>
+	      <%= link_to 'Exibir', comentario %>
+	      <%= link_to 'Editar', edit_comentario_path(comentario) %>
+	      <%= link_to 'Excluir', comentario, data: {confirm: 'Tem certeza?'}, method: :delete %>
+	    </td>
+	</tr>  
+	<% end %>
+<% if @comentarios.size == 0 %>
+	<tr><td colspan="4">Nenhum registro encontrado</td></tr>
+<% end %>
+</tbody>
+</table>
+<center><%= page_navigation_links @comentario %></center>

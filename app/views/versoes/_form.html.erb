@@ -1,0 +1,18 @@
+<%= simple_form_for(@versao, validate: true, html: {class: 'form-horizontal'}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :arquivo %>
+    <%= f.input :revision_id %>
+    <%= f.input :download_url %>
+    <%= f.input :conteudo %>
+    <%= f.input :alteracao %>
+    <%= f.input :modified_date %>
+    <%= f.input :last_modifying_user_name %>
+    <%= f.input :tamanho %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn-success' %>
+  </div>
+<% end %>

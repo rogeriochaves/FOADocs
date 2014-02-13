@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  usuario_id: 
+  versao_id: 
+  comentario: MyText
+
+two:
+  usuario_id: 
+  versao_id: 
+  comentario: MyText

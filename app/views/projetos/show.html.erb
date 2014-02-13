@@ -1,0 +1,27 @@
+<h1>Detalhes <%= masc_fem('projeto', 'do', 'da') %> Projeto</h1>
+
+<div class="fieldset">
+	<dl>
+		
+		<dt class="label label-default">Nome</dt>
+		<dd>
+			<pre><%= @projeto.nome %></pre>
+		</dd>
+		
+		<dt class="label label-default">Tipo</dt>
+		<dd>
+			<pre><%= @projeto.tipo %></pre>
+		</dd>
+		
+		<dt class="label label-default">Data inicio</dt>
+		<dd>
+			<pre><%=l @projeto.data_inicio if @projeto.data_inicio %></pre>
+		</dd>
+		
+		<dt class="label label-default">Fechado</dt>
+		<dd>
+			<pre><%= @projeto.fechado %></pre>
+		</dd>
+		
+	</dl>
+</div>

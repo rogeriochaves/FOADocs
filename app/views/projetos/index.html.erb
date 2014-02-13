@@ -1,0 +1,37 @@
+<h1>Projetos</h1>
+
+<table id="lista" class="table table-bordered table-striped" sort-list="[[0, 1]]">
+<thead>
+	<tr>
+
+		<th>Nome</th>
+
+		<th>Tipo</th>
+
+		<th>Data inicio</th>
+
+		<th>Fechado</th>
+
+		<th width="140">Ações</th>
+	</tr>
+</thead>
+<tbody>
+	<% @projetos.each do |projeto| %>
+	<tr>
+		<td><%= projeto.nome %></td>
+		<td><%= projeto.tipo %></td>
+		<td><%=l projeto.data_inicio if projeto.data_inicio %></td>
+		<td><%= projeto.fechado %></td>
+		<td>
+	      <%= link_to 'Exibir', projeto %>
+	      <%= link_to 'Editar', edit_projeto_path(projeto) %>
+	      <%= link_to 'Excluir', projeto, data: {confirm: 'Tem certeza?'}, method: :delete %>
+	    </td>
+	</tr>  
+	<% end %>
+<% if @projetos.size == 0 %>
+	<tr><td colspan="5">Nenhum registro encontrado</td></tr>
+<% end %>
+</tbody>
+</table>
+<center><%= page_navigation_links @projeto %></center>

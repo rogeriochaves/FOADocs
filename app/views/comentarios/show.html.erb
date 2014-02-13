@@ -1,0 +1,22 @@
+<h1>Detalhes <%= masc_fem('comentario', 'do', 'da') %> Comentario</h1>
+
+<div class="fieldset">
+	<dl>
+		
+		<dt class="label label-default">Usuario</dt>
+		<dd>
+			<pre><%= @comentario.usuario %></pre>
+		</dd>
+		
+		<dt class="label label-default">Versao</dt>
+		<dd>
+			<pre><%= @comentario.versao %></pre>
+		</dd>
+		
+		<dt class="label label-default">Comentario</dt>
+		<dd>
+			<pre><%= @comentario.comentario %></pre>
+		</dd>
+		
+	</dl>
+</div>

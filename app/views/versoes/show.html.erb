@@ -1,0 +1,47 @@
+<h1>Detalhes <%= masc_fem('versao', 'do', 'da') %> Versao</h1>
+
+<div class="fieldset">
+	<dl>
+		
+		<dt class="label label-default">Arquivo</dt>
+		<dd>
+			<pre><%= @versao.arquivo %></pre>
+		</dd>
+		
+		<dt class="label label-default">Revision</dt>
+		<dd>
+			<pre><%= @versao.revision_id %></pre>
+		</dd>
+		
+		<dt class="label label-default">Download url</dt>
+		<dd>
+			<pre><%= @versao.download_url %></pre>
+		</dd>
+		
+		<dt class="label label-default">Conteudo</dt>
+		<dd>
+			<pre><%= @versao.conteudo %></pre>
+		</dd>
+		
+		<dt class="label label-default">Alteracao</dt>
+		<dd>
+			<pre><%= @versao.alteracao %></pre>
+		</dd>
+		
+		<dt class="label label-default">Modified date</dt>
+		<dd>
+			<pre><%=l @versao.modified_date if @versao.modified_date %></pre>
+		</dd>
+		
+		<dt class="label label-default">Last modifying user name</dt>
+		<dd>
+			<pre><%= @versao.last_modifying_user_name %></pre>
+		</dd>
+		
+		<dt class="label label-default">Tamanho</dt>
+		<dd>
+			<pre><%= @versao.tamanho %></pre>
+		</dd>
+		
+	</dl>
+</div>

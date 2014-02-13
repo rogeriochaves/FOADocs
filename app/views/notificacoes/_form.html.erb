@@ -1,0 +1,16 @@
+<%= simple_form_for(@notificacao, validate: true, html: {class: 'form-horizontal'}) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :arquivo %>
+    <%= f.association :versao %>
+    <%= f.association :comentario %>
+    <%= f.association :usuario %>
+    <%= f.input :texto %>
+    <%= f.input :lido %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn-success' %>
+  </div>
+<% end %>

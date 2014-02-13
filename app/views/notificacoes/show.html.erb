@@ -1,0 +1,37 @@
+<h1>Detalhes <%= masc_fem('notificacao', 'do', 'da') %> Notificacao</h1>
+
+<div class="fieldset">
+	<dl>
+		
+		<dt class="label label-default">Arquivo</dt>
+		<dd>
+			<pre><%= @notificacao.arquivo %></pre>
+		</dd>
+		
+		<dt class="label label-default">Versao</dt>
+		<dd>
+			<pre><%= @notificacao.versao %></pre>
+		</dd>
+		
+		<dt class="label label-default">Comentario</dt>
+		<dd>
+			<pre><%= @notificacao.comentario %></pre>
+		</dd>
+		
+		<dt class="label label-default">Usuario</dt>
+		<dd>
+			<pre><%= @notificacao.usuario %></pre>
+		</dd>
+		
+		<dt class="label label-default">Texto</dt>
+		<dd>
+			<pre><%= @notificacao.texto %></pre>
+		</dd>
+		
+		<dt class="label label-default">Lido</dt>
+		<dd>
+			<pre><%= @notificacao.lido %></pre>
+		</dd>
+		
+	</dl>
+</div>

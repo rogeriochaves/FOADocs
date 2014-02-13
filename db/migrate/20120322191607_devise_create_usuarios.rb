@@ -27,6 +27,9 @@ class DeviseCreateUsuarios < ActiveRecord::Migration
       # t.token_authenticatable
       t.string   :nome
       t.string   :grupo, :default => 'usuario'
+      t.string   :matricula
+      t.string   :cloud_token
+      t.string   :turma
       t.boolean  :change_password
 
       t.timestamps

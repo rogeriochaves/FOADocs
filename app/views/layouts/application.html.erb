@@ -32,20 +32,7 @@
 		</div>
 	</div>
 
-	<footer>
-		<ul id="nuvens-rodape" class="unselectable" data-friction-x="0.1" data-friction-y="0.4" data-scalar-x="25" data-scalar-y="5">
-			<li class="layer" data-depth="0.3">
-				<div class="nuvem nuvem-3"></div>
-			</li>
-			<li class="layer" data-depth="0.6">
-				<div class="nuvem nuvem-2"></div>
-			</li>
-			<li class="layer" data-depth="1">
-				<div class="nuvem nuvem-1"></div>
-				<div class="branco"></div>
-			</li>
-		</ul>
-	</footer>
+	<%= yield :rodape %>
 
 <%= javascript_include_tag "application" %>
 <!-- Animações mais rápidas -->

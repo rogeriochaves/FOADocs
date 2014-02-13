@@ -51,9 +51,9 @@ module FOADocs
     config.assets.version = '1.0'
     #config.assets.paths << "#{Rails.root}/app/assets/fonts"
 
-    config.to_prepare do
-        Devise::SessionsController.layout "administrativo"
-    end
+    #config.to_prepare do
+    #    Devise::SessionsController.layout "administrativo"
+    #end
 
     config.generators do |g|  
         g.stylesheets false  

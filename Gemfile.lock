@@ -12,6 +12,22 @@ GIT
     client_side_validations (3.2.2)
 
 GIT
+  remote: git://github.com/google/google-api-ruby-client.git
+  revision: bfa522576637fed3725d5c73305eb23f996f0b0f
+  specs:
+    google-api-client (0.7.1)
+      addressable (>= 2.3.2)
+      autoparse (>= 0.3.3)
+      extlib (>= 0.9.15)
+      faraday (>= 0.9.0)
+      jwt (>= 0.1.5)
+      launchy (>= 2.1.1)
+      multi_json (>= 1.0.0)
+      retriable (>= 1.4)
+      signet (>= 0.5.0)
+      uuidtools (>= 2.1.0)
+
+GIT
   remote: git://github.com/rails/exception_notification.git
   revision: 192a49a02d63d28b23ed41cebadfedd490929cf1
   specs:
@@ -84,6 +100,10 @@ GEM
     addressable (2.3.5)
     arel (4.0.1)
     atomic (1.1.14)
+    autoparse (0.3.3)
+      addressable (>= 2.3.1)
+      extlib (>= 0.9.15)
+      multi_json (>= 1.0.0)
     aws-sdk (1.29.1)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -160,8 +180,11 @@ GEM
     eventmachine (1.0.3)
     excon (0.25.3)
     execjs (2.0.2)
+    extlib (0.9.16)
     faker (1.2.0)
       i18n (~> 0.5)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     ffi (1.9.3)
     formatador (0.2.4)
     guard (2.2.4)
@@ -193,6 +216,8 @@ GEM
       railties (>= 3.1.0)
       turbolinks
     json (1.7.7)
+    jwt (0.1.11)
+      multi_json (>= 1.5)
     kgio (2.8.1)
     launchy (2.4.2)
       addressable (~> 2.3)
@@ -215,6 +240,8 @@ GEM
     mocha (0.14.0)
       metaclass (~> 0.0.1)
     multi_json (1.8.2)
+    multipart-post (2.0.0)
+    mysql2 (0.3.14)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -276,6 +303,7 @@ GEM
     ref (1.0.5)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    retriable (1.4.1)
     ruby-imagespec (0.3.1)
     rubyzip (1.1.0)
     sass (3.2.12)
@@ -283,6 +311,11 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    signet (0.5.0)
+      addressable (>= 2.2.3)
+      faraday (>= 0.9.0.rc5)
+      jwt (>= 0.1.5)
+      multi_json (>= 1.0.0)
     simple_form (3.0.1)
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
@@ -349,6 +382,7 @@ DEPENDENCIES
   exception_notification!
   execjs
   faker
+  google-api-client!
   guard
   guard-livereload
   heroku
@@ -357,6 +391,7 @@ DEPENDENCIES
   json (= 1.7.7)
   letter_opener
   mocha
+  mysql2
   nested_form!
   paperclip
   paperclip-aws!
