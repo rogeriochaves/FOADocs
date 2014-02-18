@@ -80,7 +80,7 @@ FOADocs::Application.routes.draw do
 
     get 'admin' => 'admin/admin#index'
 
-    devise_for :usuarios, :path_names => { :sign_in => 'login', :sign_out => 'logout' }, controllers: { sessions: 'sessions' }
+    devise_for :usuarios, :path_names => { :sign_in => 'login', :sign_out => 'logout' }, controllers: { sessions: 'sessions', :omniauth_callbacks => "google_drive" }
 
     post ':action' => 'page'
     get ':action' => 'page'

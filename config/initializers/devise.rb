@@ -1,7 +1,17 @@
 # encoding: UTF-8
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
+require "omniauth-google-oauth2"
+#OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development? 
 Devise.setup do |config|
+
+  options = {:scope => ['https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile']}
+
+  if Rails.env.production?
+    options.merge!(:client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}})
+  end
+
+  config.omniauth :google_oauth2, '808107694640-kvtrshot11r1nf2cvle1c1drhf5qcnc4.apps.googleusercontent.com', 'Mh1k3ppG230gJRQyfdLMhWi_', options
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class with default "from" parameter.

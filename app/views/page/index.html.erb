@@ -1,1 +1,6 @@
 <h1>logado com sucesso</h1>
+
+<%= current_usuario.nome %> <br>
+<img src="<%= current_usuario.image %>" />
+
+<%= link_to "Sign in with Google", usuario_omniauth_authorize_path(:google_oauth2) %>

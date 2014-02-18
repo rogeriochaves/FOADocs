@@ -18,6 +18,7 @@ gem 'sprockets-image_compressor'
 gem 'bower-rails', :github => '42dev/bower-rails'
 
 group :development do
+    gem 'certified', github: 'stevegraham/certified'
     gem 'capistrano', '2.11.2'
     gem 'mysql2'
     # fake generator
@@ -78,4 +79,5 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 #gem 'signet', github: 'krautcomputing/signet'#, branch: 'token_credential_uri_as_hash'
+gem "omniauth-google-oauth2"
 gem 'google-api-client', github: 'google/google-api-ruby-client'#'0.7.0.rc2'

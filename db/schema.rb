@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205224817) do
+ActiveRecord::Schema.define(version: 20140218030458) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "arquivos", force: true do |t|
     t.integer  "projeto_id"
@@ -138,6 +141,9 @@ ActiveRecord::Schema.define(version: 20140205224817) do
     t.boolean  "change_password"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "image"
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
