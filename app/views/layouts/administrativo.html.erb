@@ -36,6 +36,7 @@
 	                                            controllers << con.is_a?(Array) ? con[0] : con
 	                                        end
 
+<<<<<<< HEAD
 	                                    %>
 	                                    <li class="dropdown <%= 'active' if controllers.include?(params[:controller]) %>">
 	                                      <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= key %> <b class="caret"></b></a>
@@ -55,6 +56,27 @@
 	                            <% else %>
 	                                <% if c.is_a?(Array); c2 = c[1]; c = c[0]; else; c2 = c.to_s.gsub('/', '').gsub('admin', '').to_s.titleize; end %>
 	                                <% if can? :index, c %>
+=======
+                                        %>
+                                        <li class="dropdown <%= 'active' if controllers.include?(params[:controller]) %>">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= key %> <b class="caret"></b></a>
+                                          <ul class="dropdown-menu">
+                                            <% value.each do |con| %>
+                                                <% if con.is_a?(Array); con2 = con[1]; con = con[0]; else; con2 = con.to_s.sub('admin', '').gsub('/', '').titleize; end %>
+                                                <% if can? :index, con %>
+                                                    <li class="<%= 'active' if params[:controller].gsub('admin/','') == con.to_s %>">
+                                                        <%= link_to con2, :controller => '/' + con %>
+                                                    </li>
+                                                <% end %>
+                                            <% end %>
+                                          </ul>
+                                        </li>
+                                    <% end %>
+                                
+                                <% else %>
+                                    <% if c.is_a?(Array); c2 = c[1]; c = c[0]; else; c2 = c.to_s.gsub('/', '').gsub('admin', '').to_s.titleize; end %>
+                                    <% if can? :index, c %>
+>>>>>>> 303b1b0... deploy
 
 	                                    <li class="<%= 'active' if params[:controller].gsub('admin/','') == c.to_s %>">
 	                                        <%= link_to c2, :controller => '/' + c.to_s %>
