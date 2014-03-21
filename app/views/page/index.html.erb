@@ -4,3 +4,9 @@
 <img src="<%= current_usuario.image %>" />
 
 <%= link_to "Sign in with Google", usuario_omniauth_authorize_path(:google_oauth2) %>
+
+<br>
+Token: <%= current_usuario.token %> <br>
+Refresh Token: <%= current_usuario.refresh_token %>
+
+<%= current_usuario.lista_pastas %>

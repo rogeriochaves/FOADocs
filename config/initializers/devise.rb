@@ -5,7 +5,7 @@ require "omniauth-google-oauth2"
 #OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE if Rails.env.development? 
 Devise.setup do |config|
 
-  options = {:scope => ['https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile']}
+  options = {scope: ['https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile'], prompt: 'consent'}
 
   if Rails.env.production?
     options.merge!(:client_options => {:ssl => {:ca_file => '/usr/lib/ssl/certs/ca-certificates.crt'}})

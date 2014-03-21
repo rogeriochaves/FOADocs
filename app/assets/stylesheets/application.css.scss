@@ -17,3 +17,30 @@
 @import "rails-sass-images";
 @import "react.css.scss";
 
+.form-control{border-radius:0;}
+header{
+	.navbar{background:#0088cc; border-radius:0}
+	.select-projetos{-webkit-appearance:none; color:#164169; box-shadow: none; border:none; font-size: 18px; height: 48px; margin-top: 22px; background:asset-url('seta-select.png') #FFF right 0 no-repeat; cursor:pointer; width:70%; float: left}
+	.notificacoes{
+		margin-top: 25px; float: left;
+		.notificacao{
+			margin-left: 25px; cursor: pointer;
+			&.notificacao-comentario{
+				background:asset-url('icon-comentario.png'); width: 40px; height: 35px; margin-top: 5px;
+				.quant{margin:18px 0 0 25px}
+				.lista-notificacoes{margin-top: 33px}
+			}
+			&.notificacao-documento{
+				background:asset-url('icon-documento.png'); width: 29px; height: 36px;
+			}
+			.quant{background:#F00; position: absolute; width: 22px; height: 22px; border-radius:22px; text-align: center; color:#FFF; padding-top: 1px; margin:22px 0 0 19px}
+			.lista-notificacoes{
+				position: absolute; background:#FFF; list-style: none; margin:0; padding:0; width:150px; display: none;
+				box-shadow: 0 0 5px #000; z-index:2; margin-top: 38px;
+				li{padding:10px; &:hover{background:#daf1fd;}}
+			}
+			&:hover .lista-notificacoes{display: block;}
+		}
+	}
+	.busca{box-shadow: none; border:none; height: 48px; margin-top: 22px; background:asset-url('icon-busca.png') #FFF 95% 10px no-repeat;}
+}

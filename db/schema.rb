@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140218030458) do
+ActiveRecord::Schema.define(version: 20140320235251) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -136,7 +136,6 @@ ActiveRecord::Schema.define(version: 20140218030458) do
     t.string   "nome"
     t.string   "grupo",                  default: "usuario"
     t.string   "matricula"
-    t.string   "cloud_token"
     t.string   "turma"
     t.boolean  "change_password"
     t.datetime "created_at"
@@ -144,6 +143,8 @@ ActiveRecord::Schema.define(version: 20140218030458) do
     t.string   "provider"
     t.string   "uid"
     t.string   "image"
+    t.string   "token"
+    t.string   "refresh_token"
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree

@@ -47,15 +47,9 @@ end
 
 gem 'dalli'
 group :production do
-<<<<<<< HEAD
 	# heroku
 	gem 'unicorn'
 	gem 'pg', '0.13.2'
-=======
-	#gem 'unicorn'
-	gem 'mysql2'
-	#gem 'pg', '0.13.2'
->>>>>>> 303b1b0... deploy
 	gem 'execjs'
 	gem 'therubyracer'
 	gem 'aws-sdk'
