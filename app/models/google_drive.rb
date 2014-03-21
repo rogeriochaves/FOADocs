@@ -22,17 +22,19 @@ class GoogleDrive
     })
 
     media = Google::APIClient::UploadIO.new('documento.txt', 'text/plain')
-    result = api_client.execute(
-      :api_method => drive.files.insert,
-      :body_object => file,
-      :media => media,
-      :parameters => {
-        'uploadType' => 'multipart',
-        'alt' => 'json'},
-      :authorization => user_credentials
-    )
 
-    raise result.data.to_hash.inspect
+    result = do_request do
+      api_client.execute(
+        :api_method => drive.files.insert,
+        :body_object => file,
+        :media => media,
+        :parameters => {
+          'uploadType' => 'multipart',
+          'alt' => 'json'},
+        :authorization => user_credentials
+      )
+    end
+    raise result.inspect
   end
 
   private
@@ -47,14 +49,51 @@ class GoogleDrive
     end
   end
 
+  def auth
+    @auth ||= api_client.authorization.dup
+  end
+
   def drive
     @drive ||= api_client.discovered_api('drive', 'v2')
   end
 
+  def do_request(&block)
+    if auth.expired?
+      refresh_token
+    end
+
+    res = yield
+    case res.status
+    when 200, 201 # success
+      res.data
+    when 400
+      raise BadRequestError, res
+    when 401
+      if !@retrying
+        @retrying = true
+        refresh_token
+        do_request(&block) # retry the request
+      else
+        raise "Already attempted retry. Auth token=#{auth.access_token} is invalid."
+      end
+    when 404
+      raise ResourceNotFoundError, res
+    when 500
+      raise UnexpectedAPIError, res
+    else
+      raise UnexpectedAPIError, res
+    end
+  end
+
   def user_credentials
-    auth = api_client.authorization.dup
     # @user.credentials is an OmniAuth::AuthHash  cerated from request.env['omniauth.auth']['credentials']
-    auth.update_token!(access_token: @usuario.token) 
+    auth.update_token!(access_token: @usuario.token, refresh_token: @usuario.refresh_token) 
     auth
+  end
+
+  def refresh_token
+    auth.refresh!
+    @usuario.update(token: auth.access_token, refresh_token: auth.refresh_token)
+    #setup_client_auth
   end
 end
