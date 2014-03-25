@@ -9,7 +9,7 @@ FOADocs::Application.routes.draw do
 
   resources :versoes
 
-  resources :arquivos
+  resources :arquivos, :path => "admin/arquivos"
 
   resources :projetos
 

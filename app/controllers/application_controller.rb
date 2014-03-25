@@ -1,7 +1,13 @@
 class ApplicationController < ActionController::Base
   helper_method :masc_fem
-  before_filter :tabs_configure#, :change_password_redirect
+  before_filter :tabs_configure, :login_with_google#, :change_password_redirect
   #protect_from_forgery
+
+  def login_with_google
+    if current_usuario and !current_usuario.token
+      redirect_to usuario_omniauth_authorize_path(:google_oauth2)
+    end
+  end
 
   def change_password_redirect
   	if !session[:react_login] and current_usuario and current_usuario.change_password and

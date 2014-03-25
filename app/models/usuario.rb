@@ -19,11 +19,11 @@ class Usuario < ActiveRecord::Base
         self.grupo == 'admin'
     end
 
-    def self.find_for_google_oauth2(auth)
+    def self.find_for_google_oauth2(current_usuario, auth)
         if user = Usuario.where(auth.slice(:provider, :uid)).first
           # ok
         else
-          user = Usuario.new
+          user = (current_usuario || Usuario.new)
         end
         user.provider = auth.provider
         user.uid = auth.uid
@@ -36,9 +36,16 @@ class Usuario < ActiveRecord::Base
         return user
     end
 
-    def lista_pastas
-        gdrive = GoogleDrive.new(self)
-        gdrive.lista_pastas
+    def google_drive
+        @google_drive ||= GoogleDrive.new(self)
+    end
+
+    def lista_pastas(id = nil)
+        google_drive.lista_pastas(id)
+    end
+
+    def info_arquivo(id)
+        google_drive.info_arquivo(id)
     end
 
 end

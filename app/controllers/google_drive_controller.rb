@@ -11,9 +11,11 @@
 
 
 class GoogleDriveController < Devise::OmniauthCallbacksController
+	skip_before_filter :login_with_google, :only => :google_oauth2
+
 	def google_oauth2
 	    # You need to implement the method below in your model (e.g. app/models/user.rb)
-	    @user = Usuario.find_for_google_oauth2(request.env["omniauth.auth"])
+	    @user = Usuario.find_for_google_oauth2(current_usuario, request.env["omniauth.auth"])
 
 	    if @user.persisted?
 	      sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated

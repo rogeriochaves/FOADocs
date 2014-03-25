@@ -1,0 +1,18 @@
+<ul>
+	<% if @pasta and @pasta.parents[0] %>
+		<li>
+			<%= image_tag "https://ssl.gstatic.com/docs/doclist/images/icon_11_collection_list.png" %>
+			<%= link_to "..", :action => :arquivos, :id => @pasta.parents[0].id %>
+		</li>
+	<% end %>
+	<% @arquivos.items.each do |item| %>
+		<li>
+			<%= image_tag item.icon_link %>
+			<% if item.mime_type == "application/vnd.google-apps.folder" %>
+				<%= link_to item.title, :action => :arquivos, :id => item.id %>
+			<% else %>
+				<a href="https://drive.google.com/uc?id=<%= item.id %>"><%= item.title %></a>
+			<% end %>
+		</li>
+	<% end %>
+</ul>

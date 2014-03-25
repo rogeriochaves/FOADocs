@@ -15,8 +15,8 @@
 //= require bootstrap
 //= require rails.validations
 //= require google_analytics
-//= require turbolinks
-//= require jquery.turbolinks
+//= not_require turbolinks
+//= not_require jquery.turbolinks
 //= require nprogress
 //= not_require_tree ./fancybox
 //= require_tree ./parallax

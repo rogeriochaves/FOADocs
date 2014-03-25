@@ -8,13 +8,42 @@ class GoogleDrive
   CLIENT_SECRET = 'Mh1k3ppG230gJRQyfdLMhWi_'
   OAUTH_SCOPE = ['https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile']
   REDIRECT_URI = 'http://localhost:3000/'
-  CREDENTIALS_FILE = Rails.root.join('tmp', 'google_api_credentials.json')
 
   def initialize(usuario)
     @usuario = usuario
   end
 
-  def lista_pastas
+  def lista_pastas(id = nil)
+    if id.nil?
+      q = "mimeType='application/vnd.google-apps.folder' and 'root' in parents and trashed=false"
+    else
+      q = "'#{id}' in parents and trashed=false"
+    end
+    result = do_request do
+      # pega as pastas da raíz
+      api_client.execute(
+        :api_method => drive.files.list,
+        :authorization => user_credentials,
+        :parameters => {
+          'q' => q
+        }
+      )
+    end
+  end
+
+  def info_arquivo(id)
+    result = do_request do
+      api_client.execute(
+        :api_method => drive.files.get,
+        :authorization => user_credentials,
+        :parameters => {
+          'fileId' => id
+        }
+      )
+    end
+  end
+
+  def cria_arquivo
     file = drive.files.insert.request_schema.new({
       'title' => 'My document',
       'description' => 'A test document',

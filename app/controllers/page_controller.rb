@@ -13,4 +13,11 @@ class PageController < ApplicationController
     end
   end
   
+  def arquivos
+    if params[:id]
+      @pasta = current_usuario.info_arquivo(params[:id])
+    end
+    @arquivos = current_usuario.lista_pastas(params[:id])
+  end
+
 end
