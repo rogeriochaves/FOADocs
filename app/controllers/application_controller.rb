@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :masc_fem
+  helper_method :masc_fem, :current_projeto
   before_filter :tabs_configure, :login_with_google#, :change_password_redirect
   #protect_from_forgery
 
@@ -28,6 +28,21 @@ class ApplicationController < ActionController::Base
 
   def current_ability
 	  @current_ability ||= Ability.new(current_usuario)
+  end
+
+  def current_projeto
+    if @current_projeto
+      return @current_projeto
+    elsif params[:projeto_id]
+      @current_projeto = current_usuario.projetos.where(id: params[:projeto_id]).first
+    elsif session[:current_projeto]
+      @current_projeto = current_usuario.projetos.where(id: session[:current_projeto]).first
+    end
+    if !@current_projeto
+      @current_projeto = current_usuario.projetos.first
+    end
+    session[:current_projeto] = @current_projeto.id if @current_projeto
+    return @current_projeto
   end
 
   def masc_fem(string, masc, fem)

@@ -1,5 +1,5 @@
 <ul>
-	<% if @pasta and @pasta.parents[0] %>
+	<% if params[:id] and @pasta and @pasta.parents[0] %>
 		<li>
 			<%= image_tag "https://ssl.gstatic.com/docs/doclist/images/icon_11_collection_list.png" %>
 			<%= link_to "..", :action => :arquivos, :id => @pasta.parents[0].id %>
@@ -14,5 +14,10 @@
 				<a href="https://drive.google.com/uc?id=<%= item.id %>"><%= item.title %></a>
 			<% end %>
 		</li>
+	<% end %>
+	<% if !params[:id] and @arquivos.items.size == 0 %>
+		<p>Nenhum arquivo encontrado. Comece fazendo o upload de algum arquivo para o seu projeto.</p>
+	<% elsif @arquivos.items.size == 0 %>
+		<p>Pasta vazia</p>
 	<% end %>
 </ul>

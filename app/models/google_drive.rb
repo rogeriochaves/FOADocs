@@ -13,7 +13,7 @@ class GoogleDrive
     @usuario = usuario
   end
 
-  def lista_pastas(id = nil)
+  def lista_arquivos(id = nil)
     if id.nil?
       q = "mimeType='application/vnd.google-apps.folder' and 'root' in parents and trashed=false"
     else
@@ -39,6 +39,21 @@ class GoogleDrive
         :parameters => {
           'fileId' => id
         }
+      )
+    end
+  end
+
+  def cria_pasta(nome)
+    file = drive.files.insert.request_schema.new({
+      'title' => nome,
+      'mimeType' => 'application/vnd.google-apps.folder'
+    })
+
+    result = do_request do
+      api_client.execute(
+        :api_method => drive.files.insert,
+        :body_object => file,
+        :authorization => user_credentials
       )
     end
   end

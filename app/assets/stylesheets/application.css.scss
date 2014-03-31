@@ -18,6 +18,7 @@
 @import "react.css.scss";
 
 .form-control{border-radius:0;}
+.error .help-inline{color:#a94442}
 header{
 	.navbar{background:#0088cc; border-radius:0}
 	.select-projetos{-webkit-appearance:none; color:#164169; box-shadow: none; border:none; font-size: 18px; height: 48px; margin-top: 22px; background:asset-url('seta-select.png') #FFF right 0 no-repeat; cursor:pointer; width:70%; float: left}

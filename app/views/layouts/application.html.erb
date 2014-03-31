@@ -31,33 +31,39 @@
                 <div class="navbar-brand col-sm-3">
                     <%= image_tag "logo.png" %>
                 </div>
-                <div class="col-sm-5 col-sm-offset-1">
-                    <select class="form-control select-projetos">
-                        <option value="1">Projeto de design minimalista</option>
-                        <option value="2">Projeto de alguma coisa</option>
-                    </select>
-                    <div class="notificacoes">
-                        <div class="clearfix">
-                            <div class="notificacao notificacao-comentario pull-left">
-                                <div class="quant">10</div>
-                                <ul class="lista-notificacoes">
-                                    <li>Teste 1</li>
-                                    <li>Teste 2</li>
-                                </ul>
-                            </div>
-                            <div class="notificacao notificacao-documento pull-left">
-                                <div class="quant">5</div>
-                                <ul class="lista-notificacoes">
-                                    <li>Teste 1</li>
-                                    <li>Teste 2</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-                    <input type="search" class="busca form-control" />
-                </div>
+                <% if current_projeto %>
+                  <div class="col-sm-5 col-sm-offset-1">
+                      
+                      <select class="form-control select-projetos">
+                        <% current_usuario.projetos.each do |projeto| %>
+                          <option value="<%= url_for controller: :page, action: :index, projeto_id: projeto.id %>" <%= 'selected="selected"' if projeto.id == current_projeto.id %>><%= projeto.nome %></option>
+                        <% end %>
+                        <option value="<%= url_for controller: :page, action: :novo_projeto %>">Criar novo projeto</option>
+                      </select>
+
+                      <div class="notificacoes">
+                          <div class="clearfix">
+                              <div class="notificacao notificacao-comentario pull-left">
+                                  <div class="quant">10</div>
+                                  <ul class="lista-notificacoes">
+                                      <li>Teste 1</li>
+                                      <li>Teste 2</li>
+                                  </ul>
+                              </div>
+                              <div class="notificacao notificacao-documento pull-left">
+                                  <div class="quant">5</div>
+                                  <ul class="lista-notificacoes">
+                                      <li>Teste 1</li>
+                                      <li>Teste 2</li>
+                                  </ul>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-sm-3">
+                      <input type="search" class="busca form-control" />
+                  </div>
+                <% end %>
             </div>
         </div>
     </header>

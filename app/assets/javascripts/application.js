@@ -64,3 +64,7 @@ if(scene){
 		});
 	});
 }
+
+$(".select-projetos").change(function(){
+	window.location = $(this).val();
+});

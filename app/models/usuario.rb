@@ -9,6 +9,8 @@ class Usuario < ActiveRecord::Base
     validates_presence_of :nome, :grupo, :email, :message => "não pode ser vazio"
     validates_format_of :email, :with => /\A([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})([a-z ])?\z/i, :message => "é inválido"
     validates_confirmation_of :password, :message => 'confirmação incorreta'
+    has_many :participantes
+    has_many :projetos, :through => :participantes
   
     def password=(password)
         super(nil) if !password or password.empty?
@@ -40,8 +42,8 @@ class Usuario < ActiveRecord::Base
         @google_drive ||= GoogleDrive.new(self)
     end
 
-    def lista_pastas(id = nil)
-        google_drive.lista_pastas(id)
+    def lista_arquivos(id = nil)
+        google_drive.lista_arquivos(id)
     end
 
     def info_arquivo(id)

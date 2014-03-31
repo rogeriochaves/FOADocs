@@ -1,5 +1,5 @@
 <% if modelo.errors.any? %>
-    <div id="error_explanation" class="alert-message block-message error">
+    <div id="error_explanation" class="alert alert-danger block-message">
       <h4><%= pluralize(modelo.errors.count, "erro impediu", "erros impediram") %> que fosse salvo:</h4>
 
       <ul>

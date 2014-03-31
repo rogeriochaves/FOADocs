@@ -1,0 +1,20 @@
+<h1>
+	Novo Projeto
+	<% if !current_projeto %>
+		<br>
+		<small>
+			Você ainda não criou e nem está participando de nenhum projeto. <br>
+			Comece criando seu projeto acadêmico.
+		</small>
+	<% end %>
+</h1>
+<br>
+<%= error_messages_for @projeto %>
+<br>
+<%= simple_form_for @projeto, html: {class: 'form-horizontal'}, url: {action: :novo_projeto} do |f| -%>
+  <%= f.input :nome %>
+  <%= f.input :tipo, collection: ["TCC", "PIC", "Monografia", "Dissertação", "Tese"], include_blank: false, input_html: { class: "select2" } %>
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn-success' %>
+  </div>
+<% end %>
