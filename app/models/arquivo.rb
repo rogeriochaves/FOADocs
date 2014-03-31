@@ -18,7 +18,8 @@ class Arquivo < ActiveRecord::Base
 		arquivo.mime_type = item.mime_type
 		arquivo.etag = item.etag
 		arquivo.tamanho = item.file_size
-		arquivo.download_url = "https://drive.google.com/uc?id=#{item.id}"
+		arquivo.download_url = (item.download_url ? item.download_url : item['exportLinks'] ? item['exportLinks']['text/plain'] : "") if !arquivo.diretorio
+		arquivo.web_content_link = (item.web_content_link ? item.web_content_link : "https://drive.google.com/uc?id=#{item.id}")
 		arquivo.icon_link = item.icon_link
 		
 		arquivo.save

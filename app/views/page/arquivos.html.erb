@@ -1,5 +1,5 @@
 <ul>
-	<% if params[:id] and @pasta and @pasta.parents[0] %>
+	<% if params[:folder_id] and @pasta and @pasta.parents[0] %>
 		<li>
 			<%= image_tag "https://ssl.gstatic.com/docs/doclist/images/icon_11_collection_list.png" %>
 			<%= link_to "..", :action => :arquivos, :id => @pasta.parents[0].id %>
@@ -12,7 +12,7 @@
 				<% if arquivo.diretorio %>
 					<%= link_to arquivo.nome, :action => :arquivos, :folder_id => arquivo.file_id %>
 				<% else %>
-					<a href="<%= arquivo.download_url %>"><%= arquivo.nome %> (<%= number_to_human_size arquivo.tamanho %>)</a>
+					<a href="<%= arquivo.web_content_link %>"><%= arquivo.nome %> (<%= number_to_human_size arquivo.tamanho %>)</a>
 				<% end %>
 			</li>
 		<% end %>
