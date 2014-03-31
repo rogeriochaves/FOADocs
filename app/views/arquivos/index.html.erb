@@ -3,26 +3,15 @@
 <table id="lista" class="table table-bordered table-striped" sort-list="[[0, 1]]">
 <thead>
 	<tr>
-
-		<th>Projeto</th>
-
-		<th>Arquivo</th>
-
-		<th>File</th>
-
 		<th>Nome</th>
-
-		<th>Diretorio</th>
-
-		<th>Mime type</th>
-
-		<th>Etag</th>
 
 		<th>Tamanho</th>
 
-		<th>Download url</th>
+		<th>File ID</th>
 
-		<th>Icon link</th>
+		<th>Projeto</th>
+
+		<th>Pasta Pai</th>
 
 		<th width="140">Ações</th>
 	</tr>
@@ -30,16 +19,11 @@
 <tbody>
 	<% @arquivos.each do |arquivo| %>
 	<tr>
-		<td><%= arquivo.projeto %></td>
-		<td><%= arquivo.arquivo %></td>
+		<td><%= image_tag arquivo.icon_link %> <%= arquivo.nome %></td>
+		<td><%= number_to_human_size arquivo.tamanho %></td>
 		<td><%= arquivo.file_id %></td>
-		<td><%= arquivo.nome %></td>
-		<td><%= arquivo.diretorio %></td>
-		<td><%= arquivo.mime_type %></td>
-		<td><%= arquivo.etag %></td>
-		<td><%= arquivo.tamanho %></td>
-		<td><%= arquivo.download_url %></td>
-		<td><%= arquivo.icon_link %></td>
+		<td><%= link_to arquivo.projeto, arquivo.projeto %></td>
+		<td><%= link_to arquivo.arquivo, arquivo.arquivo if arquivo.arquivo %></td>
 		<td>
 	      <%= link_to 'Exibir', arquivo %>
 	      <%= link_to 'Editar', edit_arquivo_path(arquivo) %>

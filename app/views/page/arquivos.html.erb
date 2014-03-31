@@ -6,14 +6,16 @@
 		</li>
 	<% end %>
 	<% @arquivos.items.each do |item| %>
-		<li>
-			<%= image_tag item.icon_link %>
-			<% if item.mime_type == "application/vnd.google-apps.folder" %>
-				<%= link_to item.title, :action => :arquivos, :id => item.id %>
-			<% else %>
-				<a href="https://drive.google.com/uc?id=<%= item.id %>"><%= item.title %></a>
-			<% end %>
-		</li>
+		<% if arquivo = Arquivo.update_or_create_arquivo(current_projeto, item) %>
+			<li>
+				<%= image_tag arquivo.icon_link %>
+				<% if arquivo.diretorio %>
+					<%= link_to arquivo.nome, :action => :arquivos, :folder_id => arquivo.file_id %>
+				<% else %>
+					<a href="<%= arquivo.download_url %>"><%= arquivo.nome %> (<%= number_to_human_size arquivo.tamanho %>)</a>
+				<% end %>
+			</li>
+		<% end %>
 	<% end %>
 	<% if !params[:id] and @arquivos.items.size == 0 %>
 		<p>Nenhum arquivo encontrado. Comece fazendo o upload de algum arquivo para o seu projeto.</p>

@@ -18,8 +18,8 @@ App.all.index = function() {
 		lista.tablesorter();
 	}
 
-	lista.find('td').click(function(){
-		var link = $(this).parent().find('td:last a:first');
-		if(link.length > 0) window.location = link.attr('href');
-	});
+	// lista.find('td').click(function(){
+	// 	var link = $(this).parent().find('td:last a:first');
+	// 	if(link.length > 0) window.location = link.attr('href');
+	// });
 };

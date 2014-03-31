@@ -19,9 +19,9 @@ class PageController < ApplicationController
   end
   
   def arquivos
-    if params[:id]
-      @pasta = current_usuario.info_arquivo(params[:id])
-      folder_id = params[:id]
+    if params[:folder_id]
+      @pasta = current_usuario.info_arquivo(params[:folder_id])
+      folder_id = params[:folder_id]
     else
       root_folder = current_projeto.find_root_folder(current_usuario)
       folder_id = root_folder.id

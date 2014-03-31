@@ -15,7 +15,7 @@ AppAdmin.configure do |config|
 	config.domain = 'FOADocs.com.br'.downcase
 	config.react_login = false
 
-	config.menu_controllers = [['admin/usuarios', 'Usuários'], :projetos]
+	config.menu_controllers = [['admin/usuarios', 'Usuários'], :projetos, :arquivos]
 	config.extra_tabs = {
 	  'Banneres' => [
 	    ['Ordenar', :ordenar]

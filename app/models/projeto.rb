@@ -2,13 +2,24 @@ class Projeto < ActiveRecord::Base
 	has_many :participantes
 	has_many :usuarios, :through => :participantes
 	validates_presence_of :nome
-	after_create :create_project_root_folder
+	after_create :create_or_find_project_root_folder
 
-	def create_project_root_folder(usuario = nil)
-		usuario ||= self.participantes.where(grupo: "admin").first.usuario
-		if !find_root_folder(usuario)
+	def to_s
+		self.nome
+	end
+
+	def get_admin
+		self.participantes.where(grupo: "admin").first.usuario
+	end
+
+	def create_or_find_project_root_folder(usuario = nil)
+		usuario ||= get_admin
+		if f = find_root_folder(usuario)
+			return f
+		else
 			google_drive = usuario.google_drive
 			google_drive.cria_pasta(self.nome)
+			return find_root_folder(usuario)
 		end
 	end
 
