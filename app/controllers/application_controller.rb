@@ -31,6 +31,9 @@ class ApplicationController < ActionController::Base
   end
 
   def current_projeto
+    if !current_usuario
+      return nil
+    end
     if @current_projeto
       return @current_projeto
     elsif params[:projeto_id]

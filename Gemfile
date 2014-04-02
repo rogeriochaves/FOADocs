@@ -84,3 +84,5 @@ gem 'google-api-client', github: 'google/google-api-ruby-client'#'0.7.0.rc2'
 
 # Background Jobs
 gem 'sucker_punch', '~> 1.0'
+gem 'diffy'
+gem 'yomu'

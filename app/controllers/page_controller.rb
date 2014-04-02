@@ -1,6 +1,6 @@
 class PageController < ApplicationController
   before_filter :authenticate_usuario!, :except => :_login
-  before_filter :set_projeto, :except => :novo_projeto
+  before_filter :set_projeto, :except => [:novo_projeto, :_login]
 
   def set_projeto
     redirect_to action: :novo_projeto if !current_projeto
@@ -36,8 +36,7 @@ class PageController < ApplicationController
       @projeto = Projeto.new(params[:projeto])
       @projeto.participantes.build(usuario: current_usuario, grupo: "admin")
       if @projeto.save
-        session[:current_projeto] = @projeto.id
-        redirect_to action: :index
+        redirect_to action: :index, projeto_id: @projeto.id
       end
     end
   end

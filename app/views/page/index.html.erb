@@ -1,4 +1,24 @@
 <h1>logado com sucesso</h1>
 
-<%= current_usuario.nome %> <br>
-<img src="<%= current_usuario.image %>" />
+<div class="col-sm-3">
+	<%= current_usuario.nome %> <br>
+	<img src="<%= current_usuario.image %>" width="200" />
+</div>
+<div class="col-sm-5">
+	<% current_projeto.versoes.each do |versao| %>
+		<div class="well">
+			<h3>
+				<%= versao.arquivo.nome %> <%= versao.mudanca %> <br>
+				<% if Time.zone.now - versao.modified_date >= 3.days %>
+					<small><%= versao.modified_date.strftime("%d/%m/%Y") %></small>
+				<% else %>
+					<small>há <%= time_ago_in_words versao.modified_date %> atrás</small>
+				<% end %>
+				
+				<% if versao.alteracao %>
+					<%=raw versao.alteracao %>
+				<% end %>
+			</h3>
+		</div>
+	<% end %>
+</div>

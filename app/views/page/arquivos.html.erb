@@ -6,7 +6,7 @@
 		</li>
 	<% end %>
 	<% @arquivos.items.each do |item| %>
-		<% if arquivo = Arquivo.update_or_create_arquivo(current_projeto, item) %>
+		<% if arquivo = Arquivo.update_or_create_arquivo(current_usuario, current_projeto, item) %>
 			<li>
 				<%= image_tag arquivo.icon_link %>
 				<% if arquivo.diretorio %>

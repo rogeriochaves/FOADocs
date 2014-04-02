@@ -1,6 +1,8 @@
 class Projeto < ActiveRecord::Base
 	has_many :participantes
 	has_many :usuarios, :through => :participantes
+	has_many :arquivos, :dependent => :destroy
+	has_many :versoes, :through => :arquivos
 	validates_presence_of :nome
 	after_create :create_or_find_project_root_folder
 

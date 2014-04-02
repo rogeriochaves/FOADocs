@@ -81,6 +81,18 @@ class GoogleDrive
     raise result.inspect
   end
 
+  def baixa_arquivo(item)
+    if item.download_url
+      result = do_request do
+        api_client.execute(:uri => item.download_url, :authorization => user_credentials)
+      end
+      return result
+    else
+      # The file doesn't have any content stored on Drive.
+      return nil
+    end
+  end
+
   private
 
   def api_client
@@ -109,7 +121,7 @@ class GoogleDrive
     res = yield
     case res.status
     when 200, 201 # success
-      res.data
+      res.data || res.body
     when 400
       raise BadRequestError, res
     when 401
