@@ -32,4 +32,14 @@ class Arquivo < ActiveRecord::Base
 		versao.save if versao
 		return arquivo
 	end
+
+	def icone
+		extensoes = %w(ac3 ace ade adp ai aiff ani asf au avi bat bin bmp bsp bup cab cal cat css cue cur daa dat dcr der dic divx diz dll doc docx dvd dwg dwt fon gam gif hlp hst html ico ifo inf ini iso java jif jpeg jpg log m4a mdl mid mmf mmm mov mp2 mp2v mp3 mp4 mpeg msp nfo pdf php png ppt pptx psd ra rar reg rtf spr theme tiff tlb torrent ttf txt url vob vtf wad wav wma wmv wpl wri xls xlsx xml xps xsl zip)
+		extensao = self.nome.split(".")[-1]
+		if extensoes.include? extensao
+			return "icons/#{extensao}.png"
+		else
+			return "icons/file.png"
+		end
+	end
 end

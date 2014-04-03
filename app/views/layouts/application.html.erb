@@ -1,75 +1,94 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= title ? title : "FOADocs" %></title>
+	<title><%= title ? title : "FOADocs" %></title>
 
-  <!--[if lt IE 10]>
-    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <%= javascript_include_tag 'ie' %>
-  <![endif]-->
+	<!--[if lt IE 10]>
+		<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<%= javascript_include_tag 'ie' %>
+	<![endif]-->
 
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <!-- Responsivo -->
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <%#= stylesheet_link_tag    "mobile"     , :media => "screen and (max-width:767px)" %>
-  
-  <meta charset="utf-8" />
-  <meta http-equiv="content-language" content="pt-BR">
-  <meta name="description" content="<%= description %>" />
-  <meta name="author" content="www.reactweb.com.br">
-  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"  />
+	<%= stylesheet_link_tag    "application", :media => "all" %>
+	<!-- Responsivo -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<%#= stylesheet_link_tag    "mobile"     , :media => "screen and (max-width:767px)" %>
+	
+	<meta charset="utf-8" />
+	<meta http-equiv="content-language" content="pt-BR">
+	<meta name="description" content="<%= description %>" />
+	<meta name="author" content="www.reactweb.com.br">
+	<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"  />
 
-  <%= metatags %>
-  <%= csrf_meta_tags %>
+	<%= metatags %>
+	<%= csrf_meta_tags %>
 </head>
 <body id="<%= "#{params[:controller]}-#{params[:action]}" %>">
 
-    <header>
-        <div class="navbar">
-            <div class="container">
-                <div class="navbar-brand col-sm-3">
-                    <%= image_tag "logo.png" %>
-                </div>
-                <% if current_projeto %>
-                  <div class="col-sm-5 col-sm-offset-1">
-                      
-                      <select class="form-control select-projetos">
-                        <% current_usuario.projetos.each do |projeto| %>
-                          <option value="<%= url_for controller: :page, action: :index, projeto_id: projeto.id %>" <%= 'selected="selected"' if projeto.id == current_projeto.id %>><%= projeto.nome %></option>
-                        <% end %>
-                        <option value="<%= url_for controller: :page, action: :novo_projeto %>">Criar novo projeto</option>
-                      </select>
+	<header>
+		<div class="navbar">
+			<div class="container">
+				<div class="navbar-brand col-sm-3">
+					<%= image_tag "logo.png" %>
+				</div>
+				<% if current_projeto %>
+					<div class="col-sm-5 col-sm-offset-1">
+						<select class="form-control select-projetos">
+							<% current_usuario.projetos.each do |projeto| %>
+								<option value="<%= url_for controller: :page, action: :index, projeto_id: projeto.id %>" <%= 'selected="selected"' if projeto.id == current_projeto.id %>><%= projeto.nome %></option>
+							<% end %>
+							<option value="<%= url_for controller: :page, action: :novo_projeto %>">Criar novo projeto</option>
+						</select>
 
-                      <div class="notificacoes">
-                          <div class="clearfix">
-                              <div class="notificacao notificacao-comentario pull-left">
-                                  <div class="quant">10</div>
-                                  <ul class="lista-notificacoes">
-                                      <li>Teste 1</li>
-                                      <li>Teste 2</li>
-                                  </ul>
-                              </div>
-                              <div class="notificacao notificacao-documento pull-left">
-                                  <div class="quant">5</div>
-                                  <ul class="lista-notificacoes">
-                                      <li>Teste 1</li>
-                                      <li>Teste 2</li>
-                                  </ul>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-                  <div class="col-sm-3">
-                      <input type="search" class="busca form-control" />
-                  </div>
-                <% end %>
-            </div>
-        </div>
-    </header>
+						<div class="notificacoes">
+							<div class="clearfix">
+								<div class="notificacao notificacao-comentario pull-left">
+									<div class="quant">10</div>
+									<ul class="lista-notificacoes">
+										<li>Teste 1</li>
+										<li>Teste 2</li>
+									</ul>
+								</div>
+								<div class="notificacao notificacao-documento pull-left">
+									<div class="quant">5</div>
+									<ul class="lista-notificacoes">
+										<li>Teste 1</li>
+										<li>Teste 2</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-3">
+							<input type="search" class="busca form-control" />
+					</div>
+				<% end %>
+			</div>
+		</div>
+	</header>
 
-	<div class="container">
+	<div class="container main-container">
 		<div class="row">
+			<div class="col-sm-2">
+				<img src="<%= current_usuario.image %>" class="user-image" />
+				<div class="user-nome">
+					<%= current_usuario.nome %>
+				</div>
+
+				<nav>
+					<ul class="nav-ul">
+						<li class="nav-li">
+							<%= link_to "Arquivos", {action: :arquivos}, {class: "nav-a"} %>
+						</li>
+						<li class="nav-li">
+							<%= link_to "Informações", {action: :arquivos}, {class: "nav-a"} %>
+						</li>
+						<li class="nav-li">
+							<%= link_to "Convidar", {action: :arquivos}, {class: "nav-a"} %>
+						</li>
+					</ul>
+				</nav>
+			</div>
 			<%= yield %>
 		</div>
 	</div>
@@ -82,10 +101,10 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/jquery.gsap.min.js" async></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.10.2/plugins/CSSPlugin.min.js" async></script>
 <% if can_change_editable_content? %>
-    <script type="text/javascript">
-        var CKEDITOR_BASEPATH = '/assets/ckeditor/';
-    </script>
-    <%= javascript_include_tag "editables" %>
-  <% end %>
+		<script type="text/javascript">
+				var CKEDITOR_BASEPATH = '/assets/ckeditor/';
+		</script>
+		<%= javascript_include_tag "editables" %>
+	<% end %>
 </body>
 </html>

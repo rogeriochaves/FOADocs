@@ -17,6 +17,9 @@
 @import "rails-sass-images";
 @import "react.css.scss";
 
+body{font-family: 'Helvetica Neue', sans-serif; font-weight: 300}
+b{font-weight: 500}
+.main-container{margin-top: 40px}
 .form-control{border-radius:0;}
 .error .help-inline{color:#a94442}
 header{
@@ -46,17 +49,55 @@ header{
 	.busca{box-shadow: none; border:none; height: 48px; margin-top: 22px; background:asset-url('icon-busca.png') #FFF 95% 10px no-repeat;}
 }
 
+nav{
+	.nav-ul{list-style: none; margin:20px 0 0 0; padding:0}
+	.nav-li{
+		border-bottom: 1px solid #DDD; border-top: 1px solid #F2F2F2; padding:0; margin:0;
+		&:first-child{border-top: none;}
+		&:last-child{border-bottom: none;}
+	}
+	.nav-a{
+		font-size:20px; color:#444; display: block; width:100%; padding:10px 0; @include animated(.3s);
+		&:hover{text-decoration: none; text-shadow:0 0 3px #88FFFF; padding-left: 5px}
+	}
+}
+
 .diff{
-	overflow:auto;
+	border:1px solid #d8d8d8; border-left: none; border-right: none;
 	ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
-	del, .diff ins{display:block;text-decoration:none;}
-	li{padding:0; display:table-row;margin: 0;height:1em;}
+	del, ins{display:block;text-decoration:none;}
+	li{padding:5px 8px; margin: 0;}
 	li.ins{background:#dfd; color:#080}
 	li.del{background:#fee; color:#b00}
 	li:hover{background:#ffc}
-	del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+	del, ins, span{white-space:pre-wrap;}
 	del strong{font-weight:normal;background:#fcc;}
 	ins strong{font-weight:normal;background:#9f9;}
 	li.diff-comment { display: none; }
 	li.diff-block-info { background: none repeat scroll 0 0 gray; }
+}
+
+.user-image{max-width:100%}
+.user-nome{font-size:18px; text-align: center; padding:10px 0}
+.atualizacao{
+	border:1px solid #d8d8d8; margin-bottom: 40px;
+	.atualizacao-topo{
+		padding:20px;
+		.icon-arquivo{
+			text-align: center;
+			.icon-arquivo-img{max-width: 100%}
+		}
+		h1, h2{padding:0; margin:0 0 5px 0}
+		h1{font-size:24px; font-weight: 300;}
+		h2{font-size:18px; font-weight: 300;}
+		.download-link{
+			font-size:18px; text-decoration: underline;
+			&:hover{text-decoration: none;}
+		}
+	}
+	.comentarios{
+		padding:20px 20px 20px 30px;
+		.comentario-avatar{padding:0}
+		.comentario-img{max-width: 100%}
+	}
 }
