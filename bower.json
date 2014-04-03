@@ -8,7 +8,8 @@
     	"select2"   : "latest",
     	"nprogress" : "latest",
         "respond"   : "latest",
-        "placeholder": "latest"
+        "placeholder": "latest",
+        "handlebars": "latest"
     }
   }
 }

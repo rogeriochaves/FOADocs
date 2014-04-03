@@ -41,4 +41,18 @@ class PageController < ApplicationController
     end
   end
 
+  def _comentar
+    if params[:comentario] and @versao = Versao.find(params[:comentario][:versao_id]) and @versao.arquivo and @versao.arquivo.projeto_id and current_usuario.projeto_ids.include?(@versao.arquivo.projeto_id)
+      @comentario = Comentario.new(params[:comentario])
+      @comentario.usuario = current_usuario
+      if @comentario.save
+        render :text => "ok"
+      else
+        render :text => "error"
+      end
+    else
+      render :text => "error"
+    end
+  end
+
 end

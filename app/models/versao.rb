@@ -1,6 +1,6 @@
 class Versao < ActiveRecord::Base
   	belongs_to :arquivo
-  	has_many :comentarios
+  	has_many :comentarios, order: :id
 
 	def create_with_item(usuario, item)
 		self.modified_date = item.modified_date

@@ -20,6 +20,7 @@
 //= require nprogress
 //= not_require_tree ./fancybox
 //= require_tree ./parallax
+//= require handlebars
 //= require_self
 
 var scene = document.getElementById('nuvens-rodape');
@@ -67,4 +68,30 @@ if(scene){
 
 $(".select-projetos").change(function(){
 	window.location = $(this).val();
+});
+
+$(".comentario-textarea").keydown(function(e){
+	if (e.keyCode == 13){
+        if (e.shiftKey) {
+            //$(this).val($(this).val() + "\n");
+        }else{
+        	var params = $(this).closest("form").serialize();
+        	var self = $(this);
+        	self.attr("disabled", "disabled");
+            $.post("_comentar", params, function(data){
+            	if(data == "ok"){
+            		var comentario = self.val().replace(/\n/g, "<br />");
+            		var source   = $("#comentarios-template").html();
+					var template = Handlebars.compile(source);
+					var html     = template({nome: current_usuario.nome, image: current_usuario.image, comentario: comentario});
+					self.val("");
+					self.removeAttr("disabled");
+					self.closest(".comentario-novo").before(html);
+					self.focus();
+            	}else{
+            		alert("Erro ao salvar comentário");
+            	}
+            });
+        }
+    }
 });

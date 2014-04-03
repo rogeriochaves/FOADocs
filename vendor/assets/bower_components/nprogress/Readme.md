@@ -4,10 +4,12 @@ NProgress
 Slim progress bars for Ajax'y applications. Inspired by Google, YouTube, and
 Medium.
 
+[![Status](https://secure.travis-ci.org/rstacruz/nprogress.png?branch=master)](http://travis-ci.org/rstacruz/nprogress) 
+
 Installation
 ------------
 
-Add jQuery (1.8 or above), [nprogress.js] and [nprogress.css] to your project.
+Add [nprogress.js] and [nprogress.css] to your project.
 
 Basic usage
 -----------
@@ -33,7 +35,7 @@ Ideas
 -----
 
  * Add progress to your Ajax calls! Bind it to the jQuery `ajaxStart` and
- `ajaxComplete` events.
+ `ajaxStop` events.
 
  * Make a fancy loading bar even without Turbolinks/Pjax! Bind it to
  `$(document).ready` and `$(window).load`.

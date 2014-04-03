@@ -23,7 +23,7 @@ b{font-weight: 500}
 .form-control{border-radius:0;}
 .error .help-inline{color:#a94442}
 header{
-	.navbar{background:#0088cc; border-radius:0}
+	.navbar{background:#0088cc; border-radius:0; min-height: 90px}
 	.select-projetos{-webkit-appearance:none; color:#164169; box-shadow: none; border:none; font-size: 18px; height: 48px; margin-top: 22px; background:asset-url('seta-select.png') #FFF right 0 no-repeat; cursor:pointer; width:70%; float: left}
 	.notificacoes{
 		margin-top: 25px; float: left;
@@ -58,7 +58,7 @@ nav{
 	}
 	.nav-a{
 		font-size:20px; color:#444; display: block; width:100%; padding:10px 0; @include animated(.3s);
-		&:hover{text-decoration: none; text-shadow:0 0 3px #88FFFF; padding-left: 5px}
+		&:hover{text-decoration: none; color:#058; padding-left: 5px}
 	}
 }
 
@@ -96,7 +96,8 @@ nav{
 		}
 	}
 	.comentarios{
-		padding:20px 20px 20px 30px;
+		padding:20px 20px 10px 30px;
+		.comentario{margin-bottom: 10px}
 		.comentario-avatar{padding:0}
 		.comentario-img{max-width: 100%}
 	}

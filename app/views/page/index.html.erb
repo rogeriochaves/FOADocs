@@ -28,20 +28,38 @@
 						</div>
 						<div class="col-xs-11">
 							<b><%= comentario.usuario.nome %></b> <br>
-							<%= simple_format comentario.comentario %>
+							<%=simple_format comentario.comentario %>
 						</div>
 					</div>
 				<% end %>
 				<div class="comentario comentario-novo row">
-					<div class="col-xs-1 comentario-avatar">
-						<%= image_tag current_usuario.image, class: "comentario-img" %>
-					</div>
-					<div class="col-xs-11">
-						<textarea class="comentario-textarea form-control" placeholder="Escreva um comentário"></textarea>
-					</div>
+					<%= form_for Comentario.new do |f| %>
+						<%= f.hidden_field :versao_id, value: versao.id %>
+						<div class="col-xs-1 comentario-avatar">
+							<%= image_tag current_usuario.image, class: "comentario-img" %>
+						</div>
+						<div class="col-xs-11">
+							<%= f.text_area :comentario, class: "comentario-textarea form-control", placeholder: "Escreva um comentário" %>
+						</div>
+					<% end %>
 				</div>
 			</div>
 		</div>
 	<% end %>
 </div>
 <div class="col-sm-3"></div>
+
+<script>
+	window.current_usuario = <%=raw current_usuario.to_json %>;
+</script>
+<script id="comentarios-template" type="text/x-handlebars-template">
+	<div class="comentario row">
+		<div class="col-xs-1 comentario-avatar">
+			<img src="{{ image }}" class="comentario-img" />
+		</div>
+		<div class="col-xs-11">
+			<b>{{ nome }}</b> <br>
+			<p>{{{ comentario }}}</p>
+		</div>
+	</div>
+</script>
