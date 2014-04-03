@@ -7,7 +7,7 @@ class GoogleDrive
   CLIENT_ID = '808107694640-kvtrshot11r1nf2cvle1c1drhf5qcnc4.apps.googleusercontent.com'
   CLIENT_SECRET = 'Mh1k3ppG230gJRQyfdLMhWi_'
   OAUTH_SCOPE = ['https://www.googleapis.com/auth/drive','https://www.googleapis.com/auth/userinfo.email','https://www.googleapis.com/auth/userinfo.profile']
-  REDIRECT_URI = 'http://localhost:3000/'
+  #REDIRECT_URI = (Rails.env == "production" ? 'http://foadocs.herokuapp.com/' : 'http://localhost:3000/')
 
   def initialize(usuario)
     @usuario = usuario

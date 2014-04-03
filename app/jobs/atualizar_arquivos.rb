@@ -1,11 +1,15 @@
 class AtualizarArquivos
   include SuckerPunch::Job
 
-  def perform(projeto)
+  def perform(usuario, projeto, file_id)
   	ActiveRecord::Base.connection_pool.with_connection do
-  		usuario = projeto.get_admin
-  		root = projeto.create_or_find_project_root_folder
-    	puts root.inspect
+  		usuario.lista_arquivos(file_id).items.each do |item|
+  			if arquivo = Arquivo.update_or_create_arquivo(usuario, projeto, item) and arquivo.diretorio
+          puts "Atualizando pasta #{arquivo.nome}"
+  				AtualizarArquivos.new.perform(usuario, projeto, arquivo.file_id)
+  			end
+  		end
     end
   end
+
 end

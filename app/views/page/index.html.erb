@@ -8,7 +8,7 @@
 	<% current_projeto.versoes.each do |versao| %>
 		<div class="well">
 			<h3>
-				<%= versao.arquivo.nome %> <%= versao.mudanca %> <br>
+				<%= "Pasta" if versao.arquivo.diretorio %> <%= versao.arquivo.nome %> <%= versao.mudanca %> <br>
 				<% if Time.zone.now - versao.modified_date >= 3.days %>
 					<small><%= versao.modified_date.strftime("%d/%m/%Y") %></small>
 				<% else %>
