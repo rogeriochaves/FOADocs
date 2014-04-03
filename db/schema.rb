@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331032751) do
+ActiveRecord::Schema.define(version: 20140403031701) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20140331032751) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "web_content_link"
+    t.boolean  "trashed"
   end
 
   add_index "arquivos", ["arquivo_id"], name: "index_arquivos_on_arquivo_id", using: :btree
@@ -161,6 +162,8 @@ ActiveRecord::Schema.define(version: 20140331032751) do
     t.integer  "tamanho",                  limit: 8
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "nome"
+    t.boolean  "trashed"
   end
 
   add_index "versoes", ["arquivo_id"], name: "index_versoes_on_arquivo_id", using: :btree

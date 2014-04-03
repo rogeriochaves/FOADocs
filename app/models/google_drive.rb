@@ -17,7 +17,7 @@ class GoogleDrive
     if id.nil?
       q = "mimeType='application/vnd.google-apps.folder' and 'root' in parents and trashed=false"
     else
-      q = "'#{id}' in parents and trashed=false"
+      q = "'#{id}' in parents"
     end
     result = do_request do
       # pega as pastas da raíz

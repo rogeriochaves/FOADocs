@@ -5,6 +5,8 @@ class Versao < ActiveRecord::Base
 	def create_with_item(usuario, item)
 		self.modified_date = item.modified_date
 		self.download_url = self.arquivo.download_url
+		self.nome = self.arquivo.nome
+		self.trashed = self.arquivo.trashed
 
 		if !self.arquivo.diretorio and self.arquivo.tamanho <= 3.megabyte and self.arquivo.mime_type.match(/(application\/msword|text\/plain|application\/vnd\.openxmlformats-officedocument\.wordprocessingml\.document)/)
 			file_contents = usuario.google_drive.baixa_arquivo(item)
@@ -30,10 +32,44 @@ class Versao < ActiveRecord::Base
 	end
 
 	def mudanca
-		if self.arquivo.versoes.first.id == self.id
+		if self.trashed
+			self.arquivo.diretorio ? "excluída" : "excluído"
+		elsif self.arquivo.versoes.first.id == self.id
 			self.arquivo.diretorio ? "criada" : "criado"
 		else
-			self.arquivo.diretorio ? "alterada" : "alterado"
+			if versao_anterior and versao_anterior.trashed
+				self.arquivo.diretorio ? "restaurada" : "restaurado"
+			elsif versao_anterior and versao_anterior.nome != self.nome
+				if self.arquivo.diretorio or versao_anterior.tamanho == self.tamanho
+					self.arquivo.diretorio ? "renomeada" : "renomeado"
+				else
+					"renomeado e alterado"
+				end
+			else
+				self.arquivo.diretorio ? "alterada" : "alterado"
+			end
 		end
+	end
+
+	def versao_anterior
+		return @versao_anterior if @versao_anterior
+		anterior = nil
+		self.arquivo.versoes.each do |versao|
+			if versao.id == self.id
+				@versao_anterior = anterior
+				return anterior
+			else
+				anterior = versao
+			end
+		end
+		@versao_anterior = anterior
+		return anterior
+	end
+
+	def deve_aparecer?
+		if self.trashed and (!versao_anterior or versao_anterior.trashed)
+			return false
+		end
+		return true
 	end
 end

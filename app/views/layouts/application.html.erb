@@ -29,7 +29,7 @@
 		<div class="navbar">
 			<div class="container">
 				<div class="navbar-brand col-sm-3">
-					<%= image_tag "logo.png" %>
+					<a href="/"><%= image_tag "logo.png" %></a>
 				</div>
 				<% if current_projeto %>
 					<div class="col-sm-5 col-sm-offset-1">
@@ -77,6 +77,9 @@
 
 				<nav>
 					<ul class="nav-ul">
+						<li class="nav-li">
+							<%= link_to "Feed", {action: :index}, {class: "nav-a"} %>
+						</li>
 						<li class="nav-li">
 							<%= link_to "Arquivos", {action: :arquivos}, {class: "nav-a"} %>
 						</li>

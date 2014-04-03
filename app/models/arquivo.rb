@@ -1,7 +1,7 @@
 class Arquivo < ActiveRecord::Base
 	belongs_to :projeto
 	belongs_to :arquivo
-	has_many :versoes, :dependent => :destroy
+	has_many :versoes, :dependent => :destroy, :order => :id
 	validates_presence_of :file_id, :nome, :projeto
 
 	def to_s
@@ -9,7 +9,7 @@ class Arquivo < ActiveRecord::Base
 	end
 
 	def self.update_or_create_arquivo(usuario, projeto, item) # item = json do google drive
-		arquivo = Arquivo.where(projeto_id: projeto.id, file_id: item.id).first
+		arquivo = Arquivo.where(projeto_id: projeto.id).where("file_id = ? OR etag = ?", item.id, item.etag).first
 		arquivo = Arquivo.new if !arquivo
 		arquivo.projeto = projeto
 		arquivo.arquivo = Arquivo.where(file_id: item.parents[0].id).first
@@ -22,8 +22,10 @@ class Arquivo < ActiveRecord::Base
 		arquivo.download_url = (item.download_url ? item.download_url : item['exportLinks'] ? item['exportLinks']['text/plain'] : "") if !arquivo.diretorio
 		arquivo.web_content_link = (item.web_content_link ? item.web_content_link : "https://drive.google.com/uc?id=#{item.id}")
 		arquivo.icon_link = item.icon_link
+		arquivo.trashed = item.labels.trashed
 
-		if arquivo.new_record? or !arquivo.versoes.last or arquivo.versoes.last.modified_date != item.modified_date
+		last_version = arquivo.versoes.last
+		if arquivo.new_record? or !last_version or last_version.modified_date != item.modified_date or last_version.trashed != arquivo.trashed
 			versao = Versao.new(arquivo: arquivo)
 			versao.create_with_item(usuario, item)
 		end
