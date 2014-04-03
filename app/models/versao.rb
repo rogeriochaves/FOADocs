@@ -8,7 +8,7 @@ class Versao < ActiveRecord::Base
 		self.nome = self.arquivo.nome
 		self.trashed = self.arquivo.trashed
 
-		if !self.arquivo.diretorio and self.arquivo.tamanho <= 3.megabyte and self.arquivo.mime_type.match(/(application\/msword|text\/plain|application\/vnd\.openxmlformats-officedocument\.wordprocessingml\.document)/)
+		if !self.arquivo.diretorio and self.arquivo.tamanho and self.arquivo.tamanho <= 3.megabyte and self.arquivo.mime_type.match(/(application\/msword|text\/plain|application\/vnd\.openxmlformats-officedocument\.wordprocessingml\.document)/)
 			file_contents = usuario.google_drive.baixa_arquivo(item)
 			if self.arquivo.mime_type.match(/(application\/msword|application\/vnd\.openxmlformats-officedocument\.wordprocessingml\.document)/)
 				file_contents = Yomu.read :text, file_contents

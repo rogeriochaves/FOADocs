@@ -7,6 +7,7 @@ class PageController < ApplicationController
   end
 
   def index
+    current_projeto.update_changes
   end
 
   def _login

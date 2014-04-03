@@ -34,4 +34,18 @@ class Projeto < ActiveRecord::Base
 		return nil
 		#google_drive.cria_pasta(self.nome)
 	end
+
+	def update_changes(usuario = nil)
+		usuario ||= get_admin
+		root = create_or_find_project_root_folder(usuario)
+		google_drive = usuario.google_drive
+		changes = google_drive.get_changes_list(self.largest_change_id)
+		prints = []
+		changes.items.each do |item|
+			if item.file and item.file.parents[0] and (item.file.parents[0].id == root.id or parent = Arquivo.where(projeto_id: self.id, file_id: item.file.parents[0].id).first)
+				arquivo = Arquivo.update_or_create_arquivo(usuario, self, item.file)
+			end
+		end
+		self.update(largest_change_id: changes.largest_change_id)
+	end
 end

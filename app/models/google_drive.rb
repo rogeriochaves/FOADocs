@@ -58,6 +58,29 @@ class GoogleDrive
     end
   end
 
+  def get_changes_list(largest_change_id = nil)
+    parameters = {
+      'maxResults' => '500'
+    }
+    parameters['startChangeId'] = largest_change_id if largest_change_id
+
+    result = do_request do
+      api_client.execute(
+        :api_method => drive.changes.list,
+        :authorization => user_credentials,
+        :parameters => parameters
+      )
+    end
+
+    if result.next_page_token
+      return get_changes_list(result.largest_change_id - 500)
+    else
+      return result
+    end
+
+    #raise result.inspect
+  end
+
   def cria_arquivo
     file = drive.files.insert.request_schema.new({
       'title' => 'My document',
