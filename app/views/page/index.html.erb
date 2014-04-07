@@ -20,7 +20,7 @@
 						<% if Time.zone.now - versao.modified_date >= 3.days %>
 							<%= versao.modified_date.strftime("%d/%m/%Y") %>
 						<% else %>
-							há <%= time_ago_in_words versao.modified_date %> atrás
+							há <%= time_ago_in_words versao.modified_date %> atrás por <%= versao.last_modifying_user_name %>
 						<% end %>
 					</h2>
 					<a href="<%= versao.arquivo.web_content_link %>" target="_blank" class="download-link">Download</a>

@@ -1,26 +1,81 @@
-<ul>
-	<% if params[:folder_id] and @pasta and @pasta.parents[0] %>
-		<li>
-			<%= image_tag "https://ssl.gstatic.com/docs/doclist/images/icon_11_collection_list.png" %>
-			<%= link_to "..", :action => :arquivos, :id => @pasta.parents[0].id %>
-		</li>
-	<% end %>
-	<% @arquivos.items.each do |item| %>
-		<% if arquivo = Arquivo.update_or_create_arquivo(current_usuario, current_projeto, item) %>
-			<% next if arquivo.trashed %>
-			<li>
-				<%= image_tag arquivo.icon_link %>
-				<% if arquivo.diretorio %>
-					<%= link_to arquivo.nome, :action => :arquivos, :folder_id => arquivo.file_id %>
-				<% else %>
-					<a href="<%= arquivo.web_content_link %>"><%= arquivo.nome %> (<%= number_to_human_size arquivo.tamanho %>)</a>
-				<% end %>
+<div class="col-sm-7 col-arquivos">
+	<div class="padding-arquivos">
+		<div class="toolbar clearfix">
+			<div class="pull-left">
+				<div class="btn-group">
+				  <button type="button" class="btn btn-info">Copiar</button>
+				  <button type="button" class="btn btn-info">Cortar</button>
+				  <button type="button" class="btn btn-info">Colar</button>
+				  <button type="button" class="btn btn-info">Renomear</button>
+				  <button type="button" class="btn btn-info">Excluir</button>
+				</div>
+			</div>
+
+			<div class="pull-right">
+				<div class="btn-group">
+				  <button type="button" class="btn btn-info btn-info-2">Download</button>
+				  <button type="button" class="btn btn-info btn-info-2">Upload</button>
+				  <button type="button" class="btn btn-info btn-info-2">Nova Pasta</button>
+				</div>
+			</div>
+		</div>
+
+		<ul class="lista-arquivos">
+			<li class="row row-titulo">
+				<div class="col-xs-8">
+					<div class="arquivo-checkbox">
+						<input type="checkbox" class="checkall">
+					</div>
+					<div class="icon"></div>
+					Nome do Arquivo
+				</div>
+				<div class="col-xs-4 titulo-ultima-modificacao">
+					Última Modificação
+				</div>
 			</li>
-		<% end %>
-	<% end %>
-	<% if !params[:id] and @arquivos.items.size == 0 %>
-		<p>Nenhum arquivo encontrado. Comece fazendo o upload de algum arquivo para o seu projeto.</p>
-	<% elsif @arquivos.items.size == 0 %>
-		<p>Pasta vazia</p>
-	<% end %>
-</ul>
+			<% if params[:folder_id] and @pasta and @pasta.parents[0] %>
+				<li class="row">
+					<div class="col-xs-12">
+						<div class="arquivo-checkbox"></div>
+						<div class="icon">
+							<%= link_to image_tag("https://ssl.gstatic.com/docs/doclist/images/icon_11_collection_list.png"), :action => :arquivos, :id => @pasta.parents[0].id %>
+						</div>
+						<%= link_to "..", :action => :arquivos, :id => @pasta.parents[0].id %>
+					</div>
+				</li>
+			<% end %>
+			<% @arquivos.items.each do |item| %>
+				<% if arquivo = Arquivo.update_or_create_arquivo(current_usuario, current_projeto, item) %>
+					<% next if arquivo.trashed %>
+					<li class="row">
+						<div class="col-xs-10">
+							<div class="arquivo-checkbox">
+								<input type="checkbox">
+							</div>
+							
+							<% if arquivo.diretorio %>
+								<div class="icon">
+									<%= link_to image_tag(arquivo.icon_link), :action => :arquivos, :folder_id => arquivo.file_id %>
+								</div>
+								<%= link_to arquivo.nome, :action => :arquivos, :folder_id => arquivo.file_id %>
+							<% else %>
+								<div class="icon">
+									<a href="<%= arquivo.web_content_link %>"><%= image_tag arquivo.icon_link %></a>
+								</div>
+								<a href="<%= arquivo.web_content_link %>"><%= arquivo.nome %> (<%= number_to_human_size arquivo.tamanho %>)</a>
+							<% end %>
+						</div>
+						<div class="col-xs-2">
+							<%=l arquivo.versoes.last.modified_date if arquivo.versoes.last and arquivo.versoes.last.modified_date %>
+						</div>
+					</li>
+				<% end %>
+			<% end %>
+			<% if !params[:id] and @arquivos.items.size == 0 %>
+				<p>Nenhum arquivo encontrado. Comece fazendo o upload de algum arquivo para o seu projeto.</p>
+			<% elsif @arquivos.items.size == 0 %>
+				<p>Pasta vazia</p>
+			<% end %>
+		</ul>
+	</div>
+</div>

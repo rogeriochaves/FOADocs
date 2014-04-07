@@ -95,3 +95,14 @@ $(".comentario-textarea").keydown(function(e){
         }
     }
 });
+
+$(".checkall").change(function(){
+	var self = $(this);
+	setTimeout(function(){
+		if(self.is(":checked")){
+			$("input[type='checkbox']:not(.checkall)").prop('checked', true);
+		}else{
+			$("input[type='checkbox']:not(.checkall)").prop('checked', false);
+		}
+	}, 4);
+});
