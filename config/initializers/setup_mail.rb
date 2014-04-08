@@ -16,4 +16,8 @@ else
 end
 
 ActionMailer::Base.default :from => "Contato do Site <webmaster@#{AppAdmin.domain}>"
-ActionMailer::Base.default_url_options = { :host => "www.#{AppAdmin.domain}" }
+if Rails.env == "production"
+	ActionMailer::Base.default_url_options = { :host => "foadocs.herokuapp.com" }
+else
+	ActionMailer::Base.default_url_options = { :host => "localhost:3000" }
+end

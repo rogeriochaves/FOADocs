@@ -43,6 +43,25 @@ class GoogleDrive
     end
   end
 
+  def share_folder(id, email)
+    new_permission = drive.permissions.insert.request_schema.new({
+      'value' => email,
+      'type' => "user",
+      'role' => "writer"
+    })
+
+    result = do_request do
+      api_client.execute(
+        :api_method => drive.permissions.insert,
+        :body_object => new_permission,
+        :authorization => user_credentials,
+        :parameters => {
+          'fileId' => id
+        }
+      )
+    end
+  end
+
   def cria_pasta(nome)
     file = drive.files.insert.request_schema.new({
       'title' => nome,

@@ -1,62 +1,73 @@
-<div class="col-sm-7">
-	<% current_projeto.versoes.each do |versao| %>
-		<% next if !versao.deve_aparecer? %>
-		<div class="atualizacao">
-			<div class="atualizacao-topo row">
-				<div class="col-xs-2 icon-arquivo">
-					<%= image_tag versao.arquivo.icone, class: "icon-arquivo-img" %>
-				</div>
-				<div class="col-xs-10">
-					<h1>
-						<% if versao.mudanca == "renomeado" %>
-							<%= versao.versao_anterior.nome %> <b><%= versao.mudanca %> para</b> <%= versao.nome %>
-						<% elsif versao.mudanca == "renomeada" %>
-							Pasta <%= versao.versao_anterior.nome %> <b><%= versao.mudanca %> para</b> <%= versao.nome %>
-						<% else %>
-						  	<%= "Pasta" if versao.arquivo.diretorio %> <%= versao.nome %> <b><%= versao.mudanca %></b>
-						<% end %>
-					</h1>
-					<h2>
-						<% if Time.zone.now - versao.modified_date >= 3.days %>
-							<%= versao.modified_date.strftime("%d/%m/%Y") %>
-						<% else %>
-							há <%= time_ago_in_words versao.modified_date %> atrás
-						<% end %>
-					</h2>
-					<a href="<%= versao.arquivo.web_content_link %>" target="_blank" class="download-link">Download</a>
-				</div>
-			</div>
-			<% if versao.alteracao and versao.alteracao != "<div class=\"diff\"></div>" %>
-				<%=raw versao.alteracao %>
-			<% end %>
-			<div class="comentarios">
-				<% versao.comentarios.each do |comentario| %>
-					<div class="comentario row">
-						<div class="col-xs-1 comentario-avatar">
-							<%= image_tag comentario.usuario.image, class: "comentario-img" %>
-						</div>
-						<div class="col-xs-11">
-							<b><%= comentario.usuario.nome %></b> <br>
-							<%=simple_format comentario.comentario %>
-						</div>
+<%= render :partial => "sidebar" %>
+<% if @aceitar_convite_gdrive %>
+	<div class="col-sm-10">
+		<div class="alert alert-success">
+            <button class="close" data-dismiss="alert">×</button>
+            Você ainda não tem acesso à pasta do projeto, por favor, verifique seu email e aceite o convite do Google Drive. <br>
+            Caso não tenha recebido, peça para o dono do projeto compartilhar a pasta no Google Drive com você.
+        </div>
+	</div>
+<% else %>
+	<div class="col-sm-7">
+		<% current_projeto.versoes.each do |versao| %>
+			<% next if !versao.deve_aparecer? %>
+			<div class="atualizacao">
+				<div class="atualizacao-topo row">
+					<div class="col-xs-2 icon-arquivo">
+						<%= image_tag versao.arquivo.icone, class: "icon-arquivo-img" %>
 					</div>
+					<div class="col-xs-10">
+						<h1>
+							<% if versao.mudanca == "renomeado" %>
+								<%= versao.versao_anterior.nome %> <b><%= versao.mudanca %> para</b> <%= versao.nome %>
+							<% elsif versao.mudanca == "renomeada" %>
+								Pasta <%= versao.versao_anterior.nome %> <b><%= versao.mudanca %> para</b> <%= versao.nome %>
+							<% else %>
+							  	<%= "Pasta" if versao.arquivo.diretorio %> <%= versao.nome %> <b><%= versao.mudanca %></b>
+							<% end %>
+						</h1>
+						<h2>
+							<% if Time.zone.now - versao.modified_date >= 3.days %>
+								<%= versao.modified_date.strftime("%d/%m/%Y") %>
+							<% else %>
+								há <%= time_ago_in_words versao.modified_date %> atrás por <%= versao.last_modifying_user_name %>
+							<% end %>
+						</h2>
+						<a href="<%= versao.arquivo.web_content_link %>" target="_blank" class="download-link">Download</a>
+					</div>
+				</div>
+				<% if versao.alteracao and versao.alteracao != "<div class=\"diff\"></div>" %>
+					<%=raw versao.alteracao %>
 				<% end %>
-				<div class="comentario comentario-novo row">
-					<%= form_for Comentario.new do |f| %>
-						<%= f.hidden_field :versao_id, value: versao.id %>
-						<div class="col-xs-1 comentario-avatar">
-							<%= image_tag current_usuario.image, class: "comentario-img" %>
-						</div>
-						<div class="col-xs-11">
-							<%= f.text_area :comentario, class: "comentario-textarea form-control", placeholder: "Escreva um comentário" %>
+				<div class="comentarios">
+					<% versao.comentarios.each do |comentario| %>
+						<div class="comentario row">
+							<div class="col-xs-1 comentario-avatar">
+								<%= image_tag comentario.usuario.image, class: "comentario-img" %>
+							</div>
+							<div class="col-xs-11">
+								<b><%= comentario.usuario.nome %></b> <br>
+								<%=simple_format comentario.comentario %>
+							</div>
 						</div>
 					<% end %>
+					<div class="comentario comentario-novo row">
+						<%= form_for Comentario.new do |f| %>
+							<%= f.hidden_field :versao_id, value: versao.id %>
+							<div class="col-xs-1 comentario-avatar">
+								<%= image_tag current_usuario.image, class: "comentario-img" %>
+							</div>
+							<div class="col-xs-11">
+								<%= f.text_area :comentario, class: "comentario-textarea form-control", placeholder: "Escreva um comentário" %>
+							</div>
+						<% end %>
+					</div>
 				</div>
 			</div>
-		</div>
-	<% end %>
-</div>
-<div class="col-sm-3"></div>
+		<% end %>
+	</div>
+	<div class="col-sm-3"></div>
+<% end %>
 
 <script>
 	window.current_usuario = <%=raw current_usuario.to_json %>;

@@ -1,0 +1,18 @@
+<html>
+<body style="font-family: Helvetica, Arial, sans-serif;">
+	<h3>Você foi convidado a participar do projeto <%= @projeto.nome %> no FOADocs</h3><br />
+	<hr />
+	Olá, <br>
+	<br>
+	Você já conhece o FOADocs? Ele permite que você gerencie os arquivos do seu projeto acadêmico de forma segura e com versionamento nas nuvens, usando sua conta do Google Drive! <br>
+	<br>
+	O usuário <b><%= @usuario.nome %></b> te convidou para participar do projeto <b><%= @projeto.nome %></b>, para que vocês possam desenvolver de forma compartilhada. <br>
+	<br>
+	Clique no link abaixo para participar desse projeto no FOADocs: <br>
+	<br>
+	<% url = {controller: :page, action: :aceitar_convite, projeto_id: @projeto.id, email: @email, key: @projeto.md5_key(@email), only_path: false} %>
+	<%= link_to url_for(url), url %>
+	<br><br>
+	Para acessar o FOADocs, entre com sua matrícula e senha do UniFOA, depois, você deverá aceitar um convite do Google Drive para participar da pasta compartilhada do projeto
+</body>
+</html>

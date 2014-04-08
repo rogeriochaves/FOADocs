@@ -10,6 +10,10 @@ class Projeto < ActiveRecord::Base
 		self.nome
 	end
 
+	def md5_key(email)
+		Digest::MD5.hexdigest("#{self.id}#{email}v3n4nc10")
+	end
+
 	def get_admin
 		self.participantes.where(grupo: "admin").first.usuario
 	end
@@ -35,9 +39,11 @@ class Projeto < ActiveRecord::Base
 		#google_drive.cria_pasta(self.nome)
 	end
 
-	def update_changes(usuario = nil)
+	def update_changes(usuario = nil, root = nil)
 		usuario ||= get_admin
-		root = create_or_find_project_root_folder(usuario)
+		if !root
+			root = create_or_find_project_root_folder(usuario)
+		end
 		google_drive = usuario.google_drive
 		changes = google_drive.get_changes_list(self.largest_change_id)
 		prints = []
@@ -47,5 +53,11 @@ class Projeto < ActiveRecord::Base
 			end
 		end
 		self.update(largest_change_id: changes.largest_change_id)
+	end
+
+	def share_folder(email, usuario = nil)
+		usuario ||= get_admin
+		google_drive = usuario.google_drive
+		google_drive.share_folder(create_or_find_project_root_folder(usuario).id, email)
 	end
 end

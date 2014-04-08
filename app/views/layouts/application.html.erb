@@ -68,30 +68,19 @@
 	</header>
 
 	<div class="container main-container">
+		<% if flash[:notice] %>
+	        <div class="alert alert-success">
+	            <button class="close" data-dismiss="alert">×</button>
+	            <%= flash[:notice] %>
+	        </div>
+	    <% end %>
+	    <% if flash[:error] %>
+	        <div class="alert alert-danger">
+	            <button class="close" data-dismiss="alert">×</button>
+	            <%= flash[:error] %>
+	        </div>
+	    <% end %>
 		<div class="row">
-			<div class="col-sm-2">
-				<img src="<%= current_usuario.image %>" class="user-image" />
-				<div class="user-nome">
-					<%= current_usuario.nome %>
-				</div>
-
-				<nav>
-					<ul class="nav-ul">
-						<li class="nav-li">
-							<%= link_to "Feed", {action: :index}, {class: "nav-a"} %>
-						</li>
-						<li class="nav-li">
-							<%= link_to "Arquivos", {action: :arquivos}, {class: "nav-a"} %>
-						</li>
-						<li class="nav-li">
-							<%= link_to "Informações", {action: :arquivos}, {class: "nav-a"} %>
-						</li>
-						<li class="nav-li">
-							<%= link_to "Convidar", {action: :arquivos}, {class: "nav-a"} %>
-						</li>
-					</ul>
-				</nav>
-			</div>
 			<%= yield %>
 		</div>
 	</div>

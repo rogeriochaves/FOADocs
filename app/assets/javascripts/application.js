@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= require jquery_ujs
 //= require jquery-ui
 //= require bootstrap
 //= require rails.validations
@@ -94,4 +95,15 @@ $(".comentario-textarea").keydown(function(e){
             });
         }
     }
+});
+
+$(".checkall").change(function(){
+	var self = $(this);
+	setTimeout(function(){
+		if(self.is(":checked")){
+			$("input[type='checkbox']:not(.checkall)").prop('checked', true);
+		}else{
+			$("input[type='checkbox']:not(.checkall)").prop('checked', false);
+		}
+	}, 4);
 });
