@@ -2,6 +2,7 @@ ruby "2.0.0"
 source 'http://rubygems.org'
 
 gem 'rails', '4.0.0'
+gem 'iconv'
 
 gem 'json', '1.7.7'
 gem 'rack-cache'
@@ -15,7 +16,7 @@ gem 'uglifier', '>= 1.0.3'
 gem 'yui-compressor'
 gem 'sprockets-image_compressor'
 # package management para html/css/js
-gem 'bower-rails', :github => '42dev/bower-rails'
+#gem 'bower-rails', :github => '42dev/bower-rails'
 
 group :development do
     gem 'certified', github: 'stevegraham/certified'

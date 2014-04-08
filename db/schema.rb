@@ -59,17 +59,6 @@ ActiveRecord::Schema.define(version: 20140403133153) do
   add_index "comentarios", ["usuario_id"], name: "index_comentarios_on_usuario_id", using: :btree
   add_index "comentarios", ["versao_id"], name: "index_comentarios_on_versao_id", using: :btree
 
-  create_table "editables", force: true do |t|
-    t.string   "key"
-    t.text     "text"
-    t.string   "picture_file_name"
-    t.string   "picture_content_type"
-    t.integer  "picture_file_size"
-    t.datetime "picture_updated_at"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "mensagens", force: true do |t|
     t.string   "nome"
     t.string   "email"
@@ -94,15 +83,6 @@ ActiveRecord::Schema.define(version: 20140403133153) do
   add_index "notificacoes", ["comentario_id"], name: "index_notificacoes_on_comentario_id", using: :btree
   add_index "notificacoes", ["usuario_id"], name: "index_notificacoes_on_usuario_id", using: :btree
   add_index "notificacoes", ["versao_id"], name: "index_notificacoes_on_versao_id", using: :btree
-
-  create_table "paginas", force: true do |t|
-    t.string   "url"
-    t.string   "title"
-    t.string   "description"
-    t.text     "metatags"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "participantes", force: true do |t|
     t.integer  "usuario_id"

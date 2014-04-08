@@ -25,26 +25,16 @@ module ApplicationHelper
 		render :partial => 'admin/admin/errors', :locals => {:modelo => modelo}
 	end
 
-	def pagina
-	    @pagina ||= Pagina.find_by_url(request.fullpath)
-	end
-
 	def title(p = false)
-		if !p
-			pagina ? pagina.title : nil
-		elsif p = Pagina.where(:url => p).first
-			p.title
-		else
-			return nil
-		end
+		"FOADocs"
 	end
 
 	def description
-		pagina ? pagina.description : nil
+		"Um projeto Fodocs"
 	end
 
 	def metatags
-		pagina and pagina.metatags ? pagina.metatags.html_safe : nil
+		""
 	end
 
 	# Editable Content

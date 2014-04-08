@@ -1,3 +1,5 @@
+# encoding: utf-8
+#require 'iconv'
 class Versao < ActiveRecord::Base
   	belongs_to :arquivo
   	has_many :comentarios, order: :id
@@ -14,11 +16,12 @@ class Versao < ActiveRecord::Base
 				file_contents = Yomu.read :text, file_contents
 			end
 			if file_contents
-				self.conteudo = file_contents
+				ic = Iconv.new('UTF-8//IGNORE', 'UTF-8')
+				self.conteudo = ic.iconv(file_contents)
 				if ultima_versao = self.arquivo.versoes.last
 					diff = Diffy::Diff.new(
-						ultima_versao.conteudo.force_encoding("UTF-8"),
-						conteudo.force_encoding("UTF-8"),
+						ultima_versao.conteudo,
+						conteudo,
 						:include_plus_and_minus_in_html => true,
 						:context => 1
 					).to_s(:html_simple)
