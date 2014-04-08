@@ -1,0 +1,26 @@
+<div class="col-sm-2">
+	<img src="<%= current_usuario.image %>" class="user-image" />
+	<div class="user-nome">
+		<%= current_usuario.nome %>
+		<%= link_to(destroy_usuario_session_path, {:method => :delete}) do %>
+			(Sair)
+		<% end %>
+	</div>
+
+	<nav>
+		<ul class="nav-ul">
+			<li class="nav-li">
+				<%= link_to "Feed", {action: :index}, {class: "nav-a"} %>
+			</li>
+			<li class="nav-li">
+				<%= link_to "Arquivos", {action: :arquivos}, {class: "nav-a"} %>
+			</li>
+			<li class="nav-li">
+				<%= link_to "Informações", {action: :arquivos}, {class: "nav-a"} %>
+			</li>
+			<li class="nav-li">
+				<%= link_to "Convidar", {action: :convidar}, {class: "nav-a"} %>
+			</li>
+		</ul>
+	</nav>
+</div>

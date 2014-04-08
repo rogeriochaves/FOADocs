@@ -1,0 +1,17 @@
+<h1>
+	Adicionar Membros ao Projeto <br>
+	<small style="font-size:18px">
+		Você pode adicionar mais pessoas ao seu projeto, assim, eles poderão ver os arquivos compartilhados com você. <br>
+		Seu amigo receberá um email de convite para o projeto no FOADocs.
+	</small>
+</h1>
+
+<br>
+<%= error_messages_for @usuario %>
+<br>
+<%= simple_form_for @usuario, html: {class: 'form-horizontal'}, url: {action: :convidar} do |f| -%>
+  <%= f.input :email %>
+  <div class="form-actions">
+    <%= f.button :submit, class: 'btn-success' %>
+  </div>
+<% end %>

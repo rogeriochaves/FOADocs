@@ -12,5 +12,19 @@ class ContatoMailer < ActionMailer::Base
       format.html { render 'enviar_contato' }
     end
   end
+
+  def enviar_convite(usuario, projeto, email)
+    @usuario = usuario
+    @projeto = projeto
+    @email = email
+
+    mail(
+      to: email,
+      subject: "Você foi convidado a participar do projeto #{projeto.nome} no FOADocs",
+      reply_to: @usuario.email
+    ) do |format|
+      format.html { render 'enviar_convite' }
+    end
+  end
   
 end
