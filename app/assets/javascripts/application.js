@@ -80,21 +80,30 @@ $(".comentario-textarea").keydown(function(e){
         	var self = $(this);
         	self.attr("disabled", "disabled");
             $.post("_comentar", params, function(data){
-            	if(data == "ok"){
+            	if(data == "error"){
+            		alert("Erro ao salvar comentário");
+            	}else{
             		var comentario = self.val().replace(/\n/g, "<br />");
             		var source   = $("#comentarios-template").html();
 					var template = Handlebars.compile(source);
-					var html     = template({nome: current_usuario.nome, image: current_usuario.image, comentario: comentario});
+					var html     = template({nome: current_usuario.nome, image: current_usuario.image, comentario: comentario, id: data});
 					self.val("");
 					self.removeAttr("disabled");
 					self.closest(".comentario-novo").before(html);
 					self.focus();
-            	}else{
-            		alert("Erro ao salvar comentário");
             	}
             });
         }
     }
+});
+$(document).ready(function(){
+	$('body').delegate('.excluirComentario', 'click', function(){
+		$.post("_excluir_comentario", {id: $(this).data("id") }, function(data){
+			// callback
+		}).error(function(){
+			alert("Erro ao excluir comentário");
+		});
+	});
 });
 
 $(".checkall").change(function(){

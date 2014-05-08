@@ -10,11 +10,28 @@ class Usuario < ActiveRecord::Base
     validates_format_of :email, :with => /\A([^\s]+)((?:[-a-z0-9]\.)[a-z]{2,})([a-z ])?\z/i, :message => "é inválido"
     validates_confirmation_of :password, :message => 'confirmação incorreta'
     has_many :participantes
+    has_many :notificacoes
     has_many :projetos, :through => :participantes
   
     def password=(password)
         super(nil) if !password or password.empty?
         super
+    end
+
+    def notificacoes_de_comentarios
+        Notificacao.where(usuario: self).where("comentario_id IS NOT NULL")
+    end
+
+    def notificacoes_de_arquivos
+        Notificacao.where(usuario: self).where("arquivo_id IS NOT NULL OR versao_id IS NOT NULL")
+    end
+
+    def notificacoes_de_comentarios_nao_lidas
+        notificacoes_de_comentarios.where(lido: false)
+    end
+
+    def notificacoes_de_arquivos_nao_lidas
+        notificacoes_de_arquivos.where(lido: false)
     end
 
     def admin?
