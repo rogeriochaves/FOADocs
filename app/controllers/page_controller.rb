@@ -19,11 +19,26 @@ class PageController < ApplicationController
   end
 
   def _login
-    if u = Usuario.find_by_email(params[:usuario][:email]) and u.valid_password? params[:usuario][:password]
-      sign_in u
-      render :text => "ok"
-    else
+    require 'net/http'
+    login = params[:usuario][:matricula]
+    senha = params[:usuario][:password]
+    uri = URI("http://localhost:3001/alunos/login?login=#{login}&senha=#{senha}")
+    aluno = JSON.parse(Net::HTTP.get(uri))
+
+    if aluno["error"]
       render :text => "error"
+    else
+      usuario = Usuario.find_by_matricula(aluno["matricula"])# and u.valid_password? params[:usuario][:password]
+      if !usuario
+        usuario = Usuario.new
+      end
+      usuario.email = aluno["email"]
+      usuario.nome = aluno["nome"]
+      usuario.password = aluno["senha"]
+      usuario.matricula = aluno["matricula"]
+      usuario.save
+      sign_in usuario
+      render :text => "ok"
     end
   end
   
@@ -51,8 +66,7 @@ class PageController < ApplicationController
   end
 
   def convidar
-    @usuario = Usuario.new
-    if params[:usuario] and params[:usuario][:email]
+    if params[:usuario] and params[:usuario][:email] and !params[:usuario][:email].empty?
       ContatoMailer.enviar_convite(current_usuario, current_projeto, params[:usuario][:email]).deliver
       flash[:notice] = "Convite enviado para #{params[:usuario][:email]} com sucesso"
       redirect_to :action => :index

@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20140403133153) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "arquivos", force: true do |t|
     t.integer  "projeto_id"
     t.integer  "arquivo_id"
@@ -33,8 +30,8 @@ ActiveRecord::Schema.define(version: 20140403133153) do
     t.boolean  "trashed"
   end
 
-  add_index "arquivos", ["arquivo_id"], name: "index_arquivos_on_arquivo_id", using: :btree
-  add_index "arquivos", ["projeto_id"], name: "index_arquivos_on_projeto_id", using: :btree
+  add_index "arquivos", ["arquivo_id"], name: "index_arquivos_on_arquivo_id"
+  add_index "arquivos", ["projeto_id"], name: "index_arquivos_on_projeto_id"
 
   create_table "banneres", force: true do |t|
     t.string   "nome"
@@ -56,8 +53,19 @@ ActiveRecord::Schema.define(version: 20140403133153) do
     t.datetime "updated_at"
   end
 
-  add_index "comentarios", ["usuario_id"], name: "index_comentarios_on_usuario_id", using: :btree
-  add_index "comentarios", ["versao_id"], name: "index_comentarios_on_versao_id", using: :btree
+  add_index "comentarios", ["usuario_id"], name: "index_comentarios_on_usuario_id"
+  add_index "comentarios", ["versao_id"], name: "index_comentarios_on_versao_id"
+
+  create_table "editables", force: true do |t|
+    t.string   "key"
+    t.text     "text"
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "mensagens", force: true do |t|
     t.string   "nome"
@@ -79,10 +87,19 @@ ActiveRecord::Schema.define(version: 20140403133153) do
     t.datetime "updated_at"
   end
 
-  add_index "notificacoes", ["arquivo_id"], name: "index_notificacoes_on_arquivo_id", using: :btree
-  add_index "notificacoes", ["comentario_id"], name: "index_notificacoes_on_comentario_id", using: :btree
-  add_index "notificacoes", ["usuario_id"], name: "index_notificacoes_on_usuario_id", using: :btree
-  add_index "notificacoes", ["versao_id"], name: "index_notificacoes_on_versao_id", using: :btree
+  add_index "notificacoes", ["arquivo_id"], name: "index_notificacoes_on_arquivo_id"
+  add_index "notificacoes", ["comentario_id"], name: "index_notificacoes_on_comentario_id"
+  add_index "notificacoes", ["usuario_id"], name: "index_notificacoes_on_usuario_id"
+  add_index "notificacoes", ["versao_id"], name: "index_notificacoes_on_versao_id"
+
+  create_table "paginas", force: true do |t|
+    t.string   "url"
+    t.string   "title"
+    t.string   "description"
+    t.text     "metatags"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "participantes", force: true do |t|
     t.integer  "usuario_id"
@@ -92,8 +109,8 @@ ActiveRecord::Schema.define(version: 20140403133153) do
     t.datetime "updated_at"
   end
 
-  add_index "participantes", ["projeto_id"], name: "index_participantes_on_projeto_id", using: :btree
-  add_index "participantes", ["usuario_id"], name: "index_participantes_on_usuario_id", using: :btree
+  add_index "participantes", ["projeto_id"], name: "index_participantes_on_projeto_id"
+  add_index "participantes", ["usuario_id"], name: "index_participantes_on_usuario_id"
 
   create_table "projetos", force: true do |t|
     t.string   "nome"
@@ -118,8 +135,6 @@ ActiveRecord::Schema.define(version: 20140403133153) do
     t.string   "last_sign_in_ip"
     t.string   "nome"
     t.string   "grupo",                  default: "usuario"
-    t.string   "matricula"
-    t.string   "turma"
     t.boolean  "change_password"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -130,7 +145,7 @@ ActiveRecord::Schema.define(version: 20140403133153) do
     t.string   "refresh_token"
   end
 
-  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true, using: :btree
+  add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
 
   create_table "versoes", force: true do |t|
     t.integer  "arquivo_id"
@@ -147,6 +162,6 @@ ActiveRecord::Schema.define(version: 20140403133153) do
     t.boolean  "trashed"
   end
 
-  add_index "versoes", ["arquivo_id"], name: "index_versoes_on_arquivo_id", using: :btree
+  add_index "versoes", ["arquivo_id"], name: "index_versoes_on_arquivo_id"
 
 end

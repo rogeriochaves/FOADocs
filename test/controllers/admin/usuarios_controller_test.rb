@@ -89,26 +89,26 @@ class Admin::UsuariosControllerTest < ActionController::TestCase
     assert_redirected_to admin_usuarios_path
   end
 
-  test "should be redirected to change password for the first login" do
-    usuarios(:admin).update_attribute(:change_password, true)
-    get :index
-    assert_redirected_to :action => :change_password
-    usuarios(:admin).update_attribute(:change_password, false)
-  end
+  # test "should be redirected to change password for the first login" do
+  #   usuarios(:admin).update_attribute(:change_password, true)
+  #   get :index
+  #   assert_redirected_to :action => :change_password
+  #   usuarios(:admin).update_attribute(:change_password, false)
+  # end
 
-  test "should change password at the first login" do
-    user = usuarios(:admin)
-    self.stubs(:current_usuario).returns(user)
-    assert_equal false, user.valid_password?("testing password")
-    #assert_equal true, current_usuario.change_password 
-    put :change_password, usuario: {
-      password: "testing password",
-      password_confirmation: "testing password"
-    }
-    user = user.reload
-    assert_equal true, user.valid_password?("testing password")
-    assert_equal false, user.change_password 
-  end
+  # test "should change password at the first login" do
+  #   user = usuarios(:admin)
+  #   self.stubs(:current_usuario).returns(user)
+  #   assert_equal false, user.valid_password?("testing password")
+  #   #assert_equal true, current_usuario.change_password 
+  #   put :change_password, usuario: {
+  #     password: "testing password",
+  #     password_confirmation: "testing password"
+  #   }
+  #   user = user.reload
+  #   assert_equal true, user.valid_password?("testing password")
+  #   assert_equal false, user.change_password 
+  # end
 
   test "should not have accessed without being logged" do
     @ability = Object.new

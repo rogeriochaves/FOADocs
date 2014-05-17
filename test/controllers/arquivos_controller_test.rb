@@ -17,13 +17,13 @@ class ArquivosControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create arquivo" do
-    assert_difference('Arquivo.count') do
-      post :create, arquivo: { arquivo_id: @arquivo.arquivo_id, diretorio: @arquivo.diretorio, download_url: @arquivo.download_url, etag: @arquivo.etag, file_id: @arquivo.file_id, icon_link: @arquivo.icon_link, mime_type: @arquivo.mime_type, nome: @arquivo.nome, projeto_id: @arquivo.projeto_id, tamanho: @arquivo.tamanho }
-    end
+  # test "should create arquivo" do
+  #   assert_difference('Arquivo.count') do
+  #     post :create, arquivo: { arquivo_id: @arquivo.arquivo_id, diretorio: @arquivo.diretorio, download_url: @arquivo.download_url, etag: @arquivo.etag, file_id: @arquivo.file_id, icon_link: @arquivo.icon_link, mime_type: @arquivo.mime_type, nome: @arquivo.nome, projeto_id: @arquivo.projeto_id, tamanho: @arquivo.tamanho }
+  #   end
 
-    assert_redirected_to arquivo_path(assigns(:arquivo))
-  end
+  #   assert_redirected_to arquivo_path(assigns(:arquivo))
+  # end
 
   test "should not save invalid arquivo" do
     Arquivo.any_instance.stubs(:save).returns(false)
@@ -42,10 +42,10 @@ class ArquivosControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update arquivo" do
-    patch :update, id: @arquivo, arquivo: { arquivo_id: @arquivo.arquivo_id, diretorio: @arquivo.diretorio, download_url: @arquivo.download_url, etag: @arquivo.etag, file_id: @arquivo.file_id, icon_link: @arquivo.icon_link, mime_type: @arquivo.mime_type, nome: @arquivo.nome, projeto_id: @arquivo.projeto_id, tamanho: @arquivo.tamanho }
-    assert_redirected_to arquivo_path(assigns(:arquivo))
-  end
+  # test "should update arquivo" do
+  #   patch :update, id: @arquivo, arquivo: { arquivo_id: @arquivo.arquivo_id, diretorio: @arquivo.diretorio, download_url: @arquivo.download_url, etag: @arquivo.etag, file_id: @arquivo.file_id, icon_link: @arquivo.icon_link, mime_type: @arquivo.mime_type, nome: @arquivo.nome, projeto_id: @arquivo.projeto_id, tamanho: @arquivo.tamanho }
+  #   assert_redirected_to arquivo_path(assigns(:arquivo))
+  # end
 
   test "should not update invalid arquivo" do
     Arquivo.any_instance.stubs(:update).returns(false)

@@ -13,7 +13,7 @@ end
 class ApplicationControllerTest < ActionController::TestCase
 	setup do
 	    @controller = TestController.new
-	    AppName::Application.routes.draw do
+	    FOADocs::Application.routes.draw do
 		    controller :test do
 		    	get 'test/index' => :index
 		    	get 'test/test' => :test
@@ -30,15 +30,15 @@ class ApplicationControllerTest < ActionController::TestCase
 		assert_response :not_found
 	end
 
-	test "should ask for password when the site is on the temporary url" do
-		request.stubs(:host).returns("test.reactweb.com.br")
+	# test "should ask for password when the site is on the temporary url" do
+	# 	request.stubs(:host).returns("test.reactweb.com.br")
 
-		get :test
-		assert_response 401
+	# 	get :test
+	# 	assert_response 401
 
-		@credentials = ActionController::HttpAuthentication::Basic.encode_credentials("react", "rct364")
-        request.env['HTTP_AUTHORIZATION'] = @credentials
-		get :test
-		assert_response :ok
-	end
+	# 	@credentials = ActionController::HttpAuthentication::Basic.encode_credentials("react", "rct364")
+ #        request.env['HTTP_AUTHORIZATION'] = @credentials
+	# 	get :test
+	# 	assert_response :ok
+	# end
 end

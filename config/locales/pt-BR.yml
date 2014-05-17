@@ -6,6 +6,10 @@
     sessions:
       usuario:
         signed_in: "Usuário logado com sucesso"
+    google_drive:
+      usuario:
+        signed_in: "Usuário logado com sucesso"
+        success: "Usuário logado com sucesso"
 
   # formatos de data e hora
   date:

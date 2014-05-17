@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   #protect_from_forgery
 
   def login_with_google
-    if current_usuario and !current_usuario.token
+    if current_usuario and !current_usuario.token and !current_usuario.admin?
       redirect_to usuario_omniauth_authorize_path(:google_oauth2)
     end
   end

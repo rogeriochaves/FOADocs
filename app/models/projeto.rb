@@ -15,14 +15,16 @@ class Projeto < ActiveRecord::Base
 	end
 
 	def get_admin
-		self.participantes.where(grupo: "admin").first.usuario
+		admin = self.participantes.where(grupo: "admin").first
+		return admin.usuario if admin
+		return nil
 	end
 
 	def create_or_find_project_root_folder(usuario = nil)
 		usuario ||= get_admin
 		if f = find_root_folder(usuario)
 			return f
-		else
+		elsif usuario
 			google_drive = usuario.google_drive
 			google_drive.cria_pasta(self.nome)
 			return find_root_folder(usuario)
@@ -30,10 +32,12 @@ class Projeto < ActiveRecord::Base
 	end
 
 	def find_root_folder(usuario)
-		google_drive = usuario.google_drive
-		pastas = google_drive.lista_arquivos(nil)
-		pastas.items.each do |item|
-			return item if item.title == self.nome
+		if usuario
+			google_drive = usuario.google_drive
+			pastas = google_drive.lista_arquivos(nil)
+			pastas.items.each do |item|
+				return item if item.title == self.nome
+			end
 		end
 		return nil
 		#google_drive.cria_pasta(self.nome)

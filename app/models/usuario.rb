@@ -29,7 +29,7 @@ class Usuario < ActiveRecord::Base
         end
         user.provider = auth.provider
         user.uid = auth.uid
-        user.email = auth.info.email
+        #user.email = auth.info.email
         user.token = auth.credentials.token
         user.refresh_token = auth.credentials.refresh_token
         user.nome = auth.info.name
