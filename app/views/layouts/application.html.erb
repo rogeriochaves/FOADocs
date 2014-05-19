@@ -43,10 +43,14 @@
 						<div class="notificacoes">
 							<div class="clearfix">
 								<div class="notificacao notificacao-comentario pull-left">
-									<div class="quant">10</div>
+									<% count = current_usuario.notificacoes_de_comentarios_nao_lidas.count %>
+									<% if count > 0 %>
+										<div class="quant"><%= count %></div>
+									<% end %>
 									<ul class="lista-notificacoes">
-										<li>Teste 1</li>
-										<li>Teste 2</li>
+										<% current_usuario.notificacoes_de_comentarios.limit(10).each do |notificacao| %>
+											<li><%=raw notificacao.texto %></li>
+										<% end %>
 									</ul>
 								</div>
 								<div class="notificacao notificacao-documento pull-left">

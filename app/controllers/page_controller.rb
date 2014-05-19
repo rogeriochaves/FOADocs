@@ -59,6 +59,7 @@ class PageController < ApplicationController
     if params[:projeto]
       @projeto = Projeto.new(params[:projeto])
       @projeto.participantes.build(usuario: current_usuario, grupo: "admin")
+      @projeto.data_inicio = Time.zone.now
       if @projeto.save
         redirect_to action: :index, projeto_id: @projeto.id
       end
@@ -105,7 +106,7 @@ class PageController < ApplicationController
       @comentario = Comentario.new(params[:comentario])
       @comentario.usuario = current_usuario
       if @comentario.save
-        render :text => "ok"
+        render :text => @comentario.id
       else
         render :text => "error"
       end
@@ -113,5 +114,16 @@ class PageController < ApplicationController
       render :text => "error"
     end
   end
+
+  def _excluir_comentario
+    Comentario.find(params[:id]).destroy
+    render :nothing => true
+  end
+
+  def _excluir_arquivo
+    current_usuario.google_drive.delete_arquivo(params[:fileId])
+    render :text => "ok"
+  end
+
 
 end

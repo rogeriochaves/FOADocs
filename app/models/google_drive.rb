@@ -135,6 +135,16 @@ class GoogleDrive
     end
   end
 
+  def delete_arquivo(file_id)
+    result = do_request do
+      api_client.execute(
+        :api_method => drive.files.delete,
+        :parameters => { 'fileId' => file_id },
+        :authorization => user_credentials
+      )
+    end
+  end
+
   private
 
   def api_client
@@ -162,7 +172,7 @@ class GoogleDrive
 
     res = yield
     case res.status
-    when 200, 201 # success
+    when 200, 201, 202, 204 # success
       res.data || res.body
     when 400
       raise BadRequestError, res

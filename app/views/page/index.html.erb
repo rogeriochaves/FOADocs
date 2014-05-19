@@ -42,12 +42,18 @@
 				<div class="comentarios">
 					<% versao.comentarios.each do |comentario| %>
 						<div class="comentario row">
+							<% if comentario.usuario.id == current_usuario.id %>
+								<a href="#" class="close pull-right excluirComentario" data-dismiss="alert" aria-hidden="true" data-id="<%= comentario.id %>">
+									&times;
+								</a>
+							<% end %>
 							<div class="col-xs-1 comentario-avatar">
 								<%= image_tag comentario.usuario.image, class: "comentario-img" %>
 							</div>
 							<div class="col-xs-11">
 								<b><%= comentario.usuario.nome %></b> <br>
-								<%=simple_format comentario.comentario %>
+								<%= simple_format comentario.comentario %>
+
 							</div>
 						</div>
 					<% end %>
@@ -74,6 +80,9 @@
 </script>
 <script id="comentarios-template" type="text/x-handlebars-template">
 	<div class="comentario row">
+		<a href="#" class="close pull-right excluirComentario" data-dismiss="alert" aria-hidden="true" data-id="{{ id }}">
+			&times;
+		</a>
 		<div class="col-xs-1 comentario-avatar">
 			<img src="{{ image }}" class="comentario-img" />
 		</div>
