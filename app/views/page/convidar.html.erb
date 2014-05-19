@@ -7,11 +7,22 @@
 </h1>
 
 <br>
+<label>Escolha alguém para adicionar ao projeto</label>
+<% @alunos.each do |aluno| %>
+	<% next if Participante.joins(:usuario).where(:usuarios => {:matricula => aluno["matricula"]}, :projeto => current_projeto).first %>
+	<li>
+		<a href="<%= url_for(:action => :convidar, :usuario => {:email => aluno["email"]})%>" style="font-size:16px; line-height:1.8em">
+			<%= aluno["matricula"] %> - <%= aluno["nome"] %>
+		</a>
+	</li>
+<% end %>
+
+<br>
 <%= error_messages_for @usuario %>
 <br>
 <%= simple_form_for @usuario, html: {class: 'form-horizontal'}, url: {action: :convidar} do |f| -%>
-  <%= f.input :email %>
-  <div class="form-actions">
-    <%= f.button :submit, class: 'btn-success' %>
-  </div>
+	<%= f.input :email, required: false, label: "Ou digite o email" %>
+	<div class="form-actions">
+		<%= f.button :submit, class: 'btn-success' %>
+	</div>
 <% end %>

@@ -54,11 +54,20 @@
 									</ul>
 								</div>
 								<div class="notificacao notificacao-documento pull-left">
-									<div class="quant">5</div>
+									<% count = current_usuario.notificacoes_de_arquivos_nao_lidas.count %>
+									<% if count > 0 %>
+										<div class="quant"><%= count %></div>
+									<% end %>
+									<ul class="lista-notificacoes">
+										<% current_usuario.notificacoes_de_arquivos.limit(10).each do |notificacao| %>
+											<li><%=raw notificacao.texto %></li>
+										<% end %>
+									</ul>
+									<!-- <div class="quant">5</div>
 									<ul class="lista-notificacoes">
 										<li>Teste 1</li>
 										<li>Teste 2</li>
-									</ul>
+									</ul> -->
 								</div>
 							</div>
 						</div>

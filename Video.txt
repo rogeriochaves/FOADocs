@@ -1,0 +1,18 @@
+Pré-preparação
+- Apagar o banco todo
+- Deixar o email do victor logado numa janela anonima
+
+1 - Abrir o sistema, fazer login com a matricula
+2 - Criar novo projeto
+3 - Colocar um .docx na pasta do Google Drive com qualquer texto e salvar
+4 - Mostrar que o docx apareceu na timeline do FOADocs
+5 - Voltar no docx, adicionar uma linha e salvar
+6 - Voltar no FOADocs e mostrar o versionamento bolado
+7 - Convidar o Victor Hugo
+8 - Abrir o email do victor e aceitar o convite
+9 - Fazer login com a matricula e linkar com o Google Drive
+10 - Voltar no email e aceitar o convite da pasta
+11 - Interagir, comentar no docx
+12 - Voltar na outra janela e mostrar a notificação
+13 - Mostrar nosso TCC
+14 - Mostrar listagem de arquivos
