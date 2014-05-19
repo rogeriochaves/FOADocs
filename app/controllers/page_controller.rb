@@ -67,6 +67,12 @@ class PageController < ApplicationController
   end
 
   def convidar
+    require 'net/http'
+    uri = URI("http://foadocsuniversity.herokuapp.com/alunos/by_matricula/#{current_usuario.matricula}")
+    @alunos = JSON.parse(Net::HTTP.get(uri))
+
+    @usuario = Usuario.new
+
     if params[:usuario] and params[:usuario][:email] and !params[:usuario][:email].empty?
       ContatoMailer.enviar_convite(current_usuario, current_projeto, params[:usuario][:email]).deliver
       flash[:notice] = "Convite enviado para #{params[:usuario][:email]} com sucesso"
@@ -85,7 +91,7 @@ class PageController < ApplicationController
             else
               Participante.create(usuario_id: current_usuario.id, projeto_id: projeto.id, grupo: "membro")
               projeto.share_folder(email)
-              flash[:notice] = "Você agora está participando do projeto #{projeto.nome}, agora veja seu email e aceite o convite no Google Drive para participar da pasta compartilhada"
+              flash[:notice] = "Você agora está participando do projeto <b>#{projeto.nome}</b>, agora veja seu email e aceite o convite no Google Drive para participar da pasta compartilhada".html_safe
               redirect_to controller: :page, action: :index, projeto_id: projeto.id and return
             end
           #else

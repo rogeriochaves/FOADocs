@@ -3,6 +3,11 @@
 class Versao < ActiveRecord::Base
   	belongs_to :arquivo
   	has_many :comentarios, order: :id
+  	after_create :gerar_notificacao
+
+	def gerar_notificacao
+	  	Notificacao.create_with_versao(self)
+	end
 
 	def create_with_item(usuario, item)
 		self.modified_date = item.modified_date
@@ -37,7 +42,7 @@ class Versao < ActiveRecord::Base
 	def mudanca
 		if self.trashed
 			self.arquivo.diretorio ? "excluída" : "excluído"
-		elsif self.arquivo.versoes.first.id == self.id
+		elsif !self.arquivo.versoes.first or self.arquivo.versoes.first.id == self.id
 			self.arquivo.diretorio ? "criada" : "criado"
 		else
 			if versao_anterior and versao_anterior.trashed

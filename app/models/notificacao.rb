@@ -11,4 +11,22 @@ class Notificacao < ActiveRecord::Base
       end
     end
   end
+
+  def self.create_with_versao(versao)
+    if projeto = versao.arquivo.projeto
+
+      if versao.mudanca == "renomeado"
+        texto = "#{versao.versao_anterior.nome} <b>#{versao.mudanca} para</b> #{versao.nome}"
+      elsif versao.mudanca == "renomeada"
+        texto = "Pasta #{versao.versao_anterior.nome} <b>#{versao.mudanca} para</b> #{versao.nome}"
+      else
+        texto = "#{versao.arquivo.diretorio ? "Pasta" : ""} #{versao.nome} <b>#{versao.mudanca}</b>"
+      end
+
+      projeto.usuarios.each do |usuario|
+        Notificacao.create(usuario: usuario, versao: versao, texto: texto, lido: false)
+      end
+    end
+  end
+
 end
