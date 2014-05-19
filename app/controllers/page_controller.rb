@@ -22,7 +22,7 @@ class PageController < ApplicationController
     require 'net/http'
     login = params[:usuario][:matricula]
     senha = params[:usuario][:password]
-    uri = URI("http://localhost:3001/alunos/login?login=#{login}&senha=#{senha}")
+    uri = URI("http://foadocsuniversity.herokuapp.com/alunos/login?login=#{login}&senha=#{senha}")
     aluno = JSON.parse(Net::HTTP.get(uri))
 
     if aluno["error"]
