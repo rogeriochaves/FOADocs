@@ -14,3 +14,5 @@ Pré-preparação
 10 - Voltar no email e aceitar o convite da pasta
 11 - Interagir, comentar no docx
 12 - Voltar na outra janela e mostrar a notificação
+13 - Mostrar nosso TCC
+14 - Mostrar listagem de arquivos
