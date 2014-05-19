@@ -106,5 +106,10 @@ class PageController < ApplicationController
     render :nothing => true
   end
 
+  def _excluir_arquivo
+    current_usuario.google_drive.delete_arquivo(params[:fileId])
+    render :text => "ok"
+  end
+
 
 end
