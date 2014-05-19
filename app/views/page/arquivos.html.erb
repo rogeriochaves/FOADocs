@@ -63,7 +63,7 @@
 								<div class="icon">
 									<a href="<%= arquivo.web_content_link %>"><%= image_tag arquivo.icon_link %></a>
 								</div>
-								<a href="<%= arquivo.web_content_link %>"><%= arquivo.nome %> (<%= number_to_human_size arquivo.tamanho %>)</a>
+								<a href="<%= arquivo.web_content_link %>" id="nomeArquivo" data-nome-arquivo="<%= arquivo.nome %>"><%= arquivo.nome %> (<%= number_to_human_size arquivo.tamanho %>)</a>
 							<% end %>
 						</div>
 						<div class="col-xs-2">

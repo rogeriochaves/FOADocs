@@ -126,7 +126,6 @@ $('#excluirArquivos').click(function(){
 });
 $('#renomearArquivo').click(function() {
 	$('#renomearArquivoModal').modal('show');
-	$('#arquivoAntigo').text($('.arquivoCheck:checked').parent().parent().text());
-
+	$('#arquivoAntigo').text($('#nomeArquivo').attr('data-nome-arquivo'));
 });
 
