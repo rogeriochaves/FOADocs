@@ -71,6 +71,9 @@
 				</div>
 			</div>
 		<% end %>
+		<% if current_projeto.versoes.size == 0 %>
+				<div class="alert alert-danger">Ops! Esse projeto está vázio. Começe a fazer <%= link_to "upload", :action => :arquivos %> agora de seus arquivos.</div>
+		<% end %>
 	</div>
 	<div class="col-sm-3"></div>
 <% end %>

@@ -104,7 +104,7 @@ $(document).ready(function(){
 			alert("Erro ao excluir comentário");
 		});
 	});
-	$('#renomearArquivo').modal('hide');
+	$('#renomearArquivoModal').modal('hide');
 });
 
 $(".checkall").change(function(){
@@ -123,5 +123,10 @@ $('#excluirArquivos').click(function(){
 			$.post('_excluir_arquivo', {fileId: $(this).attr('data-fileId')});
 			location.reload();
 		});
+});
+$('#renomearArquivo').click(function() {
+	$('#renomearArquivoModal').modal('show');
+	$('#arquivoAntigo').text($('.arquivoCheck:checked').parent().parent().text());
+
 });
 
